@@ -1,8 +1,9 @@
 import React from 'react';
+import VerticalNavBarPation from'../../components/verticalNavBarPation/verticalNavBarPation.jsx'
 
 const Patient = () => (
   <>
-    <h1>Patient Page</h1>
+    <VerticalNavBarPation/>
   </>
 );
 
