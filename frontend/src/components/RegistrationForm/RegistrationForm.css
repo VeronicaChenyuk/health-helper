@@ -1,0 +1,16 @@
+.registrationForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+  height: 200px;
+  margin: 30px auto;
+}
+
+.registrationBtn {
+  margin: 10px 0;
+}
+
+.sign-in {
+  border-radius: 5px;
+}
