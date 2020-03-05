@@ -3,9 +3,10 @@ const {
 } = require('./action-types');
 
 // Action creators
-export const isLogined = (userName) => ({
+export const isLogined = (userName, statusUser) => ({
   type: LOG_IN,
   userName,
+  statusUser,
 });
 
 export const isLogout = () => ({
