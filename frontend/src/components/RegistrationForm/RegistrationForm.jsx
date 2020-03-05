@@ -3,6 +3,7 @@ import {
   Button, Form, FormGroup, Label, Input,
 } from 'reactstrap';
 import './RegistrationForm.css';
+import SignInButton from '../SignInButton/SignInButton.jsx';
 // import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 // import { isLogined } from '../../redux/actions';
@@ -55,6 +56,7 @@ const RegistrationForm = (props) => (
       </Input>
     </FormGroup>
     <Button type="submit" className="registrationBtn">Registration</Button>
+    <SignInButton />
   </Form>
 );
 
