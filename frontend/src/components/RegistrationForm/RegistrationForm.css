@@ -8,5 +8,9 @@
 }
 
 .registrationBtn {
-  margin-top: 10px;
+  margin: 10px 0;
+}
+
+.sign-in {
+  border-radius: 5px;
 }
