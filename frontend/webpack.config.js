@@ -7,6 +7,14 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
     filename: 'index-bundle.js',
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3000,
+    watchContentBase: true,
+    progress: true,
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {
