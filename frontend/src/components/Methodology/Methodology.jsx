@@ -1,5 +1,5 @@
 import React from 'react'
-import './methodology.css'
+import './Methodology.css'
 
 function Methodology() {
   return (<div className='Methodology'>

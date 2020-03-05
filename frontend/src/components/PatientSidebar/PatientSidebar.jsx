@@ -1,5 +1,5 @@
 import React from 'react';
-import Methodology from '../methodology/methodology.jsx';
+import Methodology from '../Methodology/Methodology.jsx';
 import ActiveTasks from '../ActiveTasks/ActiveTasks.jsx'
 
 
