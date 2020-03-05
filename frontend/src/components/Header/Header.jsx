@@ -5,7 +5,11 @@ import {
   NavbarBrand,
   Nav,
   Button,
+  NavLink,
 } from 'reactstrap';
+import { isLogout } from '../../redux/actions';
+
+const logout = () => { localStorage.clear(); };
 
 
 const Header = (props) => {
@@ -17,8 +21,8 @@ const Header = (props) => {
         <Nav className="mr-auto" navbar />
         <Nav />
         {
-      auth && <Button color="success">Выход</Button>
-      }
+          auth && <NavLink href="/"><Button color="success" onClick={() => { isLogout(); logout(); }}>Выход</Button></NavLink>
+        }
       </Navbar>
     </div>
   );
@@ -28,6 +32,11 @@ const mapStateToProps = (state) => ({
   auth: state.logIn.auth,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  isLogout: () => dispatch(isLogout()),
+});
+
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(Header);

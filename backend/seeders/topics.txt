@@ -1,0 +1,184 @@
+{
+    title: 'Основы JS',
+    questions: [
+      {
+        question: 'Что получится, если сложить true + false?',
+        answer1: 'truefalse',
+        answer2: '0',
+        answer3: '1',
+        answer4: '0',
+        points: 200,
+      },
+      {
+        question: 'Какие варианты подключения скрипта являются корректными с точки зрения современного стандарта HTML?',
+        answer1: '<script type="text/javascript" src="my.js"></script>',
+        answer2: '<script src="my.js"/>',
+        answer3: '<хачу-javascript отсюда="my.js">,
+        answer4: '<script type="text/javascript" src="my.js"></script>',
+        points: 400,
+      },
+      {
+        question: 'Что выведет этот код? alert( 20e-1['toString'](2) );',
+        answer1: '2',
+        answer2: '10',
+        answer3: 'В коде ошибка.',
+        answer4: '10',
+        points: 600,
+      },
+      {
+        question: 'Что выведет этот код: alert( "1"[0] );?',
+        answer1: '0',
+        answer2: '1',
+        answer3: 'undefined',
+        answer4: '1',
+        points: 800,
+      },
+      {
+        question: 'Переменные apple и Apple (с большой буквы) – это одна и та же или разные?',
+        answer1: 'Одна и та же.',
+        answer2: 'Разные.',
+        answer3: 'С большой буквы переменные называть нельзя.',
+        answer4: 'Разные.',
+        points: 1000,
+      },
+    ]
+  }
+/////////////////////////////////////////////////////////////////////////////////////
+{
+    title: 'CSS',
+    questions: [
+      {
+        question: 'Какую строчку кода выбрать, чтобы получить сдвиг элемента на 20px?',
+        answer1: 'height: 20px;',
+        answer2: 'margin: 20px;',
+        answer3: 'padding: 21px',
+        answer4: 'margin: 20px;',
+        points: 200,
+      },
+      {
+        question: 'Какjе из представленных свойств не относbтся к свойствам текста?',
+        answer1: 'direction',
+        answer2: 'resize',
+        answer3: 'orphans',
+        answer4: ''resize'',
+        points: 400,
+      },
+      {
+        question: 'Каким образом с помощью CSS можно центрировать inline контент блочного элемента (например, <div>) по горизонтали?',
+        answer1: 'align:center;',
+        answer2: 'content-align:center;',
+        answer3: 'text-align:center;',
+        answer4: 'text-align:center;',
+        points: 600,
+      },
+      {
+        question: 'Выберите название атрибута html-тега, которым можно указывать inline (непосредственно внутри открывающего тега) стиль для тега.',
+        answer1: 'stylesheet',
+        answer2: 'inlineStyle',
+        answer3: 'style',
+        answer4: 'style',
+        points: 800,
+      },
+      {
+        question: 'Как с помощью CSS определить круглый маркер списка?',
+        answer1: 'list-style-type:circle;',
+        answer2: 'style-list:circle;',
+        answer3: 'list-attachment-type:circle;',
+        answer4: 'list-style-type:circle;',
+        points: 1000,
+      },
+    ]
+  }
+
+////////////////////////////////////////////////////////////////////////////////////////////
+{
+    title: 'DOM, работа со страницей',
+    questions: [
+      {
+        question: 'Есть такой элемент: <input id="input" value="Привет"> ?',
+        answer1: 'input.setValue("Пока")',
+        answer2: 'input.setAttribute("value", "Пока");',
+        answer3: 'input.dataset.value = "Пока";',
+        answer4: 'input.setAttribute("value", "Пока");',
+        points: 200,
+      },
+      {
+        question: 'Если функция-обработчик события onclick выполняется долго, и посетитель во время её работы нажал на кнопку клавиатуры – что будет с возникшим событием keydown?',
+        answer1: 'Обработчик onclick приостановится, браузер обработает keydown, а потом возобновится обработка onclick.',
+        answer2: 'Событие keydown будет обработано после onclick.',
+        answer3: 'Если событие на том же элементе, что и onclick, то будет проигнорировано, иначе – обработано после onclick.',
+        answer4: 'Событие keydown будет обработано после onclick.',,
+        points: 400,
+      },
+      {
+        question: 'Как правильно вывести приветствие через 5 секунд?',
+        answer1: 'sleep(5); alert("Привет!");',
+        answer2: 'sleep(5000); alert("Привет!");',
+        answer3: 'setTimeout(function() {alert("Привет!")}, 5000);',
+        answer4: 'setTimeout(function() {alert("Привет!")}, 5000);',
+        points: 600,
+      },
+      {
+        question: 'Есть элемент <input type=«button» id=«elem»/>. На нём два обработчика: elem.addEventListener("click", handler1, false); elem.addEventListener("click", handler2, true); Какой из них сработает раньше при клике на elem?',
+        answer1: 'первый',
+        answer2: 'второй',
+        answer3: 'стандарт не указывает точную последовательность',
+        answer4: 'второй',
+        points: 800,
+      },
+      {
+        question: 'При каком условии elem.scrollHeight == elem.clientHeight ?',
+        answer1: 'Страница прокручена так, что элемент полностью видим и находится в границах окна.',
+        answer2: 'Высота элемента равна высоте полосы прокрутки.',
+        answer3: 'Содержимое элемента полностью видимо, в нём нет прокрутки.',
+        answer4: 'Содержимое элемента полностью видимо, в нём нет прокрутки.',
+        points: 1000,
+      },
+    ]
+  }
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+{
+    title: 'HTML',
+    questions: [
+      {
+        question: 'Для чего нужен тег <noscript>?',
+        answer1: 'Чтобы отображать некоторую информацию пользователю, если у него в браузере не включен/не поддерживается JavaScript.',
+        answer2: 'Чтобы отображать ошибки/предупреждения неправильно сработавшего Javascript на странице.',
+        answer3: 'Чтобы отключить скрипты в браузере.',
+        answer4: 'Чтобы отключить скрипты в браузере.',
+        points: 200,
+      },
+      {
+        question: 'Укажите правильный вариант создания гипертекстовой ссылки в html.',
+        answer1: '<a url="http://www.proghub.ru">proghub</a>',
+        answer2: '<a href="http://www.proghub.ru">proghub</a>',
+        answer3: '<a link="http://www.proghub.ru">proghub</a>',
+        answer4: '<a href="http://www.proghub.ru">proghub</a>',
+        points: 400,
+      },
+      {
+        question: 'Что делает атрибут align со значением justify для элемента div?',
+        answer1: 'выравнивает текст по центру',
+        answer2: 'выравнивает текст по ширине',
+        answer3: 'выравнивает текст по высоте',
+        answer4: 'выравнивает текст по ширине',
+        points: 600,
+      },
+      {
+        question: 'Выберите html-код, создающий checkbox.',
+        answer1: '<checkbox/>',
+        answer2: '<input type="check"/>',
+        answer3: '<input type="checkbox"/>',
+        answer4: '<input type="checkbox"/>',
+        points: 800,
+      },
+      {
+        question: 'Какое значение атрибута type используется при создании кнопки очистки данных формы?',
+        answer1: 'type="clear"',
+        answer2: 'type="reset"',
+        answer3: 'type="clearbutton"',
+        answer4: 'type="reset"',
+        points: 1000,
+      },
+    ]
+  }
