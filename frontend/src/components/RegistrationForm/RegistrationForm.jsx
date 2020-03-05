@@ -34,7 +34,7 @@ import './RegistrationForm.css';
 // };
 
 const RegistrationForm = (props) => (
-  <Form className="registrationForm">
+  <Form className="registrationForm" action="/doctor">
     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
       <Label for="exampleLogin" className="mr-sm-2">Login</Label>
       <Input type="text" name="login" id="exampleLogin" placeholder="your login" required />
