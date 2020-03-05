@@ -1,12 +1,12 @@
 import React from 'react';
 
 import './App.css';
-import Header from '../Header/Header.jsx';
+import Main from '../../scenes/Main/Main.jsx';
 
 const App = () => {
   return (
     <>
-      <Header />
+      <Main />
     </>
   );
 };
