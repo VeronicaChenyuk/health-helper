@@ -1,9 +1,9 @@
 import React from 'react';
-import VerticalNavBarPation from'../../components/verticalNavBarPation/verticalNavBarPation.jsx'
+import PatientSidebar from'../../components/PatientSidebar/PatientSidebar.jsx'
 
 const Patient = () => (
   <>
-    <VerticalNavBarPation/>
+    <PatientSidebar />
   </>
 );
 
