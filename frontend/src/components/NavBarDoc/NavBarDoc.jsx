@@ -6,7 +6,7 @@ import PatientInfoDoc from './PatientInfoDoc.jsx';
 
 
 function patientClick(name) {
-
+  
   alert(name);
 
 }
