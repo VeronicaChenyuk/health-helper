@@ -1,8 +1,9 @@
 import React from 'react';
+import NavBarDoc from '../../components/NavBarDoc/NavBarDoc.jsx'
 
 const Doctor = () => (
   <>
-    <h1>Doctor Page</h1>
+    <NavBarDoc/>
   </>
 );
 

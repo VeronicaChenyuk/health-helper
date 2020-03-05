@@ -1,13 +1,24 @@
 import React from 'react';
 
-import { Nav, NavLink, Jumbotron, Container } from 'reactstrap';
+import { Nav, NavLink, Button } from 'reactstrap';
 import { Link, NavLink as RRNavLink } from 'react-router-dom';
-import PatientInfoDoc from './PatientInfoDoc.jsx'
+import PatientInfoDoc from './PatientInfoDoc.jsx';
 
+
+function patientClick(name) {
+
+  alert(name);
+
+}
 
 function NavBarDoc() {
   const patients = [{ name: 'Ivanov Ivan' }, { name: 'Petrov Petr' }, { name: 'Vasilyev Vasiliy' }, { name: 'Romanov Roman' }, { name: 'Kirillov Kirill' }];
-  const navPatients = patients.map((name) => <NavLink to="/" tag={RRNavLink}>{name.name}</NavLink>);
+ 
+  const navPatients = patients.map((name) => (
+    <>
+      <Button color="link" onClick={() => patientClick(name.name)}>{name.name}</Button>
+    </>
+  ));
   return (
     <>
       <div className="container">
@@ -15,11 +26,11 @@ function NavBarDoc() {
           <div className="col-3">
             <Nav defaultActiveKey="/" className="flex-column">
               {navPatients}
-            </Nav>
+            </Nav> 
           </div>
           <div className="col-9">
 
-           <PatientInfoDoc />
+            <PatientInfoDoc />
 
 
           </div>
@@ -30,5 +41,3 @@ function NavBarDoc() {
 }
 
 export default NavBarDoc;
-
-
