@@ -29,10 +29,8 @@ function DoctorList() {
           doctorBaze.map((el) => <p><strong>{el.id}.</strong> {el.fistName} {el.secondName} {el.lastName}<p></p> Cпециальность: {el.specialist} <p><Button outline color="success">Связаться</Button> <Button outline color="danger">Удалить</Button></p></p>)
         }
       </div>
-      
     </>
   )
-
 }
 
 export default DoctorList;

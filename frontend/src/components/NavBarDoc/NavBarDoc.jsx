@@ -18,7 +18,7 @@ function patientClick(name) {
 
 function NavBarDoc() {
   const patients = [{ name: 'Ivanov Ivan' }, { name: 'Petrov Petr' }, { name: 'Vasilyev Vasiliy' }, { name: 'Romanov Roman' }, { name: 'Kirillov Kirill' }];
- 
+
   const navPatients = patients.map((name) => (
     <>
       <Button color="link" onClick={() => patientClick(name.name)}>{name.name}</Button>
@@ -30,17 +30,18 @@ function NavBarDoc() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-3">
+          <div className="col-3">         
             <Nav defaultActiveKey="/" className="flex-column">
               <PatientModalCreateMethod />
               {navPatients}
             </Nav>
+            
           </div>
           <div className="col-9">
 
             <PatientInfoDoc />
 
-
+            
           </div>
         </div>
       </div>

@@ -1,10 +1,13 @@
 import React from 'react';
 import NavBarDoc from '../../components/NavBarDoc/NavBarDoc.jsx'
+import { Button } from 'reactstrap';
 
 const Doctor = () => (
-  <>
-    <NavBarDoc/>
-  </>
+  <div>
+  
+    <NavBarDoc />
+
+  </div>
 );
 
 export default Doctor;
