@@ -5,9 +5,11 @@ import {
   NavbarBrand,
   Nav,
   Button,
-  NavLink,
+  NavLink
 } from 'reactstrap';
+import {Link} from 'react-router-dom'
 import { isLogout } from '../../redux/actions';
+
 
 const logout = () => { localStorage.clear(); };
 
@@ -24,7 +26,7 @@ const Header = (props) => {
         <Nav className="mr-auto" navbar />
         <Nav />
         {
-          auth && <NavLink href={url}><Button  onClick={() => { isLogout(); logout(); }}>Личный кабинет</Button></NavLink>
+          auth && <Link to={url}><Button>Личный кабинет</Button></Link>
         }
         {
           auth && <NavLink href="/"><Button color="success" onClick={() => { isLogout(); logout(); }}>Выход</Button> </NavLink>
