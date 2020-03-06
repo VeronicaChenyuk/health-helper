@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button, Form, FormGroup, Label, Input,
 } from 'reactstrap';
@@ -38,29 +38,31 @@ const createUser = async (event, props) => {
 };
 
 const RegistrationForm = (props) => (
-  <Form className="registrationForm" onSubmit={(event) => createUser(event, props)}>
-    <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-      <Label for="exampleLogin" className="mr-sm-2">Login</Label>
-      <Input type="text" name="login" id="exampleLogin" placeholder="your login" required />
-    </FormGroup>
-    <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-      <Label for="exampleEmail" className="mr-sm-2">Email</Label>
-      <Input type="email" name="email" id="exampleEmail" placeholder="fox@fox.ru" required />
-    </FormGroup>
-    <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-      <Label for="examplePassword" className="mr-sm-2">Password</Label>
-      <Input type="password" name="password" id="examplePassword" placeholder="don't tell!" required />
-    </FormGroup>
-    <FormGroup>
-      <Label for="exampleSelect">Status</Label>
-      <Input type="select" name="statusUser" id="exampleStatusUser">
-        <option>patient</option>
-        <option>doctor</option>
-      </Input>
-    </FormGroup>
-    <Button type="submit" className="registrationBtn">Registration</Button>
-    <SignInButton />
-  </Form>
+  <>
+    <Form className="registrationForm" onSubmit={(event) => createUser(event, props)}>
+      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+        <Label for="exampleLogin" className="mr-sm-2">Login</Label>
+        <Input type="text" name="login" id="exampleLogin" placeholder="your login" required />
+      </FormGroup>
+      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+        <Label for="exampleEmail" className="mr-sm-2">Email</Label>
+        <Input type="email" name="email" id="exampleEmail" placeholder="fox@fox.ru" required />
+      </FormGroup>
+      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+        <Label for="examplePassword" className="mr-sm-2">Password</Label>
+        <Input type="password" name="password" id="examplePassword" placeholder="don't tell!" required />
+      </FormGroup>
+      <FormGroup>
+        <Label for="exampleSelect">Status</Label>
+        <Input type="select" name="statusUser" id="exampleStatusUser">
+          <option>patient</option>
+          <option>doctor</option>
+        </Input>
+      </FormGroup>
+      <Button type="submit" className="registrationBtn">Registration</Button>
+      <SignInButton />
+    </Form>
+  </>
 );
 
 const mapStateToProps = (state) => ({

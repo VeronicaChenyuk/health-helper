@@ -5,21 +5,23 @@ import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm.jsx';
 
 const Main = (props) => {
-  const { regForm } = props;
-  console.log(regForm);
-
+  const { isRegForm } = props;
   return (
     <div className="main">
       {
-        regForm ? <RegistrationForm /> : <LoginForm />
+        isRegForm ? <LoginForm /> : <RegistrationForm />
       }
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  regForm: state.logIn.regForm,
-});
+const mapStateToProps = (state) => {
+  console.log('statatwet', state);
+
+  return ({
+    isRegForm: state.switchFormReducer.isRegForm,
+  });
+};
 
 export default connect(
   mapStateToProps,

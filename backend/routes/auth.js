@@ -9,13 +9,9 @@ router.post('/login', async (req, res, next) => {
   console.log('>>>> LOGIN');
   const { email, password } = req.body;
   const user = await User.findOne({ email, password });
-  return user ? res.json({ answer: true, login: user.login }) : res.json({ answer: false });
-  // if (!user) {
-  //   await User.create({
-  //     email, password,
-  //   });
-  // }
-  // req.session.uhser = email;
+  console.log(user);
+
+  return user ? res.json({ answer: true, login: user.login, status: user.status }) : res.json({ answer: false });
 });
 
 router.post('/registration', async (req, res, next) => {
@@ -35,12 +31,6 @@ router.post('/registration', async (req, res, next) => {
   const newUser = await User.insertMany(user);
 
   return newUser && res.json({ status: statusUser });
-  // if (!user) {
-  //   await User.create({
-  //     email, password,
-  //   });
-  // }
-  // req.session.uhser = email;
 });
 
 module.exports = router;
