@@ -13,7 +13,10 @@ const logout = () => { localStorage.clear(); };
 
 
 const Header = (props) => {
-  const { auth } = props;
+  const { auth, statusUser } = props;
+  // console.log(props.statusUser);
+  
+  const url = `/personal/${statusUser}`
   return (
     <div>
       <Navbar color="light" light expand="md">
@@ -21,17 +24,24 @@ const Header = (props) => {
         <Nav className="mr-auto" navbar />
         <Nav />
         {
-          auth && <NavLink href="/"><Button color="success" onClick={() => { isLogout(); logout(); }}>Выход</Button></NavLink>
+          auth && <NavLink href={url}><Button  onClick={() => { isLogout(); logout(); }}>Личный кабинет</Button></NavLink>
+        }
+        {
+          auth && <NavLink href="/"><Button color="success" onClick={() => { isLogout(); logout(); }}>Выход</Button> </NavLink>
         }
       </Navbar>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.logIn.auth,
-});
-
+const mapStateToProps = (state) =>{
+// console.log('..>',state)
+return (
+    {
+      auth: state.logIn.auth,
+      statusUser: state.logIn.statusUser,
+    });
+  }
 const mapDispatchToProps = (dispatch) => ({
   isLogout: () => dispatch(isLogout()),
 });
