@@ -5,7 +5,7 @@ import {
 import './RegistrationForm.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { isLogined, isLoginForm } from '../../redux/actions';
+import { isLogined } from '../../redux/actions';
 import SignInButton from '../SignInButton/SignInButton.jsx';
 
 const createUser = async (event, props) => {
@@ -60,8 +60,8 @@ const RegistrationForm = (props) => (
         </Input>
       </FormGroup>
       <Button type="submit" className="registrationBtn">Registration</Button>
+      <SignInButton />
     </Form>
-    <SignInButton onClick={() => isLoginForm()} />
   </>
 );
 
@@ -72,7 +72,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   isLogined: (userName, statusUser) => dispatch(isLogined(userName, statusUser)),
-  isLoginForm: () => dispatch(isLoginForm()),
 });
 
 export default withRouter(connect(

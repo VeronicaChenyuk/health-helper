@@ -5,12 +5,36 @@ import {
 import './LoginForm.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { isLoginForm, isLogined } from '../../redux/actions';
+import { isLogined } from '../../redux/actions';
 import SignInButton from '../SignInButton/SignInButton.jsx';
+
+const createUser = async (event, props) => {
+  event.preventDefault();
+
+  const email = event.target.email.value;
+  const password = event.target.password.value;
+  const isLogin = props.isLogined;
+  const response = await fetch('http://localhost:5000/auth/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email, password,
+    }),
+  });
+  const result = await response.json();
+  if (result.answer) {
+    const { login, status } = result;
+    isLogin(login, status);
+    return props.history.push('/');
+  }
+  alert('Что то пошло не так!');
+};
 
 const LoginForm = (props) => (
   <>
-    <Form className="loginForm" action="/patient">
+    <Form className="loginForm" onSubmit={(event) => createUser(event, props)}>
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label for="exampleEmail" className="mr-sm-2">Email</Label>
         <Input type="email" name="email" id="exampleEmail" placeholder="fox@fox.ru" required />
@@ -20,8 +44,8 @@ const LoginForm = (props) => (
         <Input type="password" name="password" id="examplePassword" placeholder="don't tell!" required />
       </FormGroup>
       <Button type="submit" className="loginBtn">Login</Button>
+      <SignInButton />
     </Form>
-    <SignInButton onClick={() => isLoginForm()} />
   </>
 );
 
@@ -32,7 +56,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   isLogined: (userName, statusUser) => dispatch(isLogined(userName, statusUser)),
-  isLoginForm: () => dispatch(isLoginForm()),
 });
 
 export default withRouter(connect(

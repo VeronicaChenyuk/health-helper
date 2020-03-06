@@ -6,12 +6,10 @@ import RegistrationForm from '../../components/RegistrationForm/RegistrationForm
 
 const Main = (props) => {
   const { isRegForm } = props;
-  console.log('REEEEEEEEEEGAAAAAAAAA', props);
-
   return (
     <div className="main">
       {
-        isRegForm ? <RegistrationForm /> : <LoginForm />
+        isRegForm ? <LoginForm /> : <RegistrationForm />
       }
     </div>
   );
