@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import {
-  Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,
+  Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input,
 } from 'reactstrap';
 
 
-import Drugs from './Components/AddDrug.jsx';
-import Theraphy from './Components/AddTheraphy.jsx';
-import Analysis from './Components/AddAnalysis.jsx';
-import AddReports from './AddComponents/AddReports.jsx';
-import AddNextVisit from './AddComponents/AddNextVisit.jsx';
+import Drugs from './Components/Drugs';
+import Theraphy from './Components/AddTheraphy';
+import Analysis from './Components/AddAnalysis';
+import AddReports from './AddComponents/AddReports';
+import AddNextVisit from './AddComponents/AddNextVisit';
 
 function saveClick() {
   alert('hello');
@@ -23,7 +23,6 @@ const PatientModalCreateMethod = (props) => {
   } = props;
 
   const [modal, setModal] = useState(false);
-
   const toggle = () => setModal(!modal);
 
   return (
@@ -32,7 +31,7 @@ const PatientModalCreateMethod = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className} style={{ minWidth: '1200px', minHeight: '800px' }}>
         <ModalHeader toggle={toggle}>Назначение методики лечения</ModalHeader>
         <ModalBody>
-          <Form id="NewPatient" onSubmit={() => jfdgkfd()}>
+          <Form id="NewPatient">
             <FormGroup>
               <Label for="exampleEmail">Электронная почта пациента</Label>
               <Input type="email" name="email" id="exampleEmail" placeholder="example@example.com" />
@@ -67,7 +66,6 @@ const PatientModalCreateMethod = (props) => {
 
         <ModalFooter>
           <Button color="primary" onClick={() => saveClick()}>Save</Button>
-          {' '}
           <Button color="link" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>

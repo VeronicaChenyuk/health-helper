@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button, Form, FormGroup, Label, Input,
 } from 'reactstrap';
@@ -6,7 +6,7 @@ import './RegistrationForm.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { isLogined } from '../../redux/actions';
-import SignInButton from '../SignInButton/SignInButton.jsx';
+import SignInButton from '../SignInButton/SignInButton';
 
 const createUser = async (event, props) => {
   event.preventDefault();
@@ -32,9 +32,7 @@ const createUser = async (event, props) => {
     isLogin(login, status);
     return props.history.push('/');
   }
-  // alert('Что то пошло не так!');
-
-  // return true;
+  return alert('Что то пошло не так!');
 };
 
 const RegistrationForm = (props) => (

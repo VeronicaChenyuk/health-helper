@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,
+  Button,
 } from 'reactstrap';
-import AddAnalysis from '../AddComponents/AddAnalysis.jsx';
+import AddAnalysis from '../AddComponents/AddAnalysis';
 
 class Analysis extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +15,7 @@ class Analysis extends React.Component {
   addAnalysisClick() {
     this.setState({ analysisCount: this.state.analysisCount + 1 });
   }
+
   deleteAnalysisClick() {
     this.setState({ analysisCount: this.state.analysisCount - 1 });
   }

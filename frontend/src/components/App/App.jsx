@@ -5,16 +5,16 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import { connect } from 'react-redux';
-import Main from '../../scenes/Main/Main.jsx';
-import Patient from '../../scenes/Patient/Patient.jsx';
-import Doctor from '../../scenes/Doctor/Doctor.jsx';
-import Header from '../Header/Header.jsx';
-import DoctorPage from '../DoctorPage/DoctorPage.jsx'
+import Main from '../../scenes/Main/Main';
+import Patient from '../../scenes/Patient/Patient';
+import Doctor from '../../scenes/Doctor/Doctor';
+import Header from '../Header/Header';
+import DoctorPage from '../DoctorPage/DoctorPage';
 
 const App = (props) => {
   const { statusUser } = props;
   console.log(props);
-  const url = `/personal/${statusUser}`
+  const url = `/personal/${statusUser}`;
   return (
     <>
       <div className="App">
@@ -26,14 +26,16 @@ const App = (props) => {
           {
             statusUser === 'patient'
               ? <Patient /> : statusUser === 'doctor'
-                ? <Doctor /> : <Main />
+                ? <Doctor />
+                : <Main />
           }
         </Route>
         <Route path={url}>
-            {
+          {
             statusUser === 'patient'
-              ? <PatientPage /> : statusUser === 'doctor'
-                ? <DoctorPage /> : <Main />
+              ? <Patient /> : statusUser === 'doctor'
+                ? <DoctorPage />
+                : <Main />
           }
         </Route>
       </Switch>

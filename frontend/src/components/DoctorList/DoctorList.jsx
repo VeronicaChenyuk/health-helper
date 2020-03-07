@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Button } from 'reactstrap';
 
 const doctorBaze = [
@@ -16,7 +16,7 @@ const doctorBaze = [
     lastName: 'Мишустин',
     specialist: 'Отоларинголог',
   },
-]
+];
 console.log(doctorBaze);
 
 function DoctorList() {
@@ -26,11 +26,28 @@ function DoctorList() {
     <>
       <div>
         {
-          doctorBaze.map((el) => <p><strong>{el.id}.</strong> {el.fistName} {el.secondName} {el.lastName}<p></p> Cпециальность: {el.specialist} <p><Button outline color="success">Связаться</Button> <Button outline color="danger">Удалить</Button></p></p>)
+          doctorBaze.map((el) => (
+            <p>
+              <strong>
+                {el.id}
+                .
+              </strong>
+              {el.fistName}
+              {el.secondName}
+              {el.lastName}
+              <p />
+              Cпециальность:
+              {el.specialist}
+              <p>
+                <Button outline color="success">Связаться</Button>
+                <Button outline color="danger">Удалить</Button>
+              </p>
+            </p>
+          ))
         }
       </div>
     </>
-  )
+  );
 }
 
 export default DoctorList;

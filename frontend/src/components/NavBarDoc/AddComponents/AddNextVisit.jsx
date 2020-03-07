@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,
+  Col, Row, FormGroup, Label, Input,
 } from 'reactstrap';
 
 

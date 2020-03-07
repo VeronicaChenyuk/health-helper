@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Main.css';
-import LoginForm from '../../components/LoginForm/LoginForm.jsx';
-import RegistrationForm from '../../components/RegistrationForm/RegistrationForm.jsx';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 
 const Main = (props) => {
   const { isRegForm } = props;

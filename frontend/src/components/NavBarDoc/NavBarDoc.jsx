@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { Nav, NavLink, Button } from 'reactstrap';
-import { Link, NavLink as RRNavLink } from 'react-router-dom';
-import PatientInfoDoc from './PatientInfoDoc.jsx';
-import PatientModalCreateMethod from './PatientModalCreateMethod.jsx'
+import { Nav, Button } from 'reactstrap';
+import PatientInfoDoc from './PatientInfoDoc';
+import PatientModalCreateMethod from './PatientModalCreateMethod';
 
 
 // function addPatientClick() {
@@ -30,18 +29,18 @@ function NavBarDoc() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-3">         
+          <div className="col-3">
             <Nav defaultActiveKey="/" className="flex-column">
               <PatientModalCreateMethod />
               {navPatients}
             </Nav>
-            
+
           </div>
           <div className="col-9">
 
             <PatientInfoDoc />
 
-            
+
           </div>
         </div>
       </div>

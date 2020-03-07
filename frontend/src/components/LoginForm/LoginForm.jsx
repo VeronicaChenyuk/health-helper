@@ -6,7 +6,7 @@ import './LoginForm.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { isLogined } from '../../redux/actions';
-import SignInButton from '../SignInButton/SignInButton.jsx';
+import SignInButton from '../SignInButton/SignInButton';
 
 const createUser = async (event, props) => {
   event.preventDefault();
@@ -29,7 +29,7 @@ const createUser = async (event, props) => {
     isLogin(login, status);
     return props.history.push('/');
   }
-  alert('Что то пошло не так!');
+  return alert('Что то пошло не так!');
 };
 
 const LoginForm = (props) => (
