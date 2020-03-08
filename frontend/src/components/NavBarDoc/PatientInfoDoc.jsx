@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  NavLink, Card, CardImg, CardTitle, CardText, CardGroup, CardBody,
+  NavLink, Card, CardImg, CardTitle, CardText, CardDeck, CardBody,
 } from 'reactstrap';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import PatientModalReport from './PatientModalReport';
@@ -17,8 +17,8 @@ function PatientInfoDoc() {
   };
   return (
     <>
-      <CardGroup>
-        <Card>
+      <CardDeck>
+        <Card >
           <CardImg top width="100%" src="https://cdn.onlinewebfonts.com/svg/img_370832.png" alt="Show Report" />
           <CardBody>
             <CardTitle>Ход лечения</CardTitle>
@@ -30,9 +30,9 @@ function PatientInfoDoc() {
             <PatientModalReport />
           </CardBody>
         </Card>
-        <Card>
-          <CardImg top width="100%" src="https://cdn3.iconfinder.com/data/icons/audio-icons-3/377/Repeat_Arrow-512.png" alt="Change action" />
-          <CardBody>
+        <Card >
+          <CardImg top width="80%" src="https://cdn3.iconfinder.com/data/icons/audio-icons-3/377/Repeat_Arrow-512.png" alt="Change action" />
+          <CardBody >
             <CardTitle>Методика лечения</CardTitle>
             <CardText>
               {patients[0].name}
@@ -43,7 +43,7 @@ function PatientInfoDoc() {
             <PatientModalCreateMethod />
           </CardBody>
         </Card>
-        <Card>
+        <Card style={{ marginLeft: '5px' }}>
           <CardImg top width="100%" src="https://user-images.githubusercontent.com/22866157/40578885-e3bf4e8e-6139-11e8-8be4-92fc3149f6f0.jpg" alt="Support" />
           <CardBody>
             <CardTitle>Связаться с пациентом</CardTitle>
@@ -55,7 +55,7 @@ function PatientInfoDoc() {
             <PatientModalChat />
           </CardBody>
         </Card>
-      </CardGroup>
+      </CardDeck>
 
     </>
   );

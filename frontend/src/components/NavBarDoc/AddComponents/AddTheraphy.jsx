@@ -1,35 +1,28 @@
-import React, { useState } from 'react';
-import {
-  Col, Row, FormGroup, Input,
-} from 'reactstrap';
+import React from 'react';
+import { Col, Row, FormGroup } from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
 
+const AddTheraphy = ({ idx }) => (
+  <>
+    <FormGroup style={{ inline: true }}>
+      <Row form>
+        <Col md={3}>
+          <Field style={{ width: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`nameOfTheraphy_${idx}`} id="NameOfTheraphy" placeholder="Название терапии" component="input" />
+        </Col>
+        <Col md={3}>
+          <Field style={{ width: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`frequencyOfTheraphy_${idx}`} id="frequencyOfTheraphy" placeholder="Частота терапии" component="input" />
+        </Col>
+        <Col md={3}>
+          <Field style={{ width: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`durationOfTheraphy_${idx}`} id="durationOfTheraphy" placeholder="Длительность курса" component="input" />
+        </Col>
+        <Col md={2} />
+      </Row>
+    </FormGroup>
+  </>
+);
 
-const AddTheraphy = (props) => {
-  const {
-    buttonLabel,
-    className,
-  } = props;
-
-  const [modal, setModal] = useState(false);
-
-  return (
-    <>
-      <FormGroup style={{ inline: true }}>
-        <Row form>
-          <Col md={4}>
-            <Input style={{ maxWidth: '500px' }} type="text" name="drug" id="exampleDrug" placeholder="Название терапии" />
-          </Col>
-          <Col md={3}>
-            <Input style={{ maxWidth: '450px' }} type="text" name="drug" id="exampleDrug" placeholder="Частота" />
-          </Col>
-          <Col md={3}>
-            <Input style={{ maxWidth: '450px' }} type="text" name="drug" id="exampleDrug" placeholder="длительность курса" />
-          </Col>
-          <Col md={2} />
-        </Row>
-      </FormGroup>
-    </>
-  );
-};
-
-export default AddTheraphy;
+const TheraphiesFields = reduxForm({
+  // a unique name for the form
+  form: 'method',
+})(AddTheraphy);
+export default TheraphiesFields;

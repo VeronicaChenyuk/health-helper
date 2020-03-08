@@ -5,17 +5,26 @@ import {
 } from 'reactstrap';
 
 import Drugs from './Drugs';
-import Theraphy from './AddTheraphy';
+import Theraphy from './Theraphies';
 import Analysis from './AddAnalysis';
 import AddReports from '../AddComponents/AddReports';
-import AddNextVisit from '../AddComponents/AddNextVisit';
+import NextVisitFields from '../AddComponents/AddNextVisit';
 
 const MainMethodForm = () => (
   <>
     <Form id="NewPatient">
       <FormGroup>
-        <Label for="exampleEmail">Электронная почта пациента</Label>
-        <Field type="email" name="email" id="exampleEmail" placeholder="example@example.com" component="input" />
+        <Label for="exampleEmail"> Электронная почта пациента   </Label>
+        <Field
+          style={{
+            marginLeft: '30px', width: '350px', borderRadius: '5px', height: '35px',
+          }}
+          type="email"
+          name="email"
+          id="exampleEmail"
+          placeholder="example@example.com"
+          component="input"
+        />
       </FormGroup>
 
       <Label for="exampleSelect"> Назначение лекарств </Label>
@@ -32,23 +41,18 @@ const MainMethodForm = () => (
 
       <FormGroup>
         <Label for="exampleText">Comments</Label>
-        <Input type="textarea" name="text" id="exampleText" />
+        <br />
+        <Field style={{ width: '550px', borderRadius: '5px', height: '85px' }} type="text" name="comments" id="exampleEmail" placeholder="Дополнения" component="textarea" />
       </FormGroup>
 
       <AddReports />
-      <AddNextVisit />
-
-      <FormGroup>
-        <Label for="exampleFile">Загрузка необходимых файлов</Label>
-        <Input type="file" name="file" id="exampleFile" />
-      </FormGroup>
-      <Button color="primary" onClick={() => alert('hello')}>Save</Button>
+      <NextVisitFields />
+      <Button color="primary" onClick={() => alert('Записано!')}>Save</Button>
     </Form>
   </>
 );
 
 const MethodForm = reduxForm({
-  // a unique name for the form
   form: 'method',
 })(MainMethodForm);
 

@@ -2,7 +2,8 @@ import React from 'react';
 import {
   Button,
 } from 'reactstrap';
-import AddTheraphy from '../AddComponents/AddTheraphy';
+import TheraphiesFields from '../AddComponents/AddTheraphy';
+
 
 class Theraphy extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Theraphy extends React.Component {
   render() {
     const addTheraphy = [];
     for (let i = 0; i < this.state.theraphyCount; i += 1) {
-      addTheraphy.push(<AddTheraphy />);
+      addTheraphy.push(<TheraphiesFields idx={i} />);
     }
 
     const addTheraphyFin = addTheraphy.map((el) => (

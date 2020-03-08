@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Col, Row, FormGroup, Label, Input,
 } from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
 
 
 const AddReports = (props) => {
@@ -19,30 +20,18 @@ const AddReports = (props) => {
         <Row form>
           <Col sm={6}>
             <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio2" />
-                Ведение дневника лечения
-              </Label>
+              <Field type="checkbox" name="needDiary" id="needDiary" component="input" />
+              <Label style={{ marginLeft: '5px' }} check>   Необходимо ведение дневника лечения </Label>
             </FormGroup>
             <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio2" />
-                Необходимо отмечать все побочные действия
-              </Label>
+              <Field type="checkbox" name="needCheckConditions" id="needCheckConditions" component="input" />
+              <Label style={{ marginLeft: '5px' }} check>   Необходимо отмечать все побочные действия </Label>
             </FormGroup>
           </Col>
           <Col sm={6}>
             <FormGroup check disabled>
-              <Label check>
-                <Input type="radio" name="radio2" disabled />
-                Фотоотчет по результатам лечения
-              </Label>
-            </FormGroup>
-            <FormGroup check disabled>
-              <Label check>
-                <Input type="radio" name="radio2" disabled />
-                Фотоотчет по результатам лечения
-              </Label>
+              <Field type="checkbox" name="needPhoto" id="needPhoto" component="input" />
+              <Label style={{ marginLeft: '5px' }} check> Фотоотчет по результатам лечения </Label>
             </FormGroup>
           </Col>
         </Row>

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Button,
 } from 'reactstrap';
+import DrugsFields from '../AddComponents/AddDrug';
 import AddDrug from '../AddComponents/AddDrug';
 
 class Drugs extends React.Component {
@@ -23,7 +24,8 @@ class Drugs extends React.Component {
   render() {
     const addDrugs = [];
     for (let i = 0; i < this.state.drugsCount; i += 1) {
-      addDrugs.push(<AddDrug />);
+      addDrugs.push(<DrugsFields idx={i} />);
+      // addDrugs.push(<AddDrug />);
     }
 
     const addDrugsFin = addDrugs.map((el) => (

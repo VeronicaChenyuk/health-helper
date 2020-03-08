@@ -2,7 +2,8 @@ import React from 'react';
 import {
   Button,
 } from 'reactstrap';
-import AddAnalysis from '../AddComponents/AddAnalysis';
+import AnalysisFields from '../AddComponents/AddAnalysis';
+
 
 class Analysis extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Analysis extends React.Component {
   render() {
     const addAnalysis = [];
     for (let i = 0; i < this.state.analysisCount; i++) {
-      addAnalysis.push(<AddAnalysis />);
+      addAnalysis.push(<AnalysisFields idx={i} />);
     }
 
     const addAnalysisFin = addAnalysis.map((el) => (

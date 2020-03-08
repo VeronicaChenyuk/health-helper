@@ -2,27 +2,32 @@ import React, { useState } from 'react';
 import {
   Col, Row, FormGroup, Input,
 } from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
 
 
-const AddAnalysis = (props) => {
-  const {
-    buttonLabel,
-    className,
-  } = props;
+const AddAnalysis = ({ idx }) => (
+  <>
+    <FormGroup style={{ inline: true }}>
+      <Row form>
+        <Col md={6}>
+          <Field
+            style={{ maxWidth: '550px', borderRadius: '5px', height: '35px' }}
+            type="text"
+            name={`nameOfAnalysis_${idx}`}
+            id="nameOfAnalysis"
+            placeholder="Введите необходимый анализ"
+            component="input"
+          />
+        </Col>
+      </Row>
+    </FormGroup>
+  </>
+);
 
-  const [modal, setModal] = useState(false);
 
-  return (
-    <>
-      <FormGroup style={{ inline: true }}>
-        <Row form>
-          <Col md={6}>
-            <Input style={{ maxWidth: '500px' }} type="text" name="drug" id="exampleDrug" placeholder="Название Анализа" />
-          </Col>
-        </Row>
-      </FormGroup>
-    </>
-  );
-};
+const AnalysisFields = reduxForm({
+  form: 'method',
+})(AddAnalysis);
 
-export default AddAnalysis;
+
+export default AnalysisFields;
