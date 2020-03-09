@@ -3,31 +3,38 @@ import {
   NavLink, Card, CardImg, CardTitle, CardText, CardDeck, CardBody,
 } from 'reactstrap';
 import { NavLink as RRNavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PatientModalReport from './PatientModalReport';
 import PatientModalChat from './PatientModalChat';
 import PatientModalCreateMethod from './PatientModalChangeMethod';
-import { connect } from 'react-redux';
 import store from '../../redux/store';
 
-function PatientInfoDoc() {
+const mapStateToProps = (state) => ({
+  email: state.logIn.email,
+});
 
-  // const mapStateToProps = (state) => ({
-  //   email: state.logIn.email,
-  // });
-  
-console.log(123);
+async function fetchEmail(docEmail) {
+  console.log('DOCEMAIL', docEmail);
+  const res = await fetch('http://localhost:5000/loadmethodic', {
+    method: 'POST',
+    headers:
+  {
+    'Content-type': 'application/json',
+  },
+    body: JSON.stringify({
+      docEmail,
+    }),
+  });
+  const result = await res.json();
+  // console.log('!!!!RESULT!!!!', result[0].patientName);
+  return result;
+}
 
 
-  // const res = await fetch('http://localhost:5000/loadmethodic', {
-  //   method: 'POST',
-  //   headers:
-  //   {
-  //     'Content-type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     props.email,
-  //   }),
-  // });
+function PatientInfoDoc(props) {
+  const docEmail = props.email;
+  const methodic = fetchEmail(docEmail);
+  console.log('METHODIC', methodic);
 
 
   const patients = [{ name: 'Ivanov Ivan' }, { name: 'Petrov Petr' }, { name: 'Vasilyev Vasiliy' }, { name: 'Romanov Roman' }, { name: 'Kirillov Kirill' }];
@@ -83,4 +90,5 @@ console.log(123);
   );
 }
 
-export default PatientInfoDoc;
+// export default PatientInfoDoc;
+export default connect(mapStateToProps)(PatientInfoDoc);

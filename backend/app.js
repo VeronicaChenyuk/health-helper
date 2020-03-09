@@ -12,8 +12,9 @@ mongoose.connect('mongodb+srv://vyuzh:VyuzhDatabase2020@cluster0-lawna.mongodb.n
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
-const loadDoctorRouter = require('./routes/loadDoctor')
-const saveMethodicRouter = require('./routes/saveMethodic')
+const loadDoctorRouter = require('./routes/loadDoctor');
+const saveMethodicRouter = require('./routes/saveMethodic');
+const loadMethodicRouter = require('./routes/loadMethodic');
 
 const app = express();
 
@@ -27,18 +28,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use(session({
-//   secret: '>evernote-Is%true?',
-//   store: new FileStore({}),
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: { secure: false },
-// }));
-
 app.use('/auth', authRouter);
 app.use('/personal', loadDoctorRouter);
 app.use('/savemethodic', saveMethodicRouter);
+app.use('/loadmethodic', loadMethodicRouter);
 
 
 // app.use((req, res, next) => {
