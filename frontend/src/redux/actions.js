@@ -1,5 +1,6 @@
 const {
   LOG_IN, LOG_OUT, IS_LOGIN_FORM,
+
 } = require('./action-types');
 
 // Action creators
@@ -8,11 +9,9 @@ export const isLogined = (userName, statusUser) => ({
   userName,
   statusUser,
 });
-
 export const isLogout = () => ({
   type: LOG_OUT,
 });
-
 export const isLoginForm = () => ({
   type: IS_LOGIN_FORM,
 });

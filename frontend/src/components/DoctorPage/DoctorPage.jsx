@@ -1,22 +1,37 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import {Link} from 'react-router-dom'
+import { connect } from 'react-redux';
 
+const loadHandler = async (e, props) => { 
+  e.preventDefault()
+  const doctorName = e.target.doctorName.value;
+  const specialist = e.target.specialist.value;
+  const { userName} = props;
+  const response = await fetch(e.target.action, {
+    method: 'POST',
+    headers:
+    {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      doctorName,
+      specialist,
+      userName,
+    })
+  })
+  const result = await response.json();
+}
 const DoctorPage = (props) => {
-    // async handelLoad(){
-  //   const response = await fetch('http://localhost:5000/upload/');
-  //   const json = await response.json();
-  // }
   return (
     <div>
-      <Form method='POST' action='http://localhost:5000/personal/doctor'>
+      <Form method='POST' action='http://localhost:5000/personal/doctor' onSubmit={(e) => loadHandler(e, props)}>
         <FormGroup>
           <Label for="doctorName">Имя Отчество Фамилия</Label>
-          <Input type="doctorName" name="doctorName" id="doctorName" placeholder="Введите ваше Имя Отчество Фамилию" />
+          <Input type="doctorName" name="doctorName" id="doctorName" placeholder='{doctorName}' />
         </FormGroup>
         <FormGroup>
           <Label for="specialist">Специальность</Label>
-          <Input type="specialist" name="specialist" id="specialist" placeholder="Введите вашу специальность" />
+          <Input type="specialist" name="specialist" id="specialist" placeholder='{specialistM}' />
         </FormGroup>
         <FormGroup>
           <Label for="exampleFile">Файл</Label>
@@ -24,11 +39,17 @@ const DoctorPage = (props) => {
           <FormText color="muted">
           </FormText>
         </FormGroup>
-        <Link to='/'><Button type="submit">Изменить</Button></Link>
-
+        <Button type="submit">Изменить</Button>
       </Form>
     </div>
   )
 }
+const mapStateToProps = (state) => {
+  return ({
+    userName: state.logIn.userName,
+    });
+};
 
-export default DoctorPage;
+export default connect(
+  mapStateToProps,
+)(DoctorPage);
