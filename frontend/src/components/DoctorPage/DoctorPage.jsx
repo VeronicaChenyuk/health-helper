@@ -45,7 +45,7 @@ const DoctorPage = (props) => {
         </FormGroup>
         <FormGroup>
           <Label for="specialist">Специальность</Label>
-          <Input type="specialist" name="specialist" id="specialist" placeholder="Введите специальность" defaultValue={specialist}/>
+          <Input type="specialist" name="specialist" id="specialist" placeholder="Введите специальность" defaultValue={specialist} />
         </FormGroup>
         <FormGroup>
           <Label for="exampleFile">Файл</Label>

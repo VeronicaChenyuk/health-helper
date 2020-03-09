@@ -5,8 +5,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
-// const session = require('express-session');
-// const FileStore = require('session-file-store')(session);
 
 mongoose.connect('mongodb+srv://vyuzh:VyuzhDatabase2020@cluster0-lawna.mongodb.net/medical-todo', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 const indexRouter = require('./routes/index');
@@ -32,19 +30,8 @@ app.use('/auth', authRouter);
 app.use('/personal', loadDoctorRouter);
 app.use('/savemethodic', saveMethodicRouter);
 app.use('/loadmethodic', loadMethodicRouter);
-
-
-// app.use((req, res, next) => {
-//   const { user } = req.session;
-//   if (user) {
-//     app.locals.username = user;
-//     return next();
-//   }
-//   return res.redirect('/');
-// });
-
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

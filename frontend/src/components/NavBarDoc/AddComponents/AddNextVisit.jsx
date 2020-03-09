@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Col, Row, FormGroup, Label, Input,
+  Col, Row, FormGroup, Label,
 } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 
@@ -10,7 +10,7 @@ const AddNextVisit = () => (
       <Label for="exampleSelect">Повторное посещение врача</Label>
       <Row form>
         <Col md={6}>
-          <Field style={{ width: '350px', borderRadius: '5px', height: '35px' }} type="text" name="nextVisit" id="nextVisit" placeholder="Слудующее посещение" component="input" />
+          <Field style={{ width: '350px', borderRadius: '5px', height: '35px' }} type="text" name="nextVisit" id="nextVisit" placeholder="Следующее посещение" component="input" />
         </Col>
       </Row>
     </FormGroup>

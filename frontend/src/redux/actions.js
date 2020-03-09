@@ -1,5 +1,5 @@
 const {
-  LOG_IN, LOG_OUT, IS_LOGIN_FORM, CHANGE_INFO_USER,
+  LOG_IN, LOG_OUT, IS_LOGIN_FORM, CHANGE_INFO_USER, GET_METHODICS_USER,
 
 } = require('./action-types');
 
@@ -17,4 +17,8 @@ export const isLoginForm = () => ({
 export const changeInfoUser = (user) => ({
   type: CHANGE_INFO_USER,
   user,
+});
+export const getMethodicsUser = (methodics) => ({
+  type: GET_METHODICS_USER,
+  methodics,
 });

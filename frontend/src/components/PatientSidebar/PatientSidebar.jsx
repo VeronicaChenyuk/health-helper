@@ -1,22 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-
 import Methodology from '../Methodology/Methodology';
 import ActiveTasks from '../ActiveTasks/ActiveTasks';
 import DoctorList from '../DoctorList/DoctorList';
+import { getMethodicsUser } from '../../redux/actions';
 
+const getInfo = async (props) => {
+  const { email } = props.user;
+  const { getMethodics } = props;
+  const response = await fetch('http://localhost:5000/users/info', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+  const result = await response.json();
+  const { methodics } = result;
+  if (methodics) {
+    getMethodics(methodics);
+  }
+  return console.error('Что то пошло не так!');
+};
 
 const PatientSidebar = (props) => {
-  // const [data, setData] = useState({});
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await fetch(
-  //       'http://localhost:5000/auth/login',
-  //     );
-  //     const result = response.json();
-  //   };
-  //   fetchData();
-  // }, []);
+  getInfo(props);
+
   return (
     <>
       <div className="row">
@@ -44,9 +55,14 @@ const PatientSidebar = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  statusUser: state.logIn.user.status,
+  user: state.logIn.user,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getMethodics: (methodics) => dispatch(getMethodicsUser(methodics)),
 });
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(PatientSidebar);
