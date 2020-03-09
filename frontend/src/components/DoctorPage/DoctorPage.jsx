@@ -36,8 +36,7 @@ const DoctorPage = (props) => {
         <FormGroup>
           <Label for="exampleFile">Файл</Label>
           <Input type="file" name="file" id="exampleFile" />
-          <FormText color="muted">
-          </FormText>
+          <FormText color="muted" />
         </FormGroup>
         <Button type="submit">Изменить</Button>
       </Form>

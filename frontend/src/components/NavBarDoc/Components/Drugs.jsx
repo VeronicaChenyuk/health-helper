@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,
+  Button,
 } from 'reactstrap';
-import AddDrug from '../AddComponents/AddDrug.jsx';
+import DrugsFields from '../AddComponents/AddDrug';
+import AddDrug from '../AddComponents/AddDrug';
 
 class Drugs extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -16,14 +16,16 @@ class Drugs extends React.Component {
   addDrugClick() {
     this.setState({ drugsCount: this.state.drugsCount + 1 });
   }
+
   deleteDrugClick() {
     this.setState({ drugsCount: this.state.drugsCount - 1 });
   }
 
   render() {
     const addDrugs = [];
-    for (let i = 0; i < this.state.drugsCount; i++) {
-      addDrugs.push(<AddDrug />);
+    for (let i = 0; i < this.state.drugsCount; i += 1) {
+      addDrugs.push(<DrugsFields idx={i} />);
+      // addDrugs.push(<AddDrug />);
     }
 
     const addDrugsFin = addDrugs.map((el) => (

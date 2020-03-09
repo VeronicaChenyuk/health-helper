@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {
+  Button, Modal, ModalHeader, ModalBody, ModalFooter,
+} from 'reactstrap';
 
 const PatientModalReport = (props) => {
   const {
     buttonLabel,
-    className
+    className,
   } = props;
 
   const [modal, setModal] = useState(false);
@@ -18,14 +20,15 @@ const PatientModalReport = (props) => {
         <ModalHeader toggle={toggle}>Письмо Иванову Ивану</ModalHeader>
         <ModalBody>
           Здесь мы будем писать сообщение пациенту
-           </ModalBody>
+        </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>SendLetter</Button>{' '}
+          <Button color="primary" onClick={toggle}>SendLetter</Button>
+          {' '}
           <Button color="secondary" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
     </div>
   );
-}
+};
 
 export default PatientModalReport;

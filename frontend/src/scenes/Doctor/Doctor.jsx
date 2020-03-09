@@ -1,12 +1,9 @@
 import React from 'react';
-import NavBarDoc from '../../components/NavBarDoc/NavBarDoc.jsx'
-import { Button } from 'reactstrap';
+import NavBarDoc from '../../components/NavBarDoc/NavBarDoc'
 
 const Doctor = () => (
   <div>
-  
     <NavBarDoc />
-
   </div>
 );
 

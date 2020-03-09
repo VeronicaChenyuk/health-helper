@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,
+  Button,
 } from 'reactstrap';
-import AddTheraphy from '../AddComponents/AddTheraphy.jsx';
+import TheraphiesFields from '../AddComponents/AddTheraphy';
+
 
 class Theraphy extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -16,14 +16,15 @@ class Theraphy extends React.Component {
   addTheraphyClick() {
     this.setState({ theraphyCount: this.state.theraphyCount + 1 });
   }
+
   deleteTheraphyClick() {
     this.setState({ theraphyCount: this.state.theraphyCount - 1 });
   }
 
   render() {
     const addTheraphy = [];
-    for (let i = 0; i < this.state.theraphyCount; i++) {
-      addTheraphy.push(<AddTheraphy />);
+    for (let i = 0; i < this.state.theraphyCount; i += 1) {
+      addTheraphy.push(<TheraphiesFields idx={i} />);
     }
 
     const addTheraphyFin = addTheraphy.map((el) => (

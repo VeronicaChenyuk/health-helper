@@ -1,29 +1,24 @@
 import React, { useState } from 'react';
 import {
-  Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,
+  Col, Row, FormGroup, Label, Input,
 } from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
 
+const AddNextVisit = () => (
+  <>
+    <FormGroup style={{ inline: true }}>
+      <Label for="exampleSelect">Повторное посещение врача</Label>
+      <Row form>
+        <Col md={6}>
+          <Field style={{ width: '350px', borderRadius: '5px', height: '35px' }} type="text" name="nextVisit" id="nextVisit" placeholder="Слудующее посещение" component="input" />
+        </Col>
+      </Row>
+    </FormGroup>
+  </>
+);
 
-const AddNextVisit = (props) => {
-  const {
-    buttonLabel,
-    className,
-  } = props;
+const NextVisitFields = reduxForm({
+  form: 'method',
+})(AddNextVisit);
 
-  const [modal, setModal] = useState(false);
-
-  return (
-    <>
-      <FormGroup style={{ inline: true }}>
-        <Label for="exampleSelect">Повторное посещение врача</Label>
-        <Row form>
-          <Col md={6}>
-            <Input style={{ maxWidth: '500px' }} type="text" name="drug" id="exampleDrug" placeholder="Дата посещения" />
-          </Col>
-        </Row>
-      </FormGroup>
-    </>
-  );
-};
-
-export default AddNextVisit;
+export default NextVisitFields;

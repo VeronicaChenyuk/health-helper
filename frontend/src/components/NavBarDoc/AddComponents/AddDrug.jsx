@@ -1,42 +1,34 @@
-import React, { useState } from 'react';
-import {
-Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,
-} from 'reactstrap';
+import React from 'react';
+import { Col, Row, FormGroup } from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
 
+const AddDrug = ({ idx }) => (
+  <>
+    <FormGroup>
+      <Row form>
+        <Col md={2}>
+          <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`nameOfDrug_${idx}`} id="drug" placeholder="Лекарство" component="input" />
+        </Col>
+        <Col md={2}>
+          <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`dosage_${idx}`} id="dosage" placeholder="Дозировка" component="input" />
+        </Col>
+        <Col md={2}>
+          <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`frequency_${idx}`} id="frequency" placeholder="Частота применения" component="input" />
+        </Col>
+        <Col md={2}>
+          <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`before/afterEat_${idx}`} id="before/afterEat" placeholder="до или после еды" component="input" />
+        </Col>
+        <Col md={2}>
+          <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`duration_${idx}`} id="duration" placeholder="Длительность курса" component="input" />
+        </Col>
+        <Col md={2} />
+      </Row>
+    </FormGroup>
+  </>
+);
 
-const AddDrug = (props) => {
-  const {
-    buttonLabel,
-    className,
-  } = props;
+const DrugsFields = reduxForm({
+  form: 'method',
+})(AddDrug);
 
-  const [modal, setModal] = useState(false);
-
-  return (
-    <>
-        <FormGroup>
-         
-          <Row form>
-            <Col md={2}>
-              <Input style={{ maxWidth: '200px' }} type="text" name="drug" id="exampleDrug" placeholder="Лекарство" />
-            </Col>
-            <Col md={2}>
-              <Input style={{ maxWidth: '200px' }} type="text" name="drug" id="exampleDrug" placeholder="Дозировка" />
-            </Col>
-            <Col md={2}>
-              <Input style={{ maxWidth: '200px' }} type="text" name="drug" id="exampleDrug" placeholder="Частота применения" />
-            </Col>
-            <Col md={2}>
-              <Input style={{ maxWidth: '200px' }} type="text" name="drug" id="exampleDrug" placeholder="до и после еды" />
-            </Col>
-            <Col md={2}>
-              <Input style={{ maxWidth: '200px' }} type="text" name="drug" id="exampleDrug" placeholder="Длительность курса" />
-            </Col>
-            <Col md={2} />
-          </Row>
-        </FormGroup>
-    </>
-  );
-};
-
-export default AddDrug;
+export default DrugsFields;

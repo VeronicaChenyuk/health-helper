@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {
-  Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,
+  Col, Row, FormGroup, Label, Input,
 } from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
 
 
 const AddReports = (props) => {
@@ -14,39 +15,27 @@ const AddReports = (props) => {
 
   return (
     <>
-        <FormGroup style={{ inline: true }}>
-              <legend>Необходимая отчетность от пациента</legend>
-              <Row form>
-                <Col sm={6}>
-                  <FormGroup check>
-                    <Label check>
-                      <Input type="radio" name="radio2" />
-                      Ведение дневника лечения
-                    </Label>
-                  </FormGroup>
-                  <FormGroup check>
-                    <Label check>
-                      <Input type="radio" name="radio2" />
-                      Необходимо отмечать все побочные действия
-                    </Label>
-                  </FormGroup>
-                </Col>
-                <Col sm={6}>
-                  <FormGroup check disabled>
-                    <Label check>
-                      <Input type="radio" name="radio2" disabled />
-                      Фотоотчет по результатам лечения
-                    </Label>
-                  </FormGroup>
-                  <FormGroup check disabled>
-                    <Label check>
-                      <Input type="radio" name="radio2" disabled />
-                      Фотоотчет по результатам лечения
-                    </Label>
-                  </FormGroup>
-                </Col>
-              </Row>
+      <FormGroup style={{ inline: true }}>
+        <legend>Необходимая отчетность от пациента</legend>
+        <Row form>
+          <Col sm={6}>
+            <FormGroup check>
+              <Field type="checkbox" name="needDiary" id="needDiary" component="input" />
+              <Label style={{ marginLeft: '5px' }} check>   Необходимо ведение дневника лечения </Label>
             </FormGroup>
+            <FormGroup check>
+              <Field type="checkbox" name="needCheckConditions" id="needCheckConditions" component="input" />
+              <Label style={{ marginLeft: '5px' }} check>   Необходимо отмечать все побочные действия </Label>
+            </FormGroup>
+          </Col>
+          <Col sm={6}>
+            <FormGroup check disabled>
+              <Field type="checkbox" name="needPhoto" id="needPhoto" component="input" />
+              <Label style={{ marginLeft: '5px' }} check> Фотоотчет по результатам лечения </Label>
+            </FormGroup>
+          </Col>
+        </Row>
+      </FormGroup>
     </>
   );
 };

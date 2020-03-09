@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,
+  Button,
 } from 'reactstrap';
-import AddAnalysis from '../AddComponents/AddAnalysis.jsx';
+import AnalysisFields from '../AddComponents/AddAnalysis';
+
 
 class Analysis extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +16,7 @@ class Analysis extends React.Component {
   addAnalysisClick() {
     this.setState({ analysisCount: this.state.analysisCount + 1 });
   }
+
   deleteAnalysisClick() {
     this.setState({ analysisCount: this.state.analysisCount - 1 });
   }
@@ -23,7 +24,7 @@ class Analysis extends React.Component {
   render() {
     const addAnalysis = [];
     for (let i = 0; i < this.state.analysisCount; i++) {
-      addAnalysis.push(<AddAnalysis />);
+      addAnalysis.push(<AnalysisFields idx={i} />);
     }
 
     const addAnalysisFin = addAnalysis.map((el) => (
