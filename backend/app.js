@@ -13,6 +13,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const loadDoctorRouter = require('./routes/loadDoctor')
+const saveMethodicRouter = require('./routes/saveMethodic')
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', authRouter);
 app.use('/personal', loadDoctorRouter);
+app.use('/savemethodic', saveMethodicRouter);
 
 
 // app.use((req, res, next) => {

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 
 const methodicSchema = new mongoose.Schema({
+  patientName: { type: String },
   patientEmail: { type: String },
   doctorEmail: { type: String },
   drugs: { type: Array },
@@ -9,6 +10,7 @@ const methodicSchema = new mongoose.Schema({
   analisis: { type: Array },
   comment: { type: String },
   patientReports: { type: Array },
+  dateOfTheLastVisit: { type: String },
   nextVisit: { type: String },
 });
 
