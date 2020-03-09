@@ -9,7 +9,6 @@ router.post('/login', async (req, res) => {
   console.log('>>>> LOGIN');
   const { email, password } = req.body;
   const user = await User.findOne({ email, password });
-
   return user ? res.json({ answer: true, user }) : res.json({ answer: false });
 });
 

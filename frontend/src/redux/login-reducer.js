@@ -1,4 +1,4 @@
-const { LOG_IN, LOG_OUT } = require('./action-types');
+const { LOG_IN, LOG_OUT, CHANGE_INFO_USER } = require('./action-types');
 
 const initialState = {
   auth: false,
@@ -19,6 +19,11 @@ module.exports = (state = initialState, action) => {
     case LOG_OUT:
       return {
         auth: !state.auth,
+      };
+    case CHANGE_INFO_USER:
+      return {
+        ...state,
+        user,
       };
     default:
       return state;
