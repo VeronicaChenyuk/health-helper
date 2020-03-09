@@ -5,11 +5,12 @@ const initialState = {
   userName: '',
   regForm: true,
   statusUser: '',
+  email: '',
 };
 
 // Reducer
 module.exports = (state = initialState, action) => {
-  const { userName, statusUser } = action;
+  const { userName, statusUser, email } = action;
   switch (action.type) {
     case LOG_IN:
       return {
@@ -17,6 +18,7 @@ module.exports = (state = initialState, action) => {
         auth: !state.auth,
         userName,
         statusUser,
+        email,
       };
     case LOG_OUT:
       return {

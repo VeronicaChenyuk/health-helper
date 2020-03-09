@@ -26,7 +26,7 @@ const createUser = async (event, props) => {
   const result = await response.json();
   if (result.answer) {
     const { login, status } = result;
-    isLogin(login, status);
+    isLogin(login, status, email);
     return props.history.push('/');
   }
   return alert('Что то пошло не так!');
@@ -55,7 +55,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  isLogined: (userName, statusUser) => dispatch(isLogined(userName, statusUser)),
+  isLogined: (userName, statusUser, email) => dispatch(isLogined(userName, statusUser, email)),
 });
 
 export default withRouter(connect(
