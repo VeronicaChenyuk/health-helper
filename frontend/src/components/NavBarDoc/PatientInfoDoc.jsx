@@ -3,12 +3,40 @@ import {
   NavLink, Card, CardImg, CardTitle, CardText, CardDeck, CardBody,
 } from 'reactstrap';
 import { NavLink as RRNavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PatientModalReport from './PatientModalReport';
 import PatientModalChat from './PatientModalChat';
 import PatientModalCreateMethod from './PatientModalChangeMethod';
+import store from '../../redux/store';
+
+const mapStateToProps = (state) => ({
+  email: state.logIn.email,
+});
+
+async function fetchEmail(docEmail) {
+  console.log('DOCEMAIL', docEmail);
+  const res = await fetch('http://localhost:5000/loadmethodic', {
+    method: 'POST',
+    headers:
+  {
+    'Content-type': 'application/json',
+  },
+    body: JSON.stringify({
+      docEmail,
+    }),
+  });
+  const result = await res.json();
+  // console.log('!!!!RESULT!!!!', result[0].patientName);
+  return result;
+}
 
 
-function PatientInfoDoc() {
+function PatientInfoDoc(props) {
+  const docEmail = props.email;
+  const methodic = fetchEmail(docEmail);
+  console.log('METHODIC', methodic);
+
+
   const patients = [{ name: 'Ivanov Ivan' }, { name: 'Petrov Petr' }, { name: 'Vasilyev Vasiliy' }, { name: 'Romanov Roman' }, { name: 'Kirillov Kirill' }];
   const navPatients = patients.map((name) => <NavLink to="/" tag={RRNavLink}>{name.name}</NavLink>);
   const mystyle = {
@@ -18,8 +46,9 @@ function PatientInfoDoc() {
   return (
     <>
       <CardDeck>
-        <Card >
+        <Card>
           <CardImg top width="100%" src="https://cdn.onlinewebfonts.com/svg/img_370832.png" alt="Show Report" />
+
           <CardBody>
             <CardTitle>Ход лечения</CardTitle>
             {patients[0].name}
@@ -30,9 +59,9 @@ function PatientInfoDoc() {
             <PatientModalReport />
           </CardBody>
         </Card>
-        <Card >
+        <Card>
           <CardImg top width="80%" src="https://cdn3.iconfinder.com/data/icons/audio-icons-3/377/Repeat_Arrow-512.png" alt="Change action" />
-          <CardBody >
+          <CardBody>
             <CardTitle>Методика лечения</CardTitle>
             <CardText>
               {patients[0].name}
@@ -61,4 +90,5 @@ function PatientInfoDoc() {
   );
 }
 
-export default PatientInfoDoc;
+// export default PatientInfoDoc;
+export default connect(mapStateToProps)(PatientInfoDoc);
