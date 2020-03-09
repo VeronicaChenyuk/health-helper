@@ -1,28 +1,29 @@
-const { LOG_IN, LOG_OUT } = require('./action-types');
+const { LOG_IN, LOG_OUT, CHANGE_INFO_USER } = require('./action-types');
 
 const initialState = {
   auth: false,
-  userName: '',
+  user: '',
   regForm: true,
-  statusUser: '',
-  email: '',
 };
 
 // Reducer
 module.exports = (state = initialState, action) => {
-  const { userName, statusUser, email } = action;
+  const { user } = action;
   switch (action.type) {
     case LOG_IN:
       return {
         ...state,
         auth: !state.auth,
-        userName,
-        statusUser,
-        email,
+        user,
       };
     case LOG_OUT:
       return {
         auth: !state.auth,
+      };
+    case CHANGE_INFO_USER:
+      return {
+        ...state,
+        user,
       };
     default:
       return state;

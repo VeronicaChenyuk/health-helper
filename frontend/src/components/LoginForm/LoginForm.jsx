@@ -25,8 +25,8 @@ const createUser = async (event, props) => {
   });
   const result = await response.json();
   if (result.answer) {
-    const { login, status } = result;
-    isLogin(login, status, email);
+    const { user } = result;
+    isLogin(user);
     return props.history.push('/');
   }
   return alert('Что то пошло не так!');
@@ -50,8 +50,8 @@ const LoginForm = (props) => (
 );
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
-  userName: state.userName,
+  auth: state.logIn.auth,
+  user: state.logIn.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -27,9 +27,10 @@ const createUser = async (event, props) => {
     }),
   });
   const result = await response.json();
-  const { status } = result;
+  const { user } = result;
+  const { status } = user;
   if (status) {
-    isLogin(login, status);
+    isLogin(user);
     return props.history.push('/');
   }
   return alert('Что то пошло не так!');
@@ -69,7 +70,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  isLogined: (userName, statusUser) => dispatch(isLogined(userName, statusUser)),
+  isLogined: (user) => dispatch(isLogined(user)),
 });
 
 export default withRouter(connect(

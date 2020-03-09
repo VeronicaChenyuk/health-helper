@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+
 import Methodology from '../Methodology/Methodology';
 import ActiveTasks from '../ActiveTasks/ActiveTasks';
 import DoctorList from '../DoctorList/DoctorList';
 
 
-function PatientSidebar() {
+const PatientSidebar = (props) => {
+  // const [data, setData] = useState({});
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetch(
+  //       'http://localhost:5000/auth/login',
+  //     );
+  //     const result = response.json();
+  //   };
+  //   fetchData();
+  // }, []);
   return (
     <>
       <div className="row">
@@ -29,5 +41,12 @@ function PatientSidebar() {
       </div>
     </>
   );
-}
-export default PatientSidebar;
+};
+
+const mapStateToProps = (state) => ({
+  statusUser: state.logIn.user.status,
+});
+
+export default connect(
+  mapStateToProps,
+)(PatientSidebar);

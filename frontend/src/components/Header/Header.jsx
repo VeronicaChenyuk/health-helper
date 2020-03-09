@@ -16,8 +16,6 @@ const logout = () => { localStorage.clear(); };
 
 const Header = (props) => {
   const { auth, statusUser } = props;
-  // console.log(props.statusUser);
-
   const url = `/personal/${statusUser}`;
   return (
     <div>
@@ -40,13 +38,12 @@ const Header = (props) => {
   );
 };
 
-const mapStateToProps = (state) =>
-// console.log('..>',state)
-  (
-    {
-      auth: state.logIn.auth,
-      statusUser: state.logIn.statusUser,
-    });
+const mapStateToProps = (state) => (
+  {
+    auth: state.logIn.auth,
+    statusUser: state.logIn.user.status,
+  });
+
 const mapDispatchToProps = (dispatch) => ({
   isLogout: () => dispatch(isLogout()),
 });
