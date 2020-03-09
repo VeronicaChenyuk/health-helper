@@ -77,9 +77,9 @@ async function saveClick(props) {
       };
     }
     if (values !== undefined) {
-      if (values.needCheckConditions !== undefined) patientReports.push('Doctor needs conditions report');
-      if (values.needDiary !== undefined) patientReports.push('Doctor needs diary report');
-      if (values.needPhoto !== undefined) patientReports.push('Doctor needs Photo report');
+      if (values.needCheckConditions !== undefined) patientReports.push('Необходимо ведение дневника лечения.');
+      if (values.needDiary !== undefined) patientReports.push('Необходимо отмечать все побочные действия.');
+      if (values.needPhoto !== undefined) patientReports.push('Фотоотчет по результатам лечения.');
     }
     const date = new Date();
     const methodic = {
