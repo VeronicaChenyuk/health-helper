@@ -13,7 +13,7 @@ import AddReports from '../AddComponents/AddReports';
 import NextVisitFields from '../AddComponents/AddNextVisit';
 
 const mapStateToProps = (state) => ({
-  email: state.logIn.email,
+  email: state.logIn.user,
 });
 
 async function saveClick(props) {
@@ -32,7 +32,6 @@ async function saveClick(props) {
     const theraphies = [];
     const patientReports = [];
 
- 
 
     for (const key in values) {
       if (key.match(/^nameOfDrug/)) {
@@ -63,7 +62,7 @@ async function saveClick(props) {
         nameOfAnalysis.push(values[key]);
       }
     }
-   
+
     for (let i = 0; i < nameOfDrug.length; i++) {
       drugs[i] = {
         nameOfDrug: nameOfDrug[i],
@@ -86,10 +85,20 @@ async function saveClick(props) {
       if (values.needPhoto !== undefined) patientReports.push('Doctor needs Photo report');
     }
     const date = new Date();
+    console.log('PROOOOPS', props);
+    let speciality;
+    if (props.specialist !== undefined) {
+      speciality = props.specialist;
+    } else {
+      speciality = 'Врач общей практики';
+    }
+
     const methodic = {
       patientName: values.patientName,
       patientEmail: values.email,
-      doctorEmail: props.email,
+      doctorEmail: props.email.email,
+      doctorFullName: props.email.login,
+      doctorSpeciality: speciality,
       drugs,
       theraphies,
       analisis: nameOfAnalysis,

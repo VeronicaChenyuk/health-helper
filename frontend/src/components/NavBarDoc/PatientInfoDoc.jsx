@@ -10,11 +10,10 @@ import PatientModalCreateMethod from './PatientModalChangeMethod';
 import store from '../../redux/store';
 
 const mapStateToProps = (state) => ({
-  email: state.logIn.email,
+  email: state.logIn.user,
 });
 
 async function fetchEmail(docEmail) {
-  console.log('DOCEMAIL', docEmail);
   const res = await fetch('http://localhost:5000/loadmethodic', {
     method: 'POST',
     headers:
@@ -26,15 +25,25 @@ async function fetchEmail(docEmail) {
     }),
   });
   const result = await res.json();
-  // console.log('!!!!RESULT!!!!', result[0].patientName);
+  console.log(result, 'REEES');
+ 
+
+
+  //   if (methodics) {
+  //     getMethodics(methodics);
+  //   }
+  //   return console.error('Что то пошло не так!');
+  // };
+
+
   return result;
 }
 
 
 function PatientInfoDoc(props) {
-  const docEmail = props.email;
+  const docEmail = props.email.email;
   const methodic = fetchEmail(docEmail);
-  console.log('METHODIC', methodic);
+  console.log('METHODIC', methodic.value);
 
 
   const patients = [{ name: 'Ivanov Ivan' }, { name: 'Petrov Petr' }, { name: 'Vasilyev Vasiliy' }, { name: 'Romanov Roman' }, { name: 'Kirillov Kirill' }];

@@ -5,6 +5,7 @@ const methodicSchema = new mongoose.Schema({
   patientName: { type: String },
   patientEmail: { type: String },
   doctorEmail: { type: String },
+  doctorFullName: { type: String },
   drugs: { type: Array },
   theraphies: { type: Array },
   analisis: { type: Array },
