@@ -55,7 +55,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  isLogined: (userName, statusUser) => dispatch(isLogined(userName, statusUser)),
+  isLogined: (userName, statusUser, email) => dispatch(isLogined(userName, statusUser, email)),
 });
 
 export default withRouter(connect(

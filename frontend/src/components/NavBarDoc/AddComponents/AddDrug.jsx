@@ -16,7 +16,7 @@ const AddDrug = ({ idx }) => (
           <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`frequency_${idx}`} id="frequency" placeholder="Частота применения" component="input" />
         </Col>
         <Col md={2}>
-          <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`before/afterEat_${idx}`} id="before/afterEat" placeholder="до или после еды" component="input" />
+          <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`beforeAfterEat_${idx}`} id="beforeAfterEat" placeholder="до или после еды" component="input" />
         </Col>
         <Col md={2}>
           <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`duration_${idx}`} id="duration" placeholder="Длительность курса" component="input" />

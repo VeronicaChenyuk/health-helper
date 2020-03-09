@@ -3,10 +3,12 @@ const LOG_OUT = 'LOG_OUT';
 const IS_LOGIN_FORM = 'IS_LOGIN_FORM';
 const CHANGE_INFO_USER = 'CHANGE_INFO_USER';
 
+const PATIENT_DATA = 'PATIENT_DATA';
 
 module.exports = {
   LOG_IN,
   LOG_OUT,
   IS_LOGIN_FORM,
   CHANGE_INFO_USER,
+  PATIENT_DATA,
 };

@@ -3,7 +3,6 @@ import {
   Button,
 } from 'reactstrap';
 import DrugsFields from '../AddComponents/AddDrug';
-import AddDrug from '../AddComponents/AddDrug';
 
 class Drugs extends React.Component {
   constructor(props) {
