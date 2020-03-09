@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import {
   Switch,
@@ -12,8 +13,9 @@ import Header from '../Header/Header';
 import DoctorPage from '../DoctorPage/DoctorPage';
 
 const App = (props) => {
-  const { statusUser } = props;
-  console.log(props);
+  const { user } = props;
+
+  const statusUser = user ? user.status : false;
   const url = `/personal/${statusUser}`;
   return (
     <>
@@ -44,7 +46,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  statusUser: state.logIn.statusUser,
+  user: state.logIn.user,
 });
 
 export default connect(

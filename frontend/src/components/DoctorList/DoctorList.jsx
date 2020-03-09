@@ -17,11 +17,8 @@ const doctorBaze = [
     specialist: 'Отоларинголог',
   },
 ];
-console.log(doctorBaze);
 
 function DoctorList() {
-  // const [fistName, secondName, lastName, specialist] = useState('')
-
   return (
     <>
       <div>

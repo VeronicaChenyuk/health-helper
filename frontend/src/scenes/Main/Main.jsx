@@ -15,13 +15,9 @@ const Main = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log('statatwet', state);
-
-  return ({
-    isRegForm: state.switchFormReducer.isRegForm,
-  });
-};
+const mapStateToProps = (state) => ({
+  isRegForm: state.switchFormReducer.isRegForm,
+});
 
 export default connect(
   mapStateToProps,
