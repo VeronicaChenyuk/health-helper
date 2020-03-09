@@ -16,7 +16,8 @@ const PatientModalCreateMethod = (props) => {
 
   return (
     <>
-      <Button color="link" onClick={toggle}>Create</Button>
+      <img style={{ textAlign: 'left', maxWidth: '70px', maxHeight: '70px' }} src="https://img.icons8.com/cotton/2x/plus.png" onClick={toggle} />
+      {/* <Button color="link" onClick={toggle}>Create</Button> */}
       <Modal isOpen={modal} toggle={toggle} className={className} style={{ minWidth: '1200px', minHeight: '800px' }}>
         <ModalHeader toggle={toggle}>Назначение методики лечения</ModalHeader>
         <ModalBody>

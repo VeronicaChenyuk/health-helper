@@ -20,6 +20,7 @@ function PatientInfoDoc() {
       <CardDeck>
         <Card >
           <CardImg top width="100%" src="https://cdn.onlinewebfonts.com/svg/img_370832.png" alt="Show Report" />
+          
           <CardBody>
             <CardTitle>Ход лечения</CardTitle>
             {patients[0].name}

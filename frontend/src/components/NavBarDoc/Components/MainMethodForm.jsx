@@ -3,12 +3,31 @@ import { Field, reduxForm } from 'redux-form';
 import {
   Button, Form, FormGroup, Label, Input,
 } from 'reactstrap';
+import store from '../../../redux/store';
 
 import Drugs from './Drugs';
 import Theraphy from './Theraphies';
 import Analysis from './AddAnalysis';
 import AddReports from '../AddComponents/AddReports';
 import NextVisitFields from '../AddComponents/AddNextVisit';
+
+
+function saveClick() {
+  // this.setState({ drugsCount: this.state.drugsCount - 1 });
+  const { values } = store.getState().form.method;
+  const {
+    email,
+  } = values;
+  const nameOfDrug = [];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const key in values) {
+    if (key.match(/^nameOfDrug/)) {
+      nameOfDrug.push(values[key]);
+    }
+  }
+  console.log('DRUUUG', nameOfDrug);
+  console.log(values);
+}
 
 const MainMethodForm = () => (
   <>
@@ -47,7 +66,7 @@ const MainMethodForm = () => (
 
       <AddReports />
       <NextVisitFields />
-      <Button color="primary" onClick={() => alert('Записано!')}>Save</Button>
+      <Button color="primary" onClick={() => saveClick()}>Save</Button>
     </Form>
   </>
 );

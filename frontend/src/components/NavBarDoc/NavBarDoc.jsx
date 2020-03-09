@@ -20,7 +20,7 @@ function NavBarDoc() {
 
   const navPatients = patients.map((name) => (
     <>
-      <Button color="link" onClick={() => patientClick(name.name)}>{name.name}</Button>
+      <Button style={{ textAlign: 'left' }} color="link" onClick={() => patientClick(name.name)}>{name.name}</Button>
     </>
   ));
 
@@ -29,14 +29,14 @@ function NavBarDoc() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-3">
+          <div className="col-2">
             <Nav defaultActiveKey="/" className="flex-column">
               <PatientModalCreateMethod />
               {navPatients}
             </Nav>
 
           </div>
-          <div className="col-9">
+          <div className="col-10">
 
             <PatientInfoDoc />
 
