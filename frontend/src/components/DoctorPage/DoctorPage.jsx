@@ -3,7 +3,7 @@ import {
   Button, Form, FormGroup, Label, Input, FormText,
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import changeInfoUser from '../../redux/actions';
+import { changeInfoUser } from '../../redux/actions';
 
 const loadHandler = async (e, props) => {
   console.log(props, 'WTFFFF');

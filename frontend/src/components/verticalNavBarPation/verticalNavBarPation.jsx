@@ -5,25 +5,6 @@ import Methodology from '../Methodology/Methodology';
 function VerticalNavBarPation() {
   return (
     <>
-      {/* <div>
-      <Nav vertical>
-        <NavItem>
-          <NavLink class="nav-link" href="#activeTasks" aria-selected="true">Активные задачи</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#methodology" aria-selected="false" >Методика лечения</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#personalArea" aria-controls="messages" aria-selected="false">Личный кабинет</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#personalAnalyzes">Мои анализы</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#personalsDoctor">Мои врачи</NavLink>
-        </NavItem>
-      </Nav>
-    </div> */}
       <div className="row">
         <div className="col-3">
           <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">

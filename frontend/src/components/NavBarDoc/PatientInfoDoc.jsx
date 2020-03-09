@@ -6,6 +6,7 @@ import { NavLink as RRNavLink } from 'react-router-dom';
 import PatientModalReport from './PatientModalReport';
 import PatientModalChat from './PatientModalChat';
 import PatientModalCreateMethod from './PatientModalChangeMethod';
+import './PatientInfoDoc.css'
 
 
 function PatientInfoDoc() {
