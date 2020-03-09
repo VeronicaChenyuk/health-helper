@@ -1,7 +1,9 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import {
-  Button, Form, FormGroup, Label, Input,
+  Button, Form, FormGroup, Label,
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import store from '../../../redux/store';
@@ -11,10 +13,6 @@ import Theraphy from './Theraphies';
 import Analysis from './AddAnalysis';
 import AddReports from '../AddComponents/AddReports';
 import NextVisitFields from '../AddComponents/AddNextVisit';
-
-const mapStateToProps = (state) => ({
-  email: state.logIn.user,
-});
 
 async function saveClick(props) {
   try {
@@ -31,7 +29,6 @@ async function saveClick(props) {
     const drugs = [];
     const theraphies = [];
     const patientReports = [];
-
 
     for (const key in values) {
       if (key.match(/^nameOfDrug/)) {
@@ -63,7 +60,7 @@ async function saveClick(props) {
       }
     }
 
-    for (let i = 0; i < nameOfDrug.length; i++) {
+    for (let i = 0; i < nameOfDrug.length; i += 1) {
       drugs[i] = {
         nameOfDrug: nameOfDrug[i],
         dosage: dosage[i],
@@ -72,7 +69,7 @@ async function saveClick(props) {
         duration: duration[i],
       };
     }
-    for (let i = 0; i < nameOfTheraphy.length; i++) {
+    for (let i = 0; i < nameOfTheraphy.length; i += 1) {
       theraphies[i] = {
         nameOfTheraphy: nameOfTheraphy[i],
         frequency: frequencyOfTheraphy[i],
@@ -108,7 +105,7 @@ async function saveClick(props) {
       dateOfTheLastVisit: date,
     };
     console.log('Methodic', methodic);
-    const response = await fetch('http://localhost:5000/savemethodic', {
+    await fetch('http://localhost:5000/savemethodic', {
       method: 'POST',
       headers:
       {
@@ -168,17 +165,21 @@ const MainMethodForm = (props) => (
       <br />
 
       <FormGroup>
-        <Label for="exampleText">Comments</Label>
+        <Label for="exampleText">Комментарий</Label>
         <br />
         <Field style={{ width: '550px', borderRadius: '5px', height: '85px' }} type="text" name="comments" id="exampleEmail" placeholder="Дополнения" component="textarea" />
       </FormGroup>
 
       <AddReports />
       <NextVisitFields />
-      <Button color="primary" onClick={() => saveClick(props)}>Save</Button>
+      <Button color="primary" onClick={() => saveClick(props)}>Сохранить</Button>
     </Form>
   </>
 );
+
+const mapStateToProps = (state) => ({
+  email: state.logIn.user.email,
+});
 
 const MethodForm = reduxForm({
   form: 'method',

@@ -1,22 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-
 import Methodology from '../Methodology/Methodology';
 import ActiveTasks from '../ActiveTasks/ActiveTasks';
 import DoctorList from '../DoctorList/DoctorList';
+import { getMethodicsUser } from '../../redux/actions';
+import PatientAccount from '../PatientAccount/PatientAccount';
 
+const getInfo = async (props) => {
+  const { email } = props.user;
+  const { getMethodics } = props;
+  const response = await fetch('http://localhost:5000/users/info', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+  const result = await response.json();
+  const { methodics } = result;
+  if (methodics) {
+    getMethodics(methodics);
+  }
+  return console.error('Что то пошло не так!');
+};
 
 const PatientSidebar = (props) => {
-  // const [data, setData] = useState({});
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await fetch(
-  //       'http://localhost:5000/auth/login',
-  //     );
-  //     const result = response.json();
-  //   };
-  //   fetchData();
-  // }, []);
+  getInfo(props);
+
   return (
     <>
       <div className="row">
@@ -33,7 +45,7 @@ const PatientSidebar = (props) => {
           <div className="tab-content" id="v-pills-tabContent">
             <div className="tab-pane fade show active" id="v-pills-activeTasks" role="tabpanel" aria-labelledby="v-pills-activeTasks-tab"><ActiveTasks /></div>
             <div className="tab-pane fade" id="v-pills-methodology" role="tabpanel" aria-labelledby="v-pills-methodology-tab"><Methodology /></div>
-            <div className="tab-pane fade" id="v-pills-personalArea" role="tabpanel" aria-labelledby="v-pills-personalArea-tab">456</div>
+            <div className="tab-pane fade" id="v-pills-personalArea" role="tabpanel" aria-labelledby="v-pills-personalArea-tab"><PatientAccount /></div>
             <div className="tab-pane fade" id="v-pills-personalAnalyzes" role="tabpanel" aria-labelledby="v-pills-personalAnalyzes-tab">657</div>
             <div className="tab-pane fade" id="v-pills-personalsDoctor" role="tabpanel" aria-labelledby="v-pills-personalsDoctor-tab"><DoctorList /></div>
           </div>
@@ -44,9 +56,14 @@ const PatientSidebar = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  statusUser: state.logIn.user.status,
+  user: state.logIn.user,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getMethodics: (methodics) => dispatch(getMethodicsUser(methodics)),
 });
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(PatientSidebar);

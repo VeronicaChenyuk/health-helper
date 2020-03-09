@@ -9,9 +9,9 @@ import PatientModalChat from './PatientModalChat';
 import PatientModalCreateMethod from './PatientModalChangeMethod';
 import store from '../../redux/store';
 
-const mapStateToProps = (state) => ({
-  email: state.logIn.user,
-});
+// const mapStateToProps = (state) => ({
+//   email: state.logIn.user,
+// });
 
 async function fetchEmail(docEmail) {
   const res = await fetch('http://localhost:5000/loadmethodic', {
@@ -45,13 +45,9 @@ function PatientInfoDoc(props) {
   const methodic = fetchEmail(docEmail);
   console.log('METHODIC', methodic.value);
 
-
   const patients = [{ name: 'Ivanov Ivan' }, { name: 'Petrov Petr' }, { name: 'Vasilyev Vasiliy' }, { name: 'Romanov Roman' }, { name: 'Kirillov Kirill' }];
   const navPatients = patients.map((name) => <NavLink to="/" tag={RRNavLink}>{name.name}</NavLink>);
-  const mystyle = {
-    Width: '100px',
-    Height: '40px',
-  };
+
   return (
     <>
       <CardDeck>
@@ -98,6 +94,10 @@ function PatientInfoDoc(props) {
     </>
   );
 }
+
+const mapStateToProps = (state) => ({
+  email: state.logIn.user,
+});
 
 // export default PatientInfoDoc;
 export default connect(mapStateToProps)(PatientInfoDoc);

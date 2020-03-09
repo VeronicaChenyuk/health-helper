@@ -15,7 +15,7 @@ const PatientModalReport = (props) => {
 
   return (
     <div>
-      <Button onClick={toggle}>Change</Button>
+      <Button onClick={toggle} color="success">Изменить методику</Button>
       <Modal isOpen={modal} toggle={toggle} className={className} style={{ minWidth: '1200px', minHeight: '800px' }}>
         <ModalHeader toggle={toggle}>Изменение методики</ModalHeader>
         <ModalBody>
