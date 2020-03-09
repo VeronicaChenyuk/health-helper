@@ -7,9 +7,9 @@ import { connect } from 'react-redux';
 import PatientModalReport from './PatientModalReport';
 import PatientModalChat from './PatientModalChat';
 import PatientModalCreateMethod from './PatientModalChangeMethod';
-import './PatientInfoDoc.css'
+import './PatientInfoDoc.css';
 
-
+function PatientInfoDoc(props) {
   const patients = [{ name: 'Ivanov Ivan' }, { name: 'Petrov Petr' }, { name: 'Vasilyev Vasiliy' }, { name: 'Romanov Roman' }, { name: 'Kirillov Kirill' }];
   const navPatients = patients.map((name) => <NavLink to="/" tag={RRNavLink}>{name.name}</NavLink>);
   const mystyle = {
@@ -62,6 +62,10 @@ import './PatientInfoDoc.css'
     </>
   );
 }
+
+const mapStateToProps = (state) => ({
+  email: state.logIn.user,
+});
 
 // export default PatientInfoDoc;
 export default connect(mapStateToProps)(PatientInfoDoc);
