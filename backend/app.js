@@ -5,26 +5,32 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 // const session = require('express-session');
 // const FileStore = require('session-file-store')(session);
+
 
 mongoose.connect('mongodb+srv://vyuzh:VyuzhDatabase2020@cluster0-lawna.mongodb.net/medical-todo', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
+const uploadRouter = require('./routes/upload');
 
 const app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// Middlewares
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 
 // app.use(session({
 //   secret: '>evernote-Is%true?',
@@ -34,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //   cookie: { secure: false },
 // }));
 
-app.use('/auth', authRouter);
+
 
 // app.use((req, res, next) => {
 //   const { user } = req.session;
@@ -44,9 +50,10 @@ app.use('/auth', authRouter);
 //   }
 //   return res.redirect('/');
 // });
-
+app.use('/auth', authRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/upload', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
