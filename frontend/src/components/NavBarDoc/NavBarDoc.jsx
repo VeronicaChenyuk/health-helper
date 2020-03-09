@@ -16,34 +16,38 @@ function patientClick(name) {
 }
 
 function NavBarDoc() {
-  const patients = [{ name: 'Ivanov Ivan' }, { name: 'Petrov Petr' }, { name: 'Vasilyev Vasiliy' }, { name: 'Romanov Roman' }, { name: 'Kirillov Kirill' }];
+  const patients = [{ name: 'Иванов Иван' }, { name: 'Петров Петр' }, { name: 'Васильев Василий' }, { name: 'Романов Роман' }, { name: 'Кирилов Кирилл' }];
 
   const navPatients = patients.map((name) => (
     <>
-      <Button style={{ textAlign: 'left' }} color="link" onClick={() => patientClick(name.name)}>{name.name}</Button>
+      {/* <Button color="link" onClick={() => patientClick(name.name)}>{name.name}</Button> */}
+      <a className="nav-link" id="v-pills-methodology-tab" data-toggle="pill" href="#v-pills-methodology" role="tab" aria-controls="v-pills-methodology" aria-selected="false">{() => patientClick(name.name)}{name.name}</a>
     </>
   ));
 
 
   return (
     <>
-      <div className="container">
+      {/* <div className="container"> */}
         <div className="row">
-          <div className="col-2">
-            <Nav defaultActiveKey="/" className="flex-column">
+          <div className="col-3">
+            <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              
+              <Nav defaultActiveKey="/" className="nav nav-pills nav-fill" >
+
               <PatientModalCreateMethod />
+
+              </Nav>
               {navPatients}
-            </Nav>
-
+            </div>
           </div>
-          <div className="col-10">
-
-            <PatientInfoDoc />
-
-
+          <div className="col-9">
+            <div className="tab-content" id="v-pills-tabContent">
+              <div className="tab-pane fade" id="v-pills-methodology" role="tabpanel" aria-labelledby="v-pills-methodology-tab"><PatientInfoDoc /></div>
+            </div>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 }

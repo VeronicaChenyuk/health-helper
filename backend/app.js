@@ -13,13 +13,16 @@ const authRouter = require('./routes/auth');
 const loadDoctorRouter = require('./routes/loadDoctor');
 const saveMethodicRouter = require('./routes/saveMethodic');
 const loadMethodicRouter = require('./routes/loadMethodic');
+const uploadRouter = require('./routes/upload');
 
 const app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// Middlewares
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
@@ -30,8 +33,20 @@ app.use('/auth', authRouter);
 app.use('/personal', loadDoctorRouter);
 app.use('/savemethodic', saveMethodicRouter);
 app.use('/loadmethodic', loadMethodicRouter);
-app.use('/users', usersRouter);
+
+
+// app.use((req, res, next) => {
+//   const { user } = req.session;
+//   if (user) {
+//     app.locals.username = user;
+//     return next();
+//   }
+//   return res.redirect('/');
+// });
+// app.use('/auth', authRouter);
 app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/upload', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
