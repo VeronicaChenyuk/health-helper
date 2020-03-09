@@ -15,7 +15,7 @@ function PatientInfoDoc() {
   //   email: state.logIn.email,
   // });
   
-  // console.log(props.email);
+console.log(123);
 
 
   // const res = await fetch('http://localhost:5000/loadmethodic', {
