@@ -13,6 +13,7 @@ const methodicSchema = new mongoose.Schema({
   patientReports: { type: Array },
   dateOfTheLastVisit: { type: String },
   nextVisit: { type: String },
+  sourceData: { type: Object },
 });
 
 module.exports = mongoose.model('Methodic', methodicSchema);

@@ -29,6 +29,7 @@ async function saveClick(props) {
     const drugs = [];
     const theraphies = [];
     const patientReports = [];
+    console.log('VVVVVVVAAAAALLLLLLLUUUUUEEEEES',values)
 
     for (const key in values) {
       if (key.match(/^nameOfDrug/)) {
@@ -82,7 +83,7 @@ async function saveClick(props) {
       if (values.needPhoto !== undefined) patientReports.push('Doctor needs Photo report');
     }
     const date = new Date();
-    console.log('PROOOOPS', props);
+    console.log('PROOOOPS', props.email);
     let speciality;
     if (props.specialist !== undefined) {
       speciality = props.specialist;
@@ -93,7 +94,7 @@ async function saveClick(props) {
     const methodic = {
       patientName: values.patientName,
       patientEmail: values.email,
-      doctorEmail: props.email.email,
+      doctorEmail: props.email,
       doctorFullName: props.email.login,
       doctorSpeciality: speciality,
       drugs,
@@ -103,6 +104,7 @@ async function saveClick(props) {
       patientReports,
       nextVisit: values.nextVisit,
       dateOfTheLastVisit: date,
+      sourceData: values,
     };
     console.log('Methodic', methodic);
     await fetch('http://localhost:5000/savemethodic', {

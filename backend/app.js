@@ -33,17 +33,6 @@ app.use('/auth', authRouter);
 app.use('/personal', loadDoctorRouter);
 app.use('/savemethodic', saveMethodicRouter);
 app.use('/loadmethodic', loadMethodicRouter);
-
-
-// app.use((req, res, next) => {
-//   const { user } = req.session;
-//   if (user) {
-//     app.locals.username = user;
-//     return next();
-//   }
-//   return res.redirect('/');
-// });
-// app.use('/auth', authRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/upload', uploadRouter);
