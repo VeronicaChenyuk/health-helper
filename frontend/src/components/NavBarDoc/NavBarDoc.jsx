@@ -4,9 +4,6 @@ import { Nav, Button } from 'reactstrap';
 import PatientInfoDoc from './PatientInfoDoc';
 import PatientModalCreateMethod from './PatientModalCreateMethod';
 
-// function addPatientClick() {
-// alert('добавление пациента')
-// }
 
 function patientClick(name) {
   alert(name);
