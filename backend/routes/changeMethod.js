@@ -5,9 +5,12 @@ const router = express.Router();
 
 router.post('/', async (req, res, next) => {
   const { methodic } = req.body;
-  const newMethodic = await new Methodic(methodic);
-  await newMethodic.save();
-  res.redirect('/');
+  const { numberID } = req.body;
+  if (methodic !== undefined) {
+    const newMethodic = await new Methodic(methodic);
+    await newMethodic.save();
+  }
+  await Methodic.deleteOne({ _id: numberID });
 });
 
 

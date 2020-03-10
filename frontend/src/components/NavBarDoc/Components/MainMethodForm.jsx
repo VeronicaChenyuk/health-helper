@@ -82,7 +82,6 @@ function saveClick(props) {
       if (values.needPhoto !== undefined) patientReports.push('Фотоотчет по результатам лечения.');
     }
     const date = new Date();
-
     const methodic = {
       patientName: values.patientName,
       patientEmail: values.email,
