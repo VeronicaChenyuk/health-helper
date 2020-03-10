@@ -12,3 +12,7 @@
 .btn-outline-danger {
   margin: 0 10px 0 10px;
   }
+  .btn-outline-success {
+  color:#00887A;
+  border-color: #00887A;
+}

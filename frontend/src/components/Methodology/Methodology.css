@@ -3,7 +3,7 @@
   vertical-align: top;
  }
 .block {
-    width: 800px; /* Ширина блока */
+    width: 900px; /* Ширина блока */
     padding: 10px; /* Поля */
-    border: 2px solid rgb(223, 223, 223); /* Параметры рамки */
+   
 }
