@@ -1,9 +1,9 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, Form } from 'redux-form';
 import {
-  Button, Form, FormGroup, Label,
+  Button, FormGroup, Label,
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import store from '../../../redux/store';
@@ -29,7 +29,7 @@ async function saveClick(props) {
     const drugs = [];
     const theraphies = [];
     const patientReports = [];
-    console.log('VVVVVVVAAAAALLLLLLLUUUUUEEEEES',values)
+    const { email, doctorName, specialist } = props.user;
 
     for (const key in values) {
       if (key.match(/^nameOfDrug/)) {
@@ -60,7 +60,6 @@ async function saveClick(props) {
         nameOfAnalysis.push(values[key]);
       }
     }
-
     for (let i = 0; i < nameOfDrug.length; i += 1) {
       drugs[i] = {
         nameOfDrug: nameOfDrug[i],
@@ -78,25 +77,17 @@ async function saveClick(props) {
       };
     }
     if (values !== undefined) {
-      if (values.needCheckConditions !== undefined) patientReports.push('Doctor needs conditions report');
-      if (values.needDiary !== undefined) patientReports.push('Doctor needs diary report');
-      if (values.needPhoto !== undefined) patientReports.push('Doctor needs Photo report');
+      if (values.needCheckConditions !== undefined) patientReports.push('Необходимо ведение дневника лечения.');
+      if (values.needDiary !== undefined) patientReports.push('Необходимо отмечать все побочные действия.');
+      if (values.needPhoto !== undefined) patientReports.push('Фотоотчет по результатам лечения.');
     }
     const date = new Date();
     console.log('PROOOOPS', props.email);
-    let speciality;
-    if (props.specialist !== undefined) {
-      speciality = props.specialist;
-    } else {
-      speciality = 'Врач общей практики';
-    }
 
     const methodic = {
       patientName: values.patientName,
       patientEmail: values.email,
-      doctorEmail: props.email,
-      doctorFullName: props.email.login,
-      doctorSpeciality: speciality,
+      doctorEmail: email,
       drugs,
       theraphies,
       analisis: nameOfAnalysis,
@@ -105,8 +96,10 @@ async function saveClick(props) {
       nextVisit: values.nextVisit,
       dateOfTheLastVisit: date,
       sourceData: values,
+      doctorName,
+      specialist,
     };
-    console.log('Methodic', methodic);
+    // console.log('Methodic', methodic);
     await fetch('http://localhost:5000/savemethodic', {
       method: 'POST',
       headers:
@@ -180,7 +173,7 @@ const MainMethodForm = (props) => (
 );
 
 const mapStateToProps = (state) => ({
-  email: state.logIn.user.email,
+  user: state.logIn.user,
 });
 
 const MethodForm = reduxForm({

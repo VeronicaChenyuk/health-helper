@@ -5,30 +5,39 @@ import { connect } from 'react-redux';
 function Methodology(props) {
   const { methodics } = props;
   console.log('TODODODODODO', methodics);
-
   return (
     <div className="Methodology">
       {
-      methodics.map((meth) => (
-        <div className="block">
-          <td className="leftcol">
-            <img
-              src="https://www.geraci.ru/wp-content/uploads/2018/11/Mirzojan-Ekaterina-Sergeevna-Vrach-ultrazvukovoj-diagnostiki-min.png"
-              width="180"
-              height="250"
-              alt="Doctor"
-            />
-          </td>
-          <td>
-            <p>
-              <ul className="list-group">
-                <li className="list-group-item list-group-item-primary">
-                  <strong>{meth.doctorEmail}</strong>
-                  <p><strong>Специальность: Офтальмолог</strong></p>
-                </li>
-                {
-                  (meth.drugs).map((drug, index) => (
-                    <li className="list-group-item">
+      methodics.map((meth) => {
+        const {
+          drugs, theraphies, analisis, patientReports, comment, nextVisit, doctorEmail, _id, doctorName, specialist,
+        } = meth;
+        return (
+          <div className="block" key={_id}>
+            <td className="leftcol">
+              <img
+                src="https://www.geraci.ru/wp-content/uploads/2018/11/Mirzojan-Ekaterina-Sergeevna-Vrach-ultrazvukovoj-diagnostiki-min.png"
+                width="180"
+                height="250"
+                alt="Doctor"
+              />
+            </td>
+            <td>
+              <p>
+                <ul className="list-group">
+                  <li className="list-group-item list-group-item-primary">
+                    <strong>{doctorName}</strong>
+                    <p>
+                      <strong>
+                        Специальность:
+                        {' '}
+                        {specialist}
+                      </strong>
+                    </p>
+                  </li>
+                  {
+                  (drugs).map((drug, index) => (
+                    <li className="list-group-item" key={drug.nameOfDrug}>
                       Лекарство
                       {' '}
                       {index + 1}
@@ -37,65 +46,73 @@ function Methodology(props) {
                       {drug.nameOfDrug}
                       {' принимать по '}
                       {drug.dosage}
+                      {' '}
+                      {drug.frequency}
+                      {' '}
+                      {drug.beforeAfterEat}
+                      {' '}
+                      {drug.duration}
                     </li>
                   ))
                 }
-                <li className="list-group-item">Процедуры: Плацентарные инъекции Curacen (Rhana) 2 раза в неделю </li>
-                <li className="list-group-item">Следующий прием врача: 20.04.20 </li>
-                <li className="list-group-item">Форма отчетности:</li>
-              </ul>
-            </p>
-          </td>
-        </div>
-      ))
+                  {
+                  (theraphies).map((therap, index) => (
+                    <li className="list-group-item" key={therap.nameOfTheraphy}>
+                      Процедура
+                      {' '}
+                      {index + 1}
+                      :
+                      {' '}
+                      {therap.nameOfTheraphy}
+                      {' '}
+                      {therap.frequency}
+                      {' '}
+                      {therap.duration}
+                    </li>
+                  ))
+                }
+                  {
+                  (analisis).map((analis, index) => (
+                    <li className="list-group-item" key={analis}>
+                      Анализ
+                      {' '}
+                      {index + 1}
+                      :
+                      {' '}
+                      {analis}
+                    </li>
+                  ))
+                }
+                  <li className="list-group-item">
+                    Следующий прием врача:
+                    {' '}
+                    {nextVisit}
+                  </li>
+                  <li className="list-group-item">
+                    Форма отчетности:
+                    {
+                  (patientReports).map((report, index) => (
+                    <span key={report}>
+                      <br />
+                      {index + 1}
+                      {'. '}
+                      {report}
+                    </span>
+                  ))
+                }
+                  </li>
+                  <li className="list-group-item">
+                    Комментарий от врача:
+                    {' '}
+                    {comment}
+                  </li>
+                </ul>
+              </p>
+            </td>
+          </div>
+        );
+      })
     }
-      <div className="block">
-        <td className="leftcol">
-          <img
-            src="https://www.geraci.ru/wp-content/uploads/2018/11/Mirzojan-Ekaterina-Sergeevna-Vrach-ultrazvukovoj-diagnostiki-min.png"
-            width="180"
-            height="250"
-            alt="Doctor"
-          />
-        </td>
-        <td>
-          <p>
-            <ul className="list-group">
-              <li className="list-group-item list-group-item-primary">
-                <strong>Любовь Васильевна Петрова</strong>
-                <p><strong>Специальность: Офтальмолог</strong></p>
-              </li>
-              <li className="list-group-item">Лекарства: Сульфацил-натрий(капли 3 мл),Альбуцид(капли 5 мл), Ципрофлоксацин (мазь) </li>
-              <li className="list-group-item">Процедуры: Плацентарные инъекции Curacen (Rhana) 2 раза в неделю </li>
-              <li className="list-group-item">Следующий прием врача: 20.04.20 </li>
-              <li className="list-group-item">Форма отчетности:</li>
-            </ul>
-          </p>
-        </td>
-      </div>
-      <div className="block">
-        <td className="leftcol">
-          <img
-            src="https://www.geraci.ru/wp-content/uploads/2018/11/Kacylo-Andrej-Grigorevich-Vrach-ultrazvukovoj-diagnostiki-min.png"
-            width="180"
-            height="250"
-          />
-        </td>
-        <td>
-          <p>
-            <ul className="list-group">
-              <li className="list-group-item list-group-item-primary">
-                <strong>Сергей Иванович Мишустин</strong>
-                <p><strong>Специальность: Отоларинголог</strong></p>
-              </li>
-              <li className="list-group-item">Лекарства: Авамис( Спрей Назальный Дозированный 27,5 Мкг/Доза), Длянос( Капли В Нос 0.05% , 10 Мл) </li>
-              <li className="list-group-item">Процедуры: Перемещение лекарственных веществ в полости носа по Проетцу (кукушка) 3 раза в неделю </li>
-              <li className="list-group-item">Следующий прием врача: 05.05.20 </li>
-              <li className="list-group-item">Форма отчетности:</li>
-            </ul>
-          </p>
-        </td>
-      </div>
     </div>
   );
 }

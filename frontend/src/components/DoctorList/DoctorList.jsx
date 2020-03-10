@@ -1,40 +1,25 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+import { connect } from 'react-redux';
 
-const doctorBaze = [
-  {
-    id: 1,
-    fistName: 'Любовь',
-    secondName: 'Васильевна',
-    lastName: 'Петрова',
-    specialist: 'Офтальмолог',
-  },
-  {
-    id: 1,
-    fistName: 'Сергей',
-    secondName: 'Иванович',
-    lastName: 'Мишустин',
-    specialist: 'Отоларинголог',
-  },
-];
+function DoctorList(props) {
+  const myDoctors = props.methodics
+    .filter((methodic) => methodic.doctorEmail !== undefined);
 
-function DoctorList() {
   return (
     <>
       <div>
         {
-          doctorBaze.map((el) => (
-            <p>
+          myDoctors.map((doctor, index) => (
+            <p key={doctor.doctorName}>
               <strong>
-                {el.id}
-                .
+                {index + 1}
+                {'. '}
               </strong>
-              {el.fistName}
-              {el.secondName}
-              {el.lastName}
+              {doctor.doctorName}
               <p />
               Cпециальность:
-              {el.specialist}
+              {doctor.specialist}
               <p>
                 <Button outline color="success">Связаться</Button>
                 <Button outline color="danger">Удалить</Button>
@@ -47,4 +32,10 @@ function DoctorList() {
   );
 }
 
-export default DoctorList;
+const mapStateToProps = (state) => ({
+  methodics: state.getInfo.methodics,
+});
+
+export default connect(
+  mapStateToProps,
+)(DoctorList);

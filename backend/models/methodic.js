@@ -14,6 +14,8 @@ const methodicSchema = new mongoose.Schema({
   dateOfTheLastVisit: { type: String },
   nextVisit: { type: String },
   sourceData: { type: Object },
+  doctorName: { type: String },
+  specialist: { type: String },
 });
 
 module.exports = mongoose.model('Methodic', methodicSchema);
