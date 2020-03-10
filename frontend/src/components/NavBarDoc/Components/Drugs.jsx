@@ -24,7 +24,6 @@ class Drugs extends React.Component {
     const addDrugs = [];
     for (let i = 0; i < this.state.drugsCount; i += 1) {
       addDrugs.push(<DrugsFields idx={i} />);
-      // addDrugs.push(<AddDrug />);
     }
 
     const addDrugsFin = addDrugs.map((el) => (
