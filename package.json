@@ -25,6 +25,7 @@
     "eslint-plugin-react-hooks": "^1.7.0"
   },
   "dependencies": {
-    "firebase": "^7.10.0"
+    "firebase": "^7.10.0",
+    "redux-form": "^8.3.1"
   }
 }

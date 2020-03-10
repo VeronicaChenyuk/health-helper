@@ -111,7 +111,6 @@ function NavBarDoc() {
           </div>
         </div>
       </div>
-
     </>
   );
 }
