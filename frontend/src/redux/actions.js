@@ -1,5 +1,5 @@
 const {
-  LOG_IN, LOG_OUT, IS_LOGIN_FORM, CHANGE_INFO_USER, GET_METHODICS_USER, PATIENT_DATA,
+  LOG_IN, LOG_OUT, IS_LOGIN_FORM, CHANGE_INFO_USER, GET_METHODICS_USER, PATIENT_DATA, ANALYZES_DATA,
 } = require('./action-types');
 
 // Action creators
@@ -24,4 +24,8 @@ export const getMethodicsUser = (methodics) => ({
 export const isPatientData = (patient) => ({
   type: PATIENT_DATA,
   patient,
+});
+export const setAnalyzes = (analyzes) => ({
+  type: ANALYZES_DATA,
+  payload: analyzes
 });
