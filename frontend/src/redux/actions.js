@@ -6,6 +6,7 @@ const {
   GET_METHODICS_USER,
   PATIENT_DATA,
   SWITCH_CURRENT_EMAIL,
+  ANALYZES_DATA,
 } = require('./action-types');
 
 // Action creators
@@ -34,4 +35,8 @@ export const isPatientData = (patient) => ({
 export const switchCurrentEmail = (currentPatientEmail) => ({
   type: SWITCH_CURRENT_EMAIL,
   currentPatientEmail,
+});
+export const setAnalyzes = (analyzes) => ({
+  type: ANALYZES_DATA,
+  payload: analyzes
 });

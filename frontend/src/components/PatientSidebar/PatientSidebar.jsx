@@ -5,6 +5,8 @@ import ActiveTasks from '../ActiveTasks/ActiveTasks';
 import DoctorList from '../DoctorList/DoctorList';
 import { getMethodicsUser } from '../../redux/actions';
 import PatientAccount from '../PatientAccount/PatientAccount';
+import './PatientSidebar.css';
+import PatientAnalyzes from '../PatientAnalyzes/PatientAnalyzes';
 
 const getInfo = async (props) => {
   const { email } = props.user;
@@ -46,7 +48,7 @@ const PatientSidebar = (props) => {
             <div className="tab-pane fade show active" id="v-pills-activeTasks" role="tabpanel" aria-labelledby="v-pills-activeTasks-tab"><ActiveTasks /></div>
             <div className="tab-pane fade" id="v-pills-methodology" role="tabpanel" aria-labelledby="v-pills-methodology-tab"><Methodology /></div>
             <div className="tab-pane fade" id="v-pills-personalArea" role="tabpanel" aria-labelledby="v-pills-personalArea-tab"><PatientAccount /></div>
-            <div className="tab-pane fade" id="v-pills-personalAnalyzes" role="tabpanel" aria-labelledby="v-pills-personalAnalyzes-tab">657</div>
+            <div className="tab-pane fade" id="v-pills-personalAnalyzes" role="tabpanel" aria-labelledby="v-pills-personalAnalyzes-tab"><PatientAnalyzes /></div>
             <div className="tab-pane fade" id="v-pills-personalsDoctor" role="tabpanel" aria-labelledby="v-pills-personalsDoctor-tab"><DoctorList /></div>
           </div>
         </div>

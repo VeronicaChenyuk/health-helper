@@ -56,20 +56,16 @@ function Methodology(props) {
                   ))
                 }
                   {
-                  (theraphies).map((therap, index) => (
-                    <li className="list-group-item" key={therap.nameOfTheraphy}>
-                      Процедура
-                      {' '}
-                      {index + 1}
-                      :
-                      {' '}
-                      {therap.nameOfTheraphy}
-                      {' '}
-                      {therap.frequency}
-                      {' '}
-                      {therap.duration}
-                    </li>
-                  ))
+                    (meth.theraphies).map((therap, index) => (
+                      <li className="list-group-item" key={therap}>
+                        Процедура
+                        {' '}
+                        {index + 1}
+                        :
+                        {' '}
+                        {therap.duration}
+                      </li>
+                    ))
                 }
                   {
                   (analisis).map((analis, index) => (

@@ -1,0 +1,17 @@
+.card-deck {
+  width: 950px;
+  height: 270px;
+  margin-top: 3%;
+  display:inline-flex;
+  flex-direction: row;
+}
+
+.card-img-top {
+  width: 250px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+}
+
+
+
