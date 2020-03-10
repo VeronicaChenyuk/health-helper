@@ -39,9 +39,9 @@ function NavBarDoc(props) {
       <div className="row">
         <div className="col-3">
           <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <Nav defaultActiveKey="/" className="nav nav-pills nav-fill">
+            {/* <Nav defaultActiveKey="/" className="nav nav-pills nav-fill">
               <PatientModalCreateMethod />
-            </Nav>
+            </Nav> */}
             <PationsList />
           </div>
         </div>
