@@ -5,7 +5,7 @@ import ActiveTasks from '../ActiveTasks/ActiveTasks';
 import DoctorList from '../DoctorList/DoctorList';
 import { getMethodicsUser } from '../../redux/actions';
 import PatientAccount from '../PatientAccount/PatientAccount';
-import PatientAnalyzes from '../PatientAnalyzes/PatientaAnalyzes'
+import PatientAnalyzes from '../PatientAnalyzes/PatientAnalyzes';
 
 const getInfo = async (props) => {
   const { email } = props.user;

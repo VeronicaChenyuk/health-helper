@@ -24,13 +24,11 @@ const PatientAnalyzesForm = (props) => {
     }
   };
 
-  const handleUpload = () => {
-
-  };
-
   const formHandler = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
+    const today = new Date();
+    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     const uploadTask = storage.ref(`analyzes/${image.name}`).put(image);
     uploadTask.on('state_changed',
       (snapshot) => {
@@ -41,8 +39,8 @@ const PatientAnalyzesForm = (props) => {
       },
       () => {
         storage.ref('analyzes').child(image.name).getDownloadURL().then(url => {
-          setUrl({url})
-          props.setAnalyzes({url, name});
+          setUrl({ url })
+          props.setAnalyzes({ url, name, date });
           console.log(url);
         });
       });

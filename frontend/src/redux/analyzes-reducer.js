@@ -8,7 +8,7 @@ export default (state = initialState, action) => {
     case ANALYZES_DATA:
       return [
         ...state,
-        action.payload
+        action.payload,
       ];
     default:
       return state;
