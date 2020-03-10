@@ -8,6 +8,7 @@ function Methodology(props) {
   return (
     <div className="Methodology">
       {
+<<<<<<< HEAD
       methodics.map((meth) => {
         const {
           drugs, theraphies, analisis, patientReports, comment, nextVisit, doctorEmail, _id, doctorName, specialist,
@@ -22,10 +23,15 @@ function Methodology(props) {
                 alt="Doctor"
               />
             </td>
+=======
+        methodics.map((meth) => (
+          <div className="block">
+>>>>>>> simle-visial
             <td>
               <p>
                 <ul className="list-group">
                   <li className="list-group-item list-group-item-primary">
+<<<<<<< HEAD
                     <strong>{doctorName}</strong>
                     <p>
                       <strong>
@@ -59,14 +65,40 @@ function Methodology(props) {
                   (theraphies).map((therap, index) => (
                     <li className="list-group-item" key={therap.nameOfTheraphy}>
                       Процедура
+=======
+                    <strong>{meth.doctorEmail}</strong>
+                    <p><strong>Специальность: Офтальмолог</strong></p>
+                  </li>
+                  {
+                    (meth.drugs).map((drug, index) => (
+                      <li className="list-group-item">
+                        Лекарство
+>>>>>>> simle-visial
                       {' '}
-                      {index + 1}
-                      :
+                        {index + 1}
+                        :
                       {' '}
-                      {therap.nameOfTheraphy}
+                        {drug.nameOfDrug}
+                        {' принимать по '}
+                        {drug.dosage}
+                        {' '}
+                        {drug.frequency}
+                        {' '}
+                        {drug.beforeAfterEat}
+                        {' '}
+                        {drug.duration}
+                      </li>
+                    ))
+                  }
+                  {
+                    (meth.theraphies).map((therap, index) => (
+                      <li className="list-group-item">
+                        Процедура
                       {' '}
-                      {therap.frequency}
+                        {index + 1}
+                        :
                       {' '}
+<<<<<<< HEAD
                       {therap.duration}
                     </li>
                   ))
@@ -105,14 +137,46 @@ function Methodology(props) {
                     Комментарий от врача:
                     {' '}
                     {comment}
+=======
+                        {therap.nameOfTheraphy}
+                        {' '}
+                        {therap.frequency}
+                        {' '}
+                        {therap.duration}
+                      </li>
+                    ))
+                  }
+                  <li className="list-group-item">
+                    Следующий прием врача:
+                  {' '}
+                    {meth.nextVisit}
+                  </li>
+                  <li className="list-group-item">
+                    Форма отчетности:
+                  {
+                      (meth.patientReports).map((report, index) => (
+                        <>
+                          <br />
+                          {index + 1}
+                          {'. '}
+                          {report}
+                        </>
+                      ))
+                    }
+>>>>>>> simle-visial
                   </li>
                 </ul>
               </p>
             </td>
           </div>
+<<<<<<< HEAD
         );
       })
     }
+=======
+        ))
+      }
+>>>>>>> simle-visial
     </div>
   );
 }

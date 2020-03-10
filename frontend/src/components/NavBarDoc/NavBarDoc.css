@@ -1,0 +1,11 @@
+.col-3{
+  margin-top: 2%;
+}
+.popo{
+  color: #00887A;
+  margin-top: 1%;
+}
+.nav-pills .nav-link.active{
+  background-color: #00887A;
+  color: #fff;
+}
