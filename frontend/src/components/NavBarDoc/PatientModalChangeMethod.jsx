@@ -3,11 +3,10 @@ import {
   Button, Modal, ModalHeader, ModalBody, ModalFooter,
 } from 'reactstrap';
 import { connect } from 'react-redux';
-
 import MainMethodFormChange from './Components/MainMethodFormChange';
 
 const PatientModalChangeMethod = (props) => {
-  console.log('PROOOOOOOPPPPPPPPPPPPPPS111', props);
+  //console.log('PROOOOOOOPPPPPPPPPPPPPPS111', props);
   const {
     buttonLabel,
     className,
