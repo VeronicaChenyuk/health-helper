@@ -26,9 +26,11 @@ const Header = (props) => {
         <Nav />
         {
           statusUser === 'doctor' && (
-            <Nav defaultActiveKey="/" className="nav nav-pills nav-fill" >
-              <PatientModalCreateMethod />&nbsp;&nbsp;&nbsp;
-            </Nav>)
+            <Nav defaultActiveKey="/" className="nav nav-pills nav-fill">
+              <PatientModalCreateMethod />
+&nbsp;&nbsp;&nbsp;
+            </Nav>
+          )
         }
 
         {
@@ -49,7 +51,7 @@ const Header = (props) => {
 const mapStateToProps = (state) => (
   {
     auth: state.logIn.auth,
-    statusUser: state.logIn.statusUser,
+    statusUser: state.logIn.user.status,
   });
 
 const mapDispatchToProps = (dispatch) => ({
