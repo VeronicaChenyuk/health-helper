@@ -1,5 +1,11 @@
 const {
-  LOG_IN, LOG_OUT, IS_LOGIN_FORM, CHANGE_INFO_USER, GET_METHODICS_USER, PATIENT_DATA,
+  LOG_IN,
+  LOG_OUT,
+  IS_LOGIN_FORM,
+  CHANGE_INFO_USER,
+  GET_METHODICS_USER,
+  PATIENT_DATA,
+  SWITCH_CURRENT_EMAIL,
 } = require('./action-types');
 
 // Action creators
@@ -24,4 +30,8 @@ export const getMethodicsUser = (methodics) => ({
 export const isPatientData = (patient) => ({
   type: PATIENT_DATA,
   patient,
+});
+export const switchCurrentEmail = (currentPatientEmail) => ({
+  type: SWITCH_CURRENT_EMAIL,
+  currentPatientEmail,
 });

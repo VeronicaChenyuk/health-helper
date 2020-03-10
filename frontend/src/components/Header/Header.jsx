@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { isLogout } from '../../redux/actions';
+import PatientModalCreateMethod from '../NavBarDoc/PatientModalCreateMethod';
 
 
 const logout = () => { localStorage.clear(); };
@@ -19,18 +20,25 @@ const Header = (props) => {
   const url = `/personal/${statusUser}`;
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">MedicalTODO</NavbarBrand>
+      <Navbar style={{ background: '#FFCCBC' }} light expand="md">
+        <NavbarBrand href="/"><h3 style={{ color: '#00887A' }}>MedicalTODO</h3></NavbarBrand>
         <Nav className="mr-auto" navbar />
         <Nav />
         {
-          auth && <Link to={url}><Button>Личный кабинет</Button></Link>
+          statusUser === 'doctor' && (
+            <Nav defaultActiveKey="/" className="nav nav-pills nav-fill" >
+              <PatientModalCreateMethod />&nbsp;&nbsp;&nbsp;
+            </Nav>)
+        }
+
+        {
+          statusUser === 'doctor' && <Link to={url}><Button style={{ background: '#00887A' }}>Личный кабинет</Button></Link>
         }
         {
           auth && (
-          <NavLink href="/">
-            <Button color="success" onClick={() => { isLogout(); logout(); }}>Выход</Button>
-          </NavLink>
+            <NavLink href="/">
+              <Button style={{ background: '#00887A' }} onClick={() => { isLogout(); logout(); }}>Выход</Button>
+            </NavLink>
           )
         }
       </Navbar>

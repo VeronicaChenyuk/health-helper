@@ -7,7 +7,13 @@ const AddDrug = ({ idx }) => (
     <FormGroup>
       <Row form>
         <Col md={2}>
-          <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`nameOfDrug_${idx}`} id="drug" placeholder="Лекарство" component="input" />
+          <Field 
+          style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} 
+          type="text" 
+          name={`nameOfDrug_${idx}`} 
+          id="drug" 
+          placeholder="Лекарство" 
+          component="input" />
         </Col>
         <Col md={2}>
           <Field style={{ maxWidth: '250px', borderRadius: '5px', height: '35px' }} type="text" name={`dosage_${idx}`} id="dosage" placeholder="Дозировка" component="input" />

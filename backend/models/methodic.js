@@ -5,6 +5,7 @@ const methodicSchema = new mongoose.Schema({
   patientName: { type: String },
   patientEmail: { type: String },
   doctorEmail: { type: String },
+  doctorFullName: { type: String },
   drugs: { type: Array },
   theraphies: { type: Array },
   analisis: { type: Array },
@@ -12,6 +13,7 @@ const methodicSchema = new mongoose.Schema({
   patientReports: { type: Array },
   dateOfTheLastVisit: { type: String },
   nextVisit: { type: String },
+  sourceData: { type: Object },
   doctorName: { type: String },
   specialist: { type: String },
 });

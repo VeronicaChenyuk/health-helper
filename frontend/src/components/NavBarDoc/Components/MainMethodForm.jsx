@@ -60,7 +60,6 @@ async function saveClick(props) {
         nameOfAnalysis.push(values[key]);
       }
     }
-    addDrugsFin
     for (let i = 0; i < nameOfDrug.length; i += 1) {
       drugs[i] = {
         nameOfDrug: nameOfDrug[i],
@@ -83,6 +82,8 @@ async function saveClick(props) {
       if (values.needPhoto !== undefined) patientReports.push('Фотоотчет по результатам лечения.');
     }
     const date = new Date();
+    console.log('PROOOOPS', props.email);
+
     const methodic = {
       patientName: values.patientName,
       patientEmail: values.email,
@@ -94,6 +95,7 @@ async function saveClick(props) {
       patientReports,
       nextVisit: values.nextVisit,
       dateOfTheLastVisit: date,
+      sourceData: values,
       doctorName,
       specialist,
     };

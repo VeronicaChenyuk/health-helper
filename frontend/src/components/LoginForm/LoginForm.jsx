@@ -43,7 +43,7 @@ const LoginForm = (props) => (
         <Label for="examplePassword" className="mr-sm-2">Password</Label>
         <Input type="password" name="password" id="examplePassword" placeholder="don't tell!" required />
       </FormGroup>
-      <Button type="submit" className="loginBtn">Login</Button>
+      <Button type="submit" className="loginBtn" style={{ background: '#00887A' }}>Login</Button>
       <SignInButton />
     </Form>
   </>

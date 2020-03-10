@@ -5,6 +5,7 @@ import {
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { changeInfoUser } from '../../redux/actions';
+import  './DoctorPage.css';
 
 const loadHandler = async (e, props) => {
   console.log(props, 'WTFFFF');
@@ -37,10 +38,10 @@ const DoctorPage = (props) => {
   const { doctorName, specialist } = props.user;
 
   return (
-    <div>
+    <div className='doctorPage'>
       <Form method="POST" action="http://localhost:5000/personal/doctor" onSubmit={(e) => loadHandler(e, props)}>
         <FormGroup>
-          <Label for="doctorName">Имя Отчество Фамилия</Label>
+          <Label for="doctorName">Имя  Отчество  Фамилия</Label>
           <Input type="doctorName" name="doctorName" id="doctorName" placeholder="Введите Имя, Фамилию и Отчество" defaultValue={doctorName} />
         </FormGroup>
         <FormGroup>
@@ -52,7 +53,7 @@ const DoctorPage = (props) => {
           <Input type="file" name="file" id="exampleFile" />
           <FormText color="muted" />
         </FormGroup>
-        <Button type="submit">Изменить</Button>
+        <Button type="submit" style={{ background: '#00887A' }}>Изменить</Button>
       </Form>
     </div>
   );
