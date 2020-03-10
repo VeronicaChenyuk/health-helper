@@ -7,7 +7,6 @@ import MainMethodForm from './Components/MainMethodForm';
 
 const PatientModalCreateMethod = (props) => {
   const {
-    buttonLabel,
     className,
   } = props;
 
