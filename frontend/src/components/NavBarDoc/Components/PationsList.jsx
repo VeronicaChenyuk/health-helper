@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { switchCurrentEmail } from '../../../redux/actions';
 
 function currentPatientClick(patientEmail, props) {
-  // console.log(11111, patientEmail);
-  // console.log('fdsfsfsfds', props);
   const currentPatientEmail = patientEmail;
   const { switchEmail } = props;
 
@@ -17,7 +15,6 @@ function currentPatientClick(patientEmail, props) {
 
 function PationsList(props) {
   const { methodics } = props;
-  //console.log('PROOOOOOOPS', props.methodics);
   const navPatients = methodics.map((name) => (
     <>
       <a

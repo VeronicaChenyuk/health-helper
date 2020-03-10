@@ -49,7 +49,7 @@ const Header = (props) => {
 const mapStateToProps = (state) => (
   {
     auth: state.logIn.auth,
-    statusUser: state.logIn.statusUser,
+    statusUser: state.logIn.user.status,
   });
 
 const mapDispatchToProps = (dispatch) => ({

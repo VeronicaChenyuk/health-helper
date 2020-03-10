@@ -31,7 +31,6 @@ class ChangingTheraphy extends React.Component {
     const addTheraphy = [];
     const theraphyCount = indexMethod(this.props.currentPatientEmail, this.props.methodics);
     const { length } = this.props.methodics[theraphyCount].theraphies;
-    console.log('LENGTH!!!', length);
 
     for (let i = 0; i < this.state.theraphyCount + length - 1; i += 1) {
       addTheraphy.push(<TheraphiesFields idx={i} />);

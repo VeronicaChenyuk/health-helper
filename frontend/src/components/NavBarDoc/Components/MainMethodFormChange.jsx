@@ -20,7 +20,6 @@ function indexMethod(email, methodics) {
 }
 
 async function saveClick(props) {
-  // try {
   const { values } = store.getState().form.method;
   const nameOfDrug = [];
   const dosage = [];
@@ -88,8 +87,8 @@ async function saveClick(props) {
     if (values.needPhoto !== undefined) patientReports.push('Фотоотчет по результатам лечения.');
   }
   const date = new Date();
- 
   const indMethod = indexMethod(props.currentPatientEmail, props.methodics);
+  const DateOfTheLastVisit = props.methodics[indMethod].dateOfTheLastVisit;
   const methodic = {
     patientName: values.patientName,
     patientEmail: values.email,
@@ -100,16 +99,13 @@ async function saveClick(props) {
     comment: values.comments,
     patientReports,
     nextVisit: values.nextVisit,
-    dateOfTheLastVisit: date,
+    dateOfTheLastVisit: DateOfTheLastVisit,
     sourceData: values,
     doctorName,
     specialist,
+    dateOfTheLastChanges: date,
   };
-
-  console.log(methodic);
-
   const numberID = props.methodics[indMethod]._id;
-
   await fetch('http://localhost:5000/changemethod', {
     method: 'POST',
     headers:
@@ -121,26 +117,26 @@ async function saveClick(props) {
       numberID,
     }),
   });
-  // } catch (e) {
-  //   alert('Something went Wrong!');
-  // }
 }
 
-// function indexMethod(email, methodics) {
-//   for (let i = 0; i < methodics.length; i++) {
-//     if (methodics[i].patientEmail === email) { return i; }
-//   }
-// }
+async function deleteClick(props) {
+  const indMethod = indexMethod(props.currentPatientEmail, props.methodics);
+  const numberID = props.methodics[indMethod]._id;
+  console.log(numberID)
+  await fetch('http://localhost:5000/changemethod', {
+    method: 'POST',
+    headers:
+    {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      numberID,
+    }),
+  });
 
+}
 
 function MainMethodFormChange(props) {
-  // const index = props.methodics.indexOf(props.currentPatientEmail);
-  // console.log(index);
-
-  // const currentPatient = props.currentPatientEmail;
-  // const methodic = props.methodics.filter((method) => method.patientEmail === currentPatient);
-  // console.log('MEEEEEEETH!', methodic[0]);
-
   return (
     <>
       <Form id="NewPatient">
@@ -204,6 +200,7 @@ function MainMethodFormChange(props) {
         <AddReports />
         <NextVisitFields />
         <Button color="primary" onClick={() => saveClick(props)}>Сохранить</Button>
+        <Button color="link" onClick={() => deleteClick(props)}>Удалить</Button>
       </Form>
     </>
   );

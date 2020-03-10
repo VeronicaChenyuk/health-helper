@@ -12,92 +12,41 @@ import second from '../../img/second.png';
 import third from '../../img/third.png';
 
 function PatientInfoDoc(props) {
-  console.log('PROOOOOOOPPPPPPPPPPPPPPS', props);
 
   return (
     <>
-      {/* <CardDeck>
-        <Col sm="3">
-          <Card body>
-            <CardImg top width="80%" src="https://cdn.onlinewebfonts.com/svg/img_370832.png" alt="Show Report" />
-            <p>
-            <CardTitle>Ход лечения</CardTitle>
-            </p>
-            
-            {patients[0].name}
-            выполняет все предписания
-            <br />
-            Держится молодцом: кровать застилает, чистит зубы
-            <br />
-            <PatientModalReport />
-          </Card>
-        </Col>
-        <Col sm="3">
-        <Card>
-          <CardImg top width="80%" src="https://cdn3.iconfinder.com/data/icons/audio-icons-3/377/Repeat_Arrow-512.png" alt="Change action" />
-          <CardBody>
-            <CardTitle>Методика лечения</CardTitle>
-            <CardText>
-              {patients[0].name}
-              принимает 10 таблеток фенозипама 3 раза в день перед едой!
-              <br />
-              sm="3">
-        <Card style={{ marginLeft: '5px' }}>
-          <CardImg top width="100%" src="https://user-images.githubusercontent.com/22866157/40578885-e3bf4e8e-6139-11e8-8be4-92fc3149f6f0.jpg" alt="Support" />
-          <CardBody>
-            <CardTitle>Связаться с пациентом</CardTitle>
-            <CardText>
-              Нажав на кнопку, вы откроете чат с
-              {patients[0].name}
-              , в котором сможете с ним пообщаться.
-            </CardText>
-            <PatientModalChat />
-          </CardBody>
-        </Card>
-        </Col>
-      </CardDeck>ardBody>
-        </Card>
-        </Col>
-        <Col sm="3">
-        <Card style={{ marginLeft: '5px' }}>
-          <CardImg top width="100%" src="https://user-images.githubusercontent.com/22866157/40578885-e3bf4e8e-6139-11e8-8be4-92fc3149f6f0.jpg" alt="Support" />
-          <CardBody>
-            <CardTitle>Связаться с пациентом</CardTitle>
-            <CardText />
-            <PatientModalChat />
-          </CardBody>
-        </Card>
-        </Col>
-      </CardDeck> */}
-      <div class="card-deck">
-        <div class="card">
-          <img src={fist} class="card-img-top"/>
-          <div class="card-body " >
-            <h5 class="card-title">Ход лечения</h5>
-            <p class="card-text"> выполняет все предписанияб держится молодцом: кровать застилает, чистит зубы </p>
+      <div className="card-deck">
+        <div className="card">
+          <img src={fist} className="card-img-top" />
+          <div className="card-body ">
+            <h5 className="card-title">Ход лечения</h5>
+            <p className="card-text"> выполняет все предписанияб держится молодцом: кровать застилает, чистит зубы </p>
           </div>
-          <div class="card-footer">
-            <small class="text-muted"> <PatientModalReport /></small>
+          <div className="card-footer">
+            <small className="text-muted">
+              {' '}
+              <PatientModalReport />
+            </small>
           </div>
         </div>
-        <div class="card">
-          <img src={second} class="card-img-top" />
-          <div class="card-body">
-            <h5 class="card-title">Методика лечения</h5>
-            <p class="card-text"> принимает 10 таблеток фенозипама 3 раза в день перед едой!</p>
+        <div className="card">
+          <img src={second} className="card-img-top" />
+          <div className="card-body">
+            <h5 className="card-title">Методика лечения</h5>
+            <p className="card-text"> принимает 10 таблеток фенозипама 3 раза в день перед едой!</p>
           </div>
-          <div class="card-footer">
-            <small class="text-muted"><PatientModalCreateMethod /></small>
+          <div className="card-footer">
+            <small className="text-muted"><PatientModalCreateMethod /></small>
           </div>
         </div>
-        <div class="card">
-          <img src={third} class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Связаться с пациентом</h5>
-            <p class="card-text">Нажав на кнопку, вы откроете чат с , в котором сможете с ним пообщаться.</p>
+        <div className="card">
+          <img src={third} className="card-img-top" alt="..." />
+          <div className="card-body">
+            <h5 className="card-title">Связаться с пациентом</h5>
+            <p className="card-text">Нажав на кнопку, вы откроете чат с , в котором сможете с ним пообщаться.</p>
           </div>
-          <div class="card-footer">
-            <small class="text-muted"><PatientModalChat /></small>
+          <div className="card-footer">
+            <small className="text-muted"><PatientModalChat /></small>
           </div>
         </div>
       </div>

@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import MainMethodFormChange from './Components/MainMethodFormChange';
 
 const PatientModalChangeMethod = (props) => {
-  //console.log('PROOOOOOOPPPPPPPPPPPPPPS111', props);
   const {
     buttonLabel,
     className,
@@ -21,7 +20,7 @@ const PatientModalChangeMethod = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className} style={{ minWidth: '1200px', minHeight: '800px' }}>
         <ModalHeader toggle={toggle}>Назначение методики лечения</ModalHeader>
         <ModalBody>
-          <MainMethodFormChange /> 
+          <MainMethodFormChange />
         </ModalBody>
         <ModalFooter>
           <Button color="link" onClick={toggle}>Cancel</Button>
