@@ -20,10 +20,10 @@ const PatientModalCreateMethod = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className} style={{ minWidth: '1200px', minHeight: '800px' }}>
         <ModalHeader toggle={toggle}>Назначение методики лечения</ModalHeader>
         <ModalBody>
-          <MainMethodForm />
+          <MainMethodForm toggle={toggle} />
         </ModalBody>
         <ModalFooter>
-          <Button color="link" onClick={toggle}>Cancel</Button>
+          <Button color="link" onClick={toggle}>Закрыть</Button>
         </ModalFooter>
       </Modal>
     </>

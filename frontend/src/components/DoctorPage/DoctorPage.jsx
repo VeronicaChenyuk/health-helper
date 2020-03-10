@@ -5,10 +5,9 @@ import {
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { changeInfoUser } from '../../redux/actions';
-import  './DoctorPage.css';
+import './DoctorPage.css';
 
 const loadHandler = async (e, props) => {
-  console.log(props, 'WTFFFF');
   e.preventDefault();
 
   const doctorName = e.target.doctorName.value;
@@ -30,15 +29,14 @@ const loadHandler = async (e, props) => {
   const result = await response.json();
   const user = result.newUser;
   changeInfo(user);
-  console.log(user, 'REEEEEESULT');
-  return true;
+  return props.history.push('/');
 };
 
 const DoctorPage = (props) => {
   const { doctorName, specialist } = props.user;
 
   return (
-    <div className='doctorPage'>
+    <div className="doctorPage">
       <Form method="POST" action="http://localhost:5000/personal/doctor" onSubmit={(e) => loadHandler(e, props)}>
         <FormGroup>
           <Label for="doctorName">Имя  Отчество  Фамилия</Label>

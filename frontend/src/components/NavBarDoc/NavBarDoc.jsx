@@ -11,7 +11,6 @@ import './NavBarDoc.css';
 async function fetchEmail(props) {
   const { email } = props.user;
   const { getMethodics } = props;
-  console.log(">>>>>>>>>>>", email);
 
   const res = await fetch('http://localhost:5000/loadmethodic', {
     method: 'POST',
@@ -24,7 +23,6 @@ async function fetchEmail(props) {
     }),
   });
   const result = await res.json();
-  console.log('RRRRRRRR', result);
 
   if (result) {
     return getMethodics(result);
