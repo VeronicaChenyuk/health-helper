@@ -1,8 +1,7 @@
 import React from 'react';
 import {
-  NavLink, Card, CardImg, CardTitle, CardText, CardDeck, CardBody, Col
+  NavLink, Card, CardImg, CardTitle, CardText, CardDeck, CardBody, Col,
 } from 'reactstrap';
-import { NavLink as RRNavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PatientModalReport from './PatientModalReport';
 import PatientModalChat from './PatientModalChat';
@@ -13,12 +12,8 @@ import second from '../../img/second.png';
 import third from '../../img/third.png';
 
 function PatientInfoDoc(props) {
-  const patients = [{ name: 'Ivanov Ivan' }, { name: 'Petrov Petr' }, { name: 'Vasilyev Vasiliy' }, { name: 'Romanov Roman' }, { name: 'Kirillov Kirill' }];
-  const navPatients = patients.map((name) => <NavLink to="/" tag={RRNavLink}>{name.name}</NavLink>);
-  const mystyle = {
-    Width: '100px',
-    Height: '40px',
-  };
+  console.log('PROOOOOOOPPPPPPPPPPPPPPS', props);
+
   return (
     <>
       {/* <CardDeck>
@@ -68,11 +63,7 @@ function PatientInfoDoc(props) {
           <CardImg top width="100%" src="https://user-images.githubusercontent.com/22866157/40578885-e3bf4e8e-6139-11e8-8be4-92fc3149f6f0.jpg" alt="Support" />
           <CardBody>
             <CardTitle>Связаться с пациентом</CardTitle>
-            <CardText>
-              Нажав на кнопку, вы откроете чат с
-              {patients[0].name}
-              , в котором сможете с ним пообщаться.
-            </CardText>
+            <CardText />
             <PatientModalChat />
           </CardBody>
         </Card>
@@ -114,9 +105,14 @@ function PatientInfoDoc(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  email: state.logIn.user,
-});
 
 // export default PatientInfoDoc;
-export default connect(mapStateToProps)(PatientInfoDoc);
+
+
+const mapStateToProps = (state) => ({
+  methodics: state.getInfo.methodics,
+});
+
+export default connect(
+  mapStateToProps,
+)(PatientInfoDoc);

@@ -4,9 +4,8 @@ const Methodic = require('../models/methodic');
 const router = express.Router();
 
 router.post('/', async (req, res, next) => {
-  const { docEmail } = req.body;
-  const methodics = await Methodic.find({ doctorEmail: docEmail });
-  console.log(methodics);
+  const { email } = req.body;
+  const methodics = await Methodic.find({ doctorEmail: email });
   res.json(methodics);
 });
 
