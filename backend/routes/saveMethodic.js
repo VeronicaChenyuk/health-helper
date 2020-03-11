@@ -6,6 +6,7 @@ const router = express.Router();
 router.post('/', async (req, res, next) => {
   const { methodic } = req.body;
   const newMethodic = await new Methodic(methodic);
+  console.log(methodic, newMethodic)
   await newMethodic.save();
   res.redirect('/');
 });

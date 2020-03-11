@@ -17,6 +17,7 @@ const methodicSchema = new mongoose.Schema({
   doctorName: { type: String },
   specialist: { type: String },
   dateOfTheLastChanges: { type: String },
+  tasks: { type: Array },
 });
 
 module.exports = mongoose.model('Methodic', methodicSchema);
