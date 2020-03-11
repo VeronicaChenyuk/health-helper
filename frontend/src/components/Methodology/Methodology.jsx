@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 function Methodology(props) {
   const { methodics } = props;
-  console.log('TODODODODODO', methodics);
   return (
     <div className="Methodology">
       {

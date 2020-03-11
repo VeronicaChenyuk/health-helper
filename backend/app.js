@@ -6,7 +6,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-mongoose.connect('mongodb+srv://vyuzh:VyuzhDatabase2020@cluster0-lawna.mongodb.net/medical-todo', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+mongoose.connect('mongodb+srv://vyuzh:VyuzhDatabase2020@cluster0-lawna.mongodb.net/medical-todo', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
