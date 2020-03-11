@@ -28,7 +28,7 @@ const PatientAnalyzesForm = (props) => {
     e.preventDefault();
     const name = e.target.name.value;
     const today = new Date();
-    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    const date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
     const uploadTask = storage.ref(`analyzes/${image.name}`).put(image);
     uploadTask.on('state_changed',
       (snapshot) => {
@@ -54,10 +54,10 @@ const PatientAnalyzesForm = (props) => {
           <Input type="text" name="name" />
         </FormGroup>
         <FormGroup>
-          <Label for="exampleFile">File</Label>
+          <Label for="exampleFile">Фото анализа</Label>
           <Input type="file" name="photo" onChange={handleChange} />
         </FormGroup>
-        <Button type="submit" >Отправить</Button>
+        <Button type="submit">Отправить</Button>
       </Form>
     </div>
   );

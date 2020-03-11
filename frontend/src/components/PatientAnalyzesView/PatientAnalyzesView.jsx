@@ -4,14 +4,17 @@ import { storage } from '../../firebase';
 
 
 const PatientAnalyzesView = (props) => {
+
+  const { name, date, url } = props.analysis;
+
   return (
     <div className="patient-analyzes-view">
       <div className="info-block">
-        <h3>{props.analysis.name}</h3>
-        <p>{props.analysis.date}</p>
+        <h3>{name}</h3>
+        <p>{date}</p>
       </div>
       <div className="image-block">
-        <img src={props.analysis.url} alt="loading..."></img>
+        <img src={url} alt="loading..."></img>
       </div>
     </div>
   )
