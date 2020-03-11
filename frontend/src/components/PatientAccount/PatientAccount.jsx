@@ -13,7 +13,6 @@ import { storage } from '../../firebase';
 
 
 const PatientAccount = (props) => {
-
   const [image, setImage] = useState(null);
 
   const handleChange = (e) => {
@@ -24,24 +23,23 @@ const PatientAccount = (props) => {
   };
 
   const formHandler = async (e) => {
-
     e.preventDefault();
 
     const name = e.target.name.value;
     const disease = e.target.disease.value;
     const { login } = props.user;
-    const action = e.target.action;
+    const { action } = e.target;
 
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on('state_changed',
       (snapshot) => {
-        console.log(snapshot)
+        console.log(snapshot);
       },
       (error) => {
         console.log(error);
       },
       async () => {
-        const url = await storage.ref('images').child(image.name).getDownloadURL()
+        const url = await storage.ref('images').child(image.name).getDownloadURL();
 
         const response = await fetch(action, {
           method: 'POST',
@@ -61,35 +59,43 @@ const PatientAccount = (props) => {
         if (result.user) {
           props.isPatientData(result.user);
         }
-      })
+      });
   };
 
   return (
     <div className="PatientAccount">
-      {!!url.length ?
-        <div>
-          <h1>Привет, {patientName}</h1>
-          <p>Твои хронические заболевания:</p>
-          <p>{diseases}</p>
-          <img src={url} />
-        </div>
-        :
-        <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
-          <FormGroup>
-            <Label for="exampleEmail">ФИО</Label>
-            <Input type="text" name="name" placeholder="ФИО" />
-          </FormGroup>
-          <FormGroup>
-            <Label for="exampleText">Укажите хронические заболевания</Label>
-            <Input type="textarea" name="disease" />
-          </FormGroup>
-          <FormGroup>
-            <Label for="exampleFile">File</Label>
-            <Input type="file" name="photo" onChange={handleChange} />
-          </FormGroup>
-          <Button type="submit" onClick={handleUpload}>Отправить</Button>
-        </Form>
-      }
+      {
+        <>
+        {/* url.length ? ( */}
+          <div>
+            <h1>
+              Привет,
+              {/* {patientName} */}
+            </h1>
+            <p>Твои хронические заболевания:</p>
+            {/* <p>{diseases}</p> */}
+            {/* <img src={url} /> */}
+          </div>
+        {/* ) */}
+          {/* : ( */}
+            <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
+              <FormGroup>
+                <Label for="exampleEmail">ФИО</Label>
+                <Input type="text" name="name" placeholder="ФИО" />
+              </FormGroup>
+              <FormGroup>
+                <Label for="exampleText">Укажите хронические заболевания</Label>
+                <Input type="textarea" name="disease" />
+              </FormGroup>
+              <FormGroup>
+                <Label for="exampleFile">File</Label>
+                <Input type="file" name="photo" onChange={handleChange} />
+              </FormGroup>
+              {/* <Button type="submit" onClick={handleUpload}>Отправить</Button> */}
+            </Form>
+          {/* ) */}
+          </>
+}
 
     </div>
   );

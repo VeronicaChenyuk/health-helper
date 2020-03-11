@@ -8,8 +8,8 @@ const ActiveTasks = (props) => {
   const { methodics } = props;
   const nowDate = moment().format();
   const testDate = new Date(nowDate);
-  const ex = methodics[2].tasks[0].dateActivation;
-  console.log(ex, nowDate, testDate, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<< DATE');
+  // const ex = methodics[2].tasks[0].dateActivation;
+  // console.log(ex, nowDate, testDate, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<< DATE');
 
   return (
     <div className="ActiveTasks">
