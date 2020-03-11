@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PatientAccount.css';
 import {
   Button,
@@ -10,11 +10,13 @@ import {
 import { connect } from 'react-redux';
 import { isPatientData } from '../../redux/actions';
 import { storage } from '../../firebase';
+import PatientAccountInfo from '../PatientAccountInfo/PatientAccountInfo';
 
 
 const PatientAccount = (props) => {
 
   const [image, setImage] = useState(null);
+  const [submit, changeSubmit] = useState(false);
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -59,13 +61,15 @@ const PatientAccount = (props) => {
         const result = await response.json();
 
         if (result.user) {
+          debugger
           props.isPatientData(result.user);
         }
-      })
+      });
   };
 
+
   return (
-    <div className="PatientAccount">
+    <div className="patient-account">
       <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
         <FormGroup>
           <Label for="exampleEmail">ФИО</Label>
@@ -76,11 +80,12 @@ const PatientAccount = (props) => {
           <Input type="textarea" name="disease" />
         </FormGroup>
         <FormGroup>
-          <Label for="exampleFile">File</Label>
+          <Label for="exampleFile">Фото</Label>
           <Input type="file" name="photo" onChange={handleChange} />
         </FormGroup>
         <Button type="submit">Отправить</Button>
       </Form>
+      {Object.entries(props.patientData).length && <PatientAccountInfo />}
     </div>
   );
 };

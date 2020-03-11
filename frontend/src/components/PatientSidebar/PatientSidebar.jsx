@@ -6,6 +6,7 @@ import DoctorList from '../DoctorList/DoctorList';
 import { getMethodicsUser } from '../../redux/actions';
 import PatientAccount from '../PatientAccount/PatientAccount';
 import PatientAnalyzes from '../PatientAnalyzes/PatientAnalyzes';
+import './PatientSidebar.css';
 
 const getInfo = async (props) => {
   const { email } = props.user;

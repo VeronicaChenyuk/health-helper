@@ -7,17 +7,19 @@ import { storage } from '../../firebase';
 
 
 const PatientAnalyzes = (props) => {
-  console.log(props);
+
   const analysisList = props.analyzes.map((analysis, index) => (
     <li key={index}><PatientAnalyzesView analysis={analysis} /></li>
   ));
 
   return (
-    <div className="patient-analyzes">
+    <div>
       <PatientAnalyzesForm />
-      <ul>
-        {analysisList}
-      </ul>
+      <div className="analyzes-list">
+        <ul>
+          {analysisList}
+        </ul>
+      </div>
     </div>
   );
 };
