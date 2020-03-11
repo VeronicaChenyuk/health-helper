@@ -15,6 +15,11 @@ import Analysis from './AddAnalysis';
 import AddReports from '../AddComponents/AddReports';
 import NextVisitFields from '../AddComponents/AddNextVisit';
 
+const getFinishTaskDate = (startTaskDate, delta) => {
+  const finishTaskDate = moment(startTaskDate).add(delta, 'h').format();
+  return finishTaskDate;
+};
+
 function createTasks(drugs, theraphies, nameOfAnalysis) {
   const drugsTasks = [];
   let taskName;
@@ -22,18 +27,24 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
   let taskDate;
   let taskHours;
   let dayTask;
+  const deltaDrug = 3;
+  const deltaTherapy = 24;
+
 
   for (let drugCount = 0; drugCount < drugs.length; drugCount += 1) {
     for (let dayTaskDrug = 0; dayTaskDrug < drugs[drugCount].duration; dayTaskDrug += 1) {
       taskName = `Примите ${drugs[drugCount].nameOfDrug}`;
       for (let frequencyDayTaskDrug = 0; frequencyDayTaskDrug < drugs[drugCount].frequency; frequencyDayTaskDrug += 1) {
-        taskHours = 7 + 15 / (drugs[drugCount].frequency - 1) * frequencyDayTaskDrug;
+        taskHours = 7 + (15 / (drugs[drugCount].frequency - 1)) * frequencyDayTaskDrug;
         taskDate = moment().add('days', dayTaskDrug).hours(taskHours).minutes(0)
           .seconds(0)
-          .format('MMMM Do YYYY, HH:mm:ss');
+          .format();
+        const finishTaskDate = getFinishTaskDate(taskDate, deltaDrug);
         task = {
           massage: taskName,
           dateActivation: taskDate,
+          finishTaskDate,
+          status: false,
         };
         drugsTasks.push(task);
       }
@@ -49,15 +60,17 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
           .hours(0)
           .minutes(0)
           .seconds(0)
-          .format('MMMM Do YYYY, HH:mm:ss');
+          .format();
       } else {
-        taskDate = moment().format('MMMM Do YYYY, HH:mm:ss');
+        taskDate = moment().format();
       }
       taskName = `Необходимо пройти ${theraphies[theraphyCount].nameOfTheraphy}`;
-
+      const finishTaskDate = getFinishTaskDate(taskDate, deltaTherapy);
       task = {
         massage: taskName,
         dateActivation: taskDate,
+        finishTaskDate,
+        status: false,
       };
       drugsTasks.push(task);
     }
@@ -66,6 +79,7 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
     console.log(analysisCount, nameOfAnalysis.length, nameOfAnalysis);
     task = {
       massage: `Нужен ${nameOfAnalysis[analysisCount]}`,
+      status: false,
     };
     drugsTasks.push(task);
   }
