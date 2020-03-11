@@ -1,0 +1,12 @@
+ul {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+li {
+  margin-top: 30px;
+}
+
+.analyzes-list {
+  margin-top: 30px;
+}

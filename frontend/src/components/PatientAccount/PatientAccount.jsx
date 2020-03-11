@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PatientAccount.css';
 import {
   Button,
@@ -10,10 +10,12 @@ import {
 import { connect } from 'react-redux';
 import { isPatientData } from '../../redux/actions';
 import { storage } from '../../firebase';
+import PatientAccountInfo from '../PatientAccountInfo/PatientAccountInfo';
 
 
 const PatientAccount = (props) => {
   const [image, setImage] = useState(null);
+  const [submit, changeSubmit] = useState(false);
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -57,46 +59,32 @@ const PatientAccount = (props) => {
         const result = await response.json();
 
         if (result.user) {
+          debugger;
           props.isPatientData(result.user);
         }
       });
   };
 
-  return (
-    <div className="PatientAccount">
-      {
-        <>
-        {/* url.length ? ( */}
-          <div>
-            <h1>
-              Привет,
-              {/* {patientName} */}
-            </h1>
-            <p>Твои хронические заболевания:</p>
-            {/* <p>{diseases}</p> */}
-            {/* <img src={url} /> */}
-          </div>
-        {/* ) */}
-          {/* : ( */}
-            <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
-              <FormGroup>
-                <Label for="exampleEmail">ФИО</Label>
-                <Input type="text" name="name" placeholder="ФИО" />
-              </FormGroup>
-              <FormGroup>
-                <Label for="exampleText">Укажите хронические заболевания</Label>
-                <Input type="textarea" name="disease" />
-              </FormGroup>
-              <FormGroup>
-                <Label for="exampleFile">File</Label>
-                <Input type="file" name="photo" onChange={handleChange} />
-              </FormGroup>
-              {/* <Button type="submit" onClick={handleUpload}>Отправить</Button> */}
-            </Form>
-          {/* ) */}
-          </>
-}
 
+  return (
+    <div className="patient-account">
+      {Object.entries(props.patientData).length && <PatientAccountInfo />}
+      <hr style={{ color: 'red', backgroundColor: '#31708E', height: '2px' }} />
+      <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
+        <FormGroup>
+          <Label for="exampleEmail">ФИО</Label>
+          <Input type="text" name="name" placeholder="ФИО" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleText">Укажите хронические заболевания</Label>
+          <Input type="textarea" name="disease" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleFile">Фото</Label>
+          <Input type="file" name="photo" onChange={handleChange} />
+        </FormGroup>
+        <Button type="submit">Отправить</Button>
+      </Form>
     </div>
   );
 };
