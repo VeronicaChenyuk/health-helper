@@ -13,11 +13,11 @@ class Drugs extends React.Component {
   }
 
   addDrugClick() {
-    this.setState({ drugsCount: this.state.drugsCount + 1 });
+    this.setState((prevState) => ({drugsCount: prevState.drugsCount + 1 }));
   }
 
   deleteDrugClick() {
-    this.setState({ drugsCount: this.state.drugsCount - 1 });
+    this.setState((prevState) => ({drugsCount: prevState.drugsCount - 1 }));
   }
 
   render() {

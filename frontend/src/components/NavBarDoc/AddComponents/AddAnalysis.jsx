@@ -5,13 +5,13 @@ import {
 import { Field, reduxForm } from 'redux-form';
 
 
-const AddAnalysis = ({ idx }) => (
+const AnalysisFields = ({ idx }) => (
   <>
     <FormGroup style={{ inline: true }}>
       <Row form>
         <Col md={6}>
           <Field
-            style={{ maxWidth: '550px', borderRadius: '5px', height: '35px' }}
+            style={{ minWidth: '450px', borderRadius: '5px', height: '35px' }}
             type="text"
             name={`nameOfAnalysis_${idx}`}
             id="nameOfAnalysis"
@@ -23,11 +23,5 @@ const AddAnalysis = ({ idx }) => (
     </FormGroup>
   </>
 );
-
-
-const AnalysisFields = reduxForm({
-  form: 'method',
-})(AddAnalysis);
-
 
 export default AnalysisFields;

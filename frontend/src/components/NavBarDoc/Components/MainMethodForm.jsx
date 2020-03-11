@@ -60,6 +60,7 @@ async function saveClick(props) {
         nameOfAnalysis.push(values[key]);
       }
     }
+    const date = new Date();
     for (let i = 0; i < nameOfDrug.length; i += 1) {
       drugs[i] = {
         nameOfDrug: nameOfDrug[i],
@@ -67,6 +68,7 @@ async function saveClick(props) {
         frequency: frequency[i],
         beforeAfterEat: beforeAfterEat[i],
         duration: duration[i],
+        startOfTheDrugUsing: date,
       };
     }
     for (let i = 0; i < nameOfTheraphy.length; i += 1) {
@@ -74,6 +76,7 @@ async function saveClick(props) {
         nameOfTheraphy: nameOfTheraphy[i],
         frequency: frequencyOfTheraphy[i],
         duration: durationOfTheraphy[i],
+        startOfTheTheraphyUsing: date,
       };
     }
     if (values !== undefined) {
@@ -81,7 +84,7 @@ async function saveClick(props) {
       if (values.needDiary !== undefined) patientReports.push('Необходимо отмечать все побочные действия.');
       if (values.needPhoto !== undefined) patientReports.push('Фотоотчет по результатам лечения.');
     }
-    const date = new Date();
+   
     const methodic = {
       patientName: values.patientName,
       patientEmail: values.email,
