@@ -5,9 +5,9 @@ const User = require('../models/user');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-  const { userName, name, disease } = req.body;
+  const { login, name, disease, url } = req.body;
 
-  const user = await User.findOneAndUpdate({ login: userName }, { patientName: name, diseases: disease });
+  const user = await User.findOneAndUpdate({ login }, { patientName: name, diseases: disease, photo: url });
   res.json({ user });
 });
 
