@@ -6,6 +6,7 @@ import {
   Button, FormGroup, Label,
 } from 'reactstrap';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import store from '../../../redux/store';
 
 import Drugs from './Drugs';
@@ -13,6 +14,64 @@ import Theraphy from './Theraphies';
 import Analysis from './AddAnalysis';
 import AddReports from '../AddComponents/AddReports';
 import NextVisitFields from '../AddComponents/AddNextVisit';
+
+function createTasks(drugs, theraphies, nameOfAnalysis) {
+  const drugsTasks = [];
+  let taskName;
+  let task;
+  let taskDate;
+  let taskHours;
+  let dayTask;
+
+  for (let drugCount = 0; drugCount < drugs.length; drugCount += 1) {
+    for (let dayTaskDrug = 0; dayTaskDrug < drugs[drugCount].duration; dayTaskDrug += 1) {
+      taskName = `Примите ${drugs[drugCount].nameOfDrug}`;
+      for (let frequencyDayTaskDrug = 0; frequencyDayTaskDrug < drugs[drugCount].frequency; frequencyDayTaskDrug += 1) {
+        taskHours = 7 + 15 / (drugs[drugCount].frequency - 1) * frequencyDayTaskDrug;
+        taskDate = moment().add('days', dayTaskDrug).hours(taskHours).minutes(0)
+          .seconds(0)
+          .format('MMMM Do YYYY, HH:mm:ss');
+        task = {
+          massage: taskName,
+          dateActivation: taskDate,
+        };
+        drugsTasks.push(task);
+      }
+    }
+  }
+
+  for (let theraphyCount = 0; theraphyCount < theraphies.length; theraphyCount += 1) {
+    for (let dayTaskTheraphy = 0; dayTaskTheraphy < theraphies[theraphyCount].duration; dayTaskTheraphy += 1) {
+      dayTask = (7 / theraphies[theraphyCount].frequency) * dayTaskTheraphy;
+      if (dayTaskTheraphy !== 0) {
+        taskDate = moment()
+          .add('days', dayTask)
+          .hours(0)
+          .minutes(0)
+          .seconds(0)
+          .format('MMMM Do YYYY, HH:mm:ss');
+      } else {
+        taskDate = moment().format('MMMM Do YYYY, HH:mm:ss');
+      }
+      taskName = `Необходимо пройти ${theraphies[theraphyCount].nameOfTheraphy}`;
+
+      task = {
+        massage: taskName,
+        dateActivation: taskDate,
+      };
+      drugsTasks.push(task);
+    }
+  }
+  for (let analysisCount = 0; analysisCount < nameOfAnalysis.length; analysisCount += 1) {
+    console.log(analysisCount, nameOfAnalysis.length, nameOfAnalysis);
+    task = {
+      massage: `Нужен ${nameOfAnalysis[analysisCount]}`,
+    };
+    drugsTasks.push(task);
+  }
+
+  return drugsTasks;
+}
 
 function saveClick(props) {
   try {
@@ -84,7 +143,9 @@ function saveClick(props) {
       if (values.needDiary !== undefined) patientReports.push('Необходимо отмечать все побочные действия.');
       if (values.needPhoto !== undefined) patientReports.push('Фотоотчет по результатам лечения.');
     }
-   
+    const tasks = createTasks(drugs, theraphies, nameOfAnalysis);
+
+
     const methodic = {
       patientName: values.patientName,
       patientEmail: values.email,
@@ -99,7 +160,9 @@ function saveClick(props) {
       sourceData: values,
       doctorName,
       specialist,
+      tasks,
     };
+    console.log(methodic);
     fetch('http://localhost:5000/savemethodic', {
       method: 'POST',
       headers:
