@@ -12,6 +12,7 @@ import { isLogout } from '../../redux/actions';
 import PatientModalCreateMethod from '../NavBarDoc/PatientModalCreateMethod';
 import './Header.css'
 
+
 const logout = () => { localStorage.clear(); };
 
 
@@ -22,6 +23,8 @@ const Header = (props) => {
     <div>
       <Navbar className='navBar' light expand="md">
         <NavbarBrand href="/"><h3>MedicalTODO</h3></NavbarBrand>
+        
+        
         <Nav className="mr-auto" navbar />
         <Nav />
         {
@@ -44,8 +47,12 @@ const Header = (props) => {
           )
         }
       </Navbar>
+      
     </div>
-  );
+    
+
+    
+    );
 };
 
 const mapStateToProps = (state) => (

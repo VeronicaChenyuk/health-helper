@@ -15,7 +15,7 @@ const PatientModalCreateMethod = (props) => {
 
   return (
     <>
-      <Button onClick={toggle} style={{ background: '#00887A' }}>Создать</Button>
+      <Button onClick={toggle}>Создать</Button>
       <Modal isOpen={modal} toggle={toggle} className={className} style={{ minWidth: '1200px', minHeight: '800px' }}>
         <ModalHeader toggle={toggle}>Назначение методики лечения</ModalHeader>
         <ModalBody>

@@ -96,7 +96,7 @@ const PatientAccount = (props) => {
             <Label for="exampleFile">File</Label>
             <Input type="file" name="photo" onChange={handleChange} />
           </FormGroup>
-          <Button type="submit" onClick={handleUpload} style={{ background: '#00887A' }}>Отправить</Button>
+          <Button type="submit" onClick={handleUpload}>Отправить</Button>
         </Form>
       }
 

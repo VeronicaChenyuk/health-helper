@@ -3,7 +3,9 @@
 }
 
 button.sign-in{
-  color:#00887A
+  color:#31708E;
+  background: #F7F9FB;
+  
 }
 button.registrationBtn.btn.btn-secondary{
   background-color:#77A6F7 ;
