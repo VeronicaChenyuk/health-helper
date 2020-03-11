@@ -26,9 +26,11 @@ const Header = (props) => {
         <Nav />
         {
           statusUser === 'doctor' && (
-            <Nav defaultActiveKey="/" className="nav nav-pills nav-fill" >
-              <PatientModalCreateMethod />&nbsp;&nbsp;&nbsp;
-            </Nav>)
+            <Nav defaultActiveKey="/" className="nav nav-pills nav-fill">
+              <PatientModalCreateMethod />
+&nbsp;&nbsp;&nbsp;
+            </Nav>
+          )
         }
 
         {

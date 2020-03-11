@@ -1,4 +1,6 @@
-
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import React from 'react';
 import { Field, reduxForm, Form } from 'redux-form';
 import {
@@ -14,12 +16,13 @@ import AddReports from '../AddComponents/AddReports';
 import NextVisitFields from '../AddComponents/AddNextVisit';
 
 function indexMethod(email, methodics) {
-  for (let i = 0; i < methodics.length; i++) {
+  for (let i = 0; i < methodics.length; i += 1) {
     if (methodics[i].patientEmail === email) { return i; }
   }
+  return true;
 }
 
-async function saveClick(props) {
+function saveClick(props) {
   const { values } = store.getState().form.method;
   const nameOfDrug = [];
   const dosage = [];
@@ -65,6 +68,7 @@ async function saveClick(props) {
       nameOfAnalysis.push(values[key]);
     }
   }
+
   for (let i = 0; i < nameOfDrug.length; i += 1) {
     drugs[i] = {
       nameOfDrug: nameOfDrug[i],
@@ -106,7 +110,7 @@ async function saveClick(props) {
     dateOfTheLastChanges: date,
   };
   const numberID = props.methodics[indMethod]._id;
-  await fetch('http://localhost:5000/changemethod', {
+  fetch('http://localhost:5000/changemethod', {
     method: 'POST',
     headers:
     {
@@ -117,13 +121,13 @@ async function saveClick(props) {
       numberID,
     }),
   });
+  props.toggle();
 }
 
-async function deleteClick(props) {
+function deleteClick(props) {
   const indMethod = indexMethod(props.currentPatientEmail, props.methodics);
   const numberID = props.methodics[indMethod]._id;
-  console.log(numberID)
-  await fetch('http://localhost:5000/changemethod', {
+  fetch('http://localhost:5000/changemethod', {
     method: 'POST',
     headers:
     {
@@ -133,7 +137,7 @@ async function deleteClick(props) {
       numberID,
     }),
   });
-
+  props.toggle();
 }
 
 function MainMethodFormChange(props) {
@@ -214,7 +218,11 @@ const mapStateToProps = (state) => ({
   user: state.logIn.user,
   email: state.logIn.user.email,
   methodics: state.getInfo.methodics,
-  initialValues: state.getInfo.methodics[indexMethod(state.switchFormReducer.currentPatientEmail, state.getInfo.methodics)].sourceData,
+  initialValues:
+    state
+      .getInfo
+      .methodics[indexMethod(state.switchFormReducer.currentPatientEmail, state.getInfo.methodics)]
+      .sourceData,
   currentPatientEmail: state.switchFormReducer.currentPatientEmail,
 });
 
