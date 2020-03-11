@@ -1,0 +1,24 @@
+.navBar {
+  background: #F7F9FB;
+}
+
+.btn-secondary {
+  background-color: #31708E;
+  border-color: #31708E;
+}
+
+a.navbar-brand h3 {
+  text-shadow: 0 0 #31708E,
+    0 0#687864,
+    0 0 skyblue;
+  color: transparent;
+  transition: all 3s;
+
+}
+
+a.navbar-brand h3:hover {
+  text-shadow: -400px 0 #31708E,
+    400px 0 #687864,
+    0 0 skyblue;
+}
+

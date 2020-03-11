@@ -9,7 +9,7 @@ const SignInButton = (props) => {
   const switchText = isRegForm ? 'Sign up' : 'Sign in';
   const switchForm = props.isLoginForm;
   return (
-    <button type="button" style={{ background: '#FFCCBC' }} className="sign-in btn-link" onClick={() => switchForm()}>{switchText}</button>
+    <button type="button"className="sign-in btn-link" onClick={() => switchForm()}>{switchText}</button>
   );
 };
 
