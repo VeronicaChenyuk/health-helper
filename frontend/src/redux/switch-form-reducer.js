@@ -7,10 +7,6 @@ const initialState = {
 
 // Reducer
 module.exports = (state = initialState, action) => {
-  console.log(state, 'SSSTATTATAAT');
-  console.log(action, 'action');
-  
-
   const { currentPatientEmail } = action;
   switch (action.type) {
     case IS_LOGIN_FORM:

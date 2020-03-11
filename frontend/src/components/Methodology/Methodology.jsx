@@ -56,7 +56,7 @@ function Methodology(props) {
                   ))
                 }
                   {
-                    (meth.theraphies).map((therap, index) => (
+                    (theraphies).map((therap, index) => (
                       <li className="list-group-item" key={therap}>
                         Процедура
                         {' '}

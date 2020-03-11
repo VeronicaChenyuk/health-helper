@@ -3,13 +3,10 @@ import {
   Button, Modal, ModalHeader, ModalBody, ModalFooter,
 } from 'reactstrap';
 import { connect } from 'react-redux';
-
 import MainMethodFormChange from './Components/MainMethodFormChange';
 
 const PatientModalChangeMethod = (props) => {
-  console.log('PROOOOOOOPPPPPPPPPPPPPPS111', props);
   const {
-    buttonLabel,
     className,
   } = props;
 
@@ -18,11 +15,11 @@ const PatientModalChangeMethod = (props) => {
 
   return (
     <>
-      <Button onClick={toggle} style={{background:'#00887A'}}>Изменить методику</Button>
+      <Button onClick={toggle} style={{ background: '#00887A' }}>Изменить методику</Button>
       <Modal isOpen={modal} toggle={toggle} className={className} style={{ minWidth: '1200px', minHeight: '800px' }}>
         <ModalHeader toggle={toggle}>Назначение методики лечения</ModalHeader>
         <ModalBody>
-          <MainMethodFormChange /> 
+          <MainMethodFormChange toggle={toggle} />
         </ModalBody>
         <ModalFooter>
           <Button color="link" onClick={toggle}>Cancel</Button>

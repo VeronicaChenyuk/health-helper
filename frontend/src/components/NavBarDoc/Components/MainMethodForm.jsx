@@ -14,7 +14,7 @@ import Analysis from './AddAnalysis';
 import AddReports from '../AddComponents/AddReports';
 import NextVisitFields from '../AddComponents/AddNextVisit';
 
-async function saveClick(props) {
+function saveClick(props) {
   try {
     const { values } = store.getState().form.method;
     const nameOfDrug = [];
@@ -82,8 +82,6 @@ async function saveClick(props) {
       if (values.needPhoto !== undefined) patientReports.push('Фотоотчет по результатам лечения.');
     }
     const date = new Date();
-    console.log('PROOOOPS', props.email);
-
     const methodic = {
       patientName: values.patientName,
       patientEmail: values.email,
@@ -99,8 +97,7 @@ async function saveClick(props) {
       doctorName,
       specialist,
     };
-    // console.log('Methodic', methodic);
-    await fetch('http://localhost:5000/savemethodic', {
+    fetch('http://localhost:5000/savemethodic', {
       method: 'POST',
       headers:
       {
@@ -110,8 +107,9 @@ async function saveClick(props) {
         methodic,
       }),
     });
+    return props.toggle();
   } catch (e) {
-    alert('Something went Wrong!');
+    return alert('Something went Wrong!');
   }
 }
 
@@ -180,5 +178,6 @@ const MethodForm = reduxForm({
   form: 'method',
 })(MainMethodForm);
 
-// export default MethodForm;
-export default connect(mapStateToProps)(MethodForm);
+export default connect(
+  mapStateToProps,
+)(MethodForm);

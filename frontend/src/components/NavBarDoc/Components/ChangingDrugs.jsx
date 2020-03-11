@@ -2,8 +2,14 @@ import React from 'react';
 import {
   Button,
 } from 'reactstrap';
+import { connect } from 'react-redux';
 import ChangedDrugsFields from '../AddComponents/ChangedDrug';
 
+function indexMethod(email, methodics) {
+  for (let i = 0; i < methodics.length; i++) {
+    if (methodics[i].patientEmail === email) { return i; }
+  }
+}
 class ChangingDrugs extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +28,9 @@ class ChangingDrugs extends React.Component {
 
   render() {
     const addDrugs = [];
-    for (let i = 0; i < this.state.drugsCount; i += 1) {
+    const drugsCount = indexMethod(this.props.currentPatientEmail, this.props.methodics);
+    const { length } = this.props.methodics[drugsCount].drugs;
+    for (let i = 0; i < this.state.drugsCount + length - 1; i += 1) {
       addDrugs.push(<ChangedDrugsFields idx={i} />);
     }
 
@@ -43,22 +51,11 @@ class ChangingDrugs extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  email: state.logIn.user.email,
+  methodics: state.getInfo.methodics,
+  currentPatientEmail: state.switchFormReducer.currentPatientEmail,
+});
 
-// const mapStateToProps = (state) => ({
-//   email: state.logIn.user.email,
-//   methodics: state.getInfo.methodics,
-//   initialValues: state.getInfo.methodics[indexMethod(state.switchFormReducer.currentPatientEmail, state.getInfo.methodics)],
+export default connect(mapStateToProps)(ChangingDrugs);
 
-
-//  //indexMethod(state.switchFormReducer.currentPatientEmail, state.getInfo.methodics) 
-
-//   currentPatientEmail: state.switchFormReducer.currentPatientEmail,
-// });
-
-// const MethodFormChange = reduxForm({
-//   form: 'method',
-// })(MainMethodFormChange);
-
-// // export default MethodForm;
-// export default connect(mapStateToProps)(MethodFormChange);
-export default ChangingDrugs;
