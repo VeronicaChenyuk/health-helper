@@ -15,9 +15,8 @@ const TheraphiesFields = ({ idx }) => (
           <Label style={{ marginLeft: '7px' }} > раз(а) в неделю </Label>
         </Col>
         <Col md={3}>
-        <Label> Длительность </Label>
-          <Field style={{ width: '40px', borderRadius: '5px', height: '35px', marginLeft: '7px' }} type="text" name={`durationOfTheraphy_${idx}`} id="durationOfTheraphy" component="input" />
-          <Label style={{ marginLeft: '7px' }} > дней </Label>
+          <Field style={{ width: '40px', borderRadius: '5px', height: '35px' }} type="text" name={`durationOfTheraphy_${idx}`} id="durationOfTheraphy" component="input" />
+          <Label style={{ marginLeft: '7px' }} > сеансов </Label>
         </Col>
         <Col md={2} />
       </Row>
