@@ -66,21 +66,31 @@ const PatientAccount = (props) => {
 
   return (
     <div className="PatientAccount">
-      <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
-        <FormGroup>
-          <Label for="exampleEmail">ФИО</Label>
-          <Input type="text" name="name" placeholder="ФИО" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleText">Укажите хронические заболевания</Label>
-          <Input type="textarea" name="disease" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleFile">File</Label>
-          <Input type="file" name="photo" onChange={handleChange} />
-        </FormGroup>
-        <Button type="submit">Отправить</Button>
-      </Form>
+      {!!url.length ?
+        <div>
+          <h1>Привет, {patientName}</h1>
+          <p>Твои хронические заболевания:</p>
+          <p>{diseases}</p>
+          <img src={url} />
+        </div>
+        :
+        <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
+          <FormGroup>
+            <Label for="exampleEmail">ФИО</Label>
+            <Input type="text" name="name" placeholder="ФИО" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleText">Укажите хронические заболевания</Label>
+            <Input type="textarea" name="disease" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleFile">File</Label>
+            <Input type="file" name="photo" onChange={handleChange} />
+          </FormGroup>
+          <Button type="submit" onClick={handleUpload}>Отправить</Button>
+        </Form>
+      }
+
     </div>
   );
 };

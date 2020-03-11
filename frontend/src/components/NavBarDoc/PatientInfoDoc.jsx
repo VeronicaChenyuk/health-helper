@@ -17,10 +17,8 @@ function PatientInfoDoc(props) {
     <>
       <div className="card-deck">
         <div className="card">
-          <img src={fist} className="card-img-top" />
           <div className="card-body ">
-            <h5 className="card-title">Ход лечения</h5>
-            <p className="card-text"> выполняет все предписанияб держится молодцом: кровать застилает, чистит зубы </p>
+          <img src={fist} className="card-img-top" />
           </div>
           <div className="card-footer">
             <small className="text-muted">
@@ -30,20 +28,16 @@ function PatientInfoDoc(props) {
           </div>
         </div>
         <div className="card">
-          <img src={second} className="card-img-top" />
           <div className="card-body">
-            <h5 className="card-title">Методика лечения</h5>
-            <p className="card-text"> принимает 10 таблеток фенозипама 3 раза в день перед едой!</p>
+          <img src={second} className="card-img-top" />
           </div>
           <div className="card-footer">
             <small className="text-muted"><PatientModalCreateMethod /></small>
           </div>
         </div>
         <div className="card">
-          <img src={third} className="card-img-top" alt="..." />
           <div className="card-body">
-            <h5 className="card-title">Связаться с пациентом</h5>
-            <p className="card-text">Нажав на кнопку, вы откроете чат с , в котором сможете с ним пообщаться.</p>
+          <img src={third} className="card-img-top" alt="..." />
           </div>
           <div className="card-footer">
             <small className="text-muted"><PatientModalChat /></small>

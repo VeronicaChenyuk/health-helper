@@ -51,7 +51,7 @@ const DoctorPage = (props) => {
           <Input type="file" name="file" id="exampleFile" />
           <FormText color="muted" />
         </FormGroup>
-        <Button type="submit" style={{ background: '#00887A' }}>Изменить</Button>
+        <Button type="submit">Изменить</Button>
       </Form>
     </div>
   );
