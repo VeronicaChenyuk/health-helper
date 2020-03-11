@@ -2,57 +2,43 @@ import React from 'react';
 import './ActiveTasks.css';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 const ActiveTasks = (props) => {
-  console.log(props.methodics, '<<<<<<<<<<<<<<<<<<<<<<<<<<');
   const { methodics } = props;
-  /* nameOfTheraphy: "массаж ключицы"
-frequency: "2 раза в неделю "
-duration: "10 дней" */
-
-  // const drugsOfTodos = drugs.map((drug, index) => (
-  //   <ListGroupItem key={index.toString()} className="task">
-  //     <div className="text-area">
-  //       <span className="taskName">{drug.nameOfDrug}</span>
-  //       <span className="taskSpecialty"><strong>{drug.dosage}</strong></span>
-  //       <span className="taskSpecialty"><strong>{drug.beforeAfterEat}</strong></span>
-  //       <span className="taskSpecialty"><strong>{drug.duration}</strong></span>
-  //     </div>
-  //     <div className="btn-area">
-  //       <Button outline color="success">Готово</Button>
-  //       <Button outline color="danger">Удалить</Button>
-  //       <Button outline color="info">Отложить</Button>
-  //     </div>
-  //   </ListGroupItem>
-  // ));
+  const nowDate = moment().format();
+  const testDate = new Date(nowDate);
+  const ex = methodics[2].tasks[0].dateActivation;
+  console.log(ex, nowDate, testDate, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<< DATE');
 
   return (
     <div className="ActiveTasks">
       {
       methodics.map((methodic) => {
-        const { drugs, theraphies, analisis, _id } = methodic;
+        const {
+          drugs, theraphies, analisis, _id, tasks,
+        } = methodic;
         return (
           <ListGroup key={_id}>
             {
-              drugs.map((drug) => (
-                <ListGroupItem key={drug.nameOfDrug} className="task">
+              tasks.map((task) => (
+                <ListGroupItem key={task.massage} className="task">
                   <div className="text-area">
-                    <span className="taskName">{drug.nameOfDrug}</span>
-                    <span className="taskSpecialty"><strong>{drug.dosage}</strong></span>
+                    <span className="taskName">{task.massage}</span>
+                    <span className="taskSpecialty"><strong>{task.dateActivation}</strong></span>
                     {' '}
-                    <span className="taskSpecialty"><strong>{drug.beforeAfterEat}</strong></span>
+                    {/* <span className="taskSpecialty"><strong>{task.beforeAfterEat}</strong></span>
                     {' - '}
-                    <span className="taskSpecialty"><strong>{drug.duration}</strong></span>
+                    <span className="taskSpecialty"><strong>{task.duration}</strong></span> */}
                   </div>
                   <div className="btn-area">
                     <Button outline color="success">Готово</Button>
                     <Button outline color="danger">Удалить</Button>
-                    <Button outline color="info">Отложить</Button>
                   </div>
                 </ListGroupItem>
               ))
             }
-            {
+            {/* {
               theraphies.map((theraphy) => (
                 <ListGroupItem key={theraphy.nameOfTheraphy} className="task">
                   <div className="text-area">
@@ -68,7 +54,7 @@ duration: "10 дней" */
                   </div>
                 </ListGroupItem>
               ))
-            }
+            } */}
           </ListGroup>
         );
       })
