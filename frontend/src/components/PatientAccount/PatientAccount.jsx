@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './PatientAccount.css';
 import {
   Button,
@@ -15,7 +15,6 @@ import PatientAccountInfo from '../PatientAccountInfo/PatientAccountInfo';
 
 const PatientAccount = (props) => {
   const [image, setImage] = useState(null);
-  const [submit, changeSubmit] = useState(false);
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -59,7 +58,6 @@ const PatientAccount = (props) => {
         const result = await response.json();
 
         if (result.user) {
-          debugger;
           props.isPatientData(result.user);
         }
       });
@@ -68,8 +66,7 @@ const PatientAccount = (props) => {
 
   return (
     <div className="patient-account">
-      {Object.entries(props.patientData).length && <PatientAccountInfo />}
-      <hr style={{ color: 'red', backgroundColor: '#31708E', height: '2px' }} />
+      {Object.entries(props.patientData).length ? <PatientAccountInfo /> : ''}
       <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
         <FormGroup>
           <Label for="exampleEmail">ФИО</Label>
