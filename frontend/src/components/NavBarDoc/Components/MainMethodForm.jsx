@@ -14,7 +14,6 @@ import Theraphy from './Theraphies';
 import Analysis from './AddAnalysis';
 import AddReports from '../AddComponents/AddReports';
 import NextVisitFields from '../AddComponents/AddNextVisit';
-import saveMethodicFetch from '../../../utils/saveMethodicFetch';
 
 const getFinishTaskDate = (startTaskDate, delta) => {
   const finishTaskDate = moment(startTaskDate).add(delta, 'h').format();
@@ -42,6 +41,8 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
           .format();
         const finishTaskDate = getFinishTaskDate(taskDate, deltaDrug);
         task = {
+          taskName: drugs[drugCount].nameOfDrug,
+          type: 'drugs',
           massage: taskName,
           dateActivation: taskDate,
           finishTaskDate,
@@ -69,6 +70,8 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
       taskName = `Необходимо пройти ${theraphies[theraphyCount].nameOfTheraphy}`;
       const finishTaskDate = getFinishTaskDate(taskDate, deltaTherapy);
       task = {
+        taskName: theraphies[theraphyCount].nameOfTheraphy,
+        type: 'theraphy',
         massage: taskName,
         dateActivation: taskDate,
         finishTaskDate,
@@ -81,6 +84,8 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
   for (let analysisCount = 0; analysisCount < nameOfAnalysis.length; analysisCount += 1) {
     console.log(analysisCount, nameOfAnalysis.length, nameOfAnalysis);
     task = {
+      taskName: nameOfAnalysis[analysisCount],
+      type: 'Analis',
       massage: `Нужен ${nameOfAnalysis[analysisCount]}`,
       status: 'missing',
       idTask: (nameOfAnalysis[analysisCount]),
@@ -143,7 +148,7 @@ function saveClick(props) {
         nameOfDrug: nameOfDrug[i],
         dosage: dosage[i],
         frequency: frequency[i],
-        beforeAfterEat: beforeAfterEat[i],
+        beforeAfterEat: beforeAfterEat[i] || 'до',
         duration: duration[i],
         startOfTheDrugUsing: date,
       };
@@ -191,12 +196,13 @@ function saveClick(props) {
         methodic,
       }),
     });
-    return props.toggle();
+    props.toggle();
+    return window.location.reload();
+
   } catch (e) {
     return alert('Something went Wrong!');
   }
 }
-
 
 const MainMethodForm = (props) => (
   <>

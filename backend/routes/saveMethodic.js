@@ -9,14 +9,18 @@ router.post('/', async (req, res, next) => {
   const { methodic } = req.body;
   const newMethodic = await new Methodic(methodic);
   // console.log(methodic)
-  const { patientEmail, doctorEmail, drugs, patientName,
+  const {
+    patientEmail, doctorEmail, drugs, patientName,
     theraphies, analisis, comment,
-    patientReports, nextVisit, doctorName, specialist } = methodic;
+    patientReports, nextVisit, doctorName, specialist,
+  } = methodic;
 
-  const stringDrugs = drugs.map(({ nameOfDrug, dosage, frequency, beforeAfterEat, duration }) => `\n${nameOfDrug} дозирока ${dosage} мг, принимать ${frequency} раз(а) в день ${beforeAfterEat}, длительность курса ${duration} суток;`).join('');
+  const stringDrugs = drugs.map(({
+    nameOfDrug, dosage, frequency, beforeAfterEat, duration,
+  }) => `\n${nameOfDrug} дозирока ${dosage} мг, принимать ${frequency} раз(а) в день ${beforeAfterEat}, длительность курса ${duration} суток;`).join('');
   const stringTheraphies = theraphies.map(({ nameOfTheraphy, frequency, duration }) => `\n${nameOfTheraphy}, проводить ${frequency} раз(а) в неделю, количество сеансов ${duration};`).join('');
   console.log(stringDrugs, stringTheraphies);
-  const syringAnalisis = analisis.join(`,\n`)
+  const syringAnalisis = analisis.join(',\n');
 
   // const methodic = {
   //   patientName: values.patientName,
@@ -62,13 +66,16 @@ router.post('/', async (req, res, next) => {
       html: `<b>Здравствуйте ${patientName}! Вы были на приёме у врача по специальности -  ${specialist} : <strong>${doctorName}</strong></b>
                                 <p><strong>Методика лечения:</strong></p>
                                 <hr>
-                                <p>Вам назначали лекарства:</p>
+                                <p>Вам назначены лекарства:</p>
                                 <p>${stringDrugs}</p>
-                                <p>Вам назначали терапию:</p>
                                 <hr/>
+                                <p>Вам назначены терапии:</p>
                                 <p>${stringTheraphies}</p>
-                                <p>Вам назначали анализы:</p>
+                                <hr/>
+                                <p>Вам назначены анализы:</p>
                                 <p>${syringAnalisis}</p>
+                                <hr/>
+                                <p>Комментарий от врача:</p>
                                 <p>${comment}</p>
                                 <p>${patientReports}</p>
                                 <p>Следующий визит <strong>${nextVisit}</strong></p>

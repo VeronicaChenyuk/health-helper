@@ -11,6 +11,7 @@ router.post('/', async (req, res, next) => {
     await newMethodic.save();
   }
   await Methodic.deleteOne({ _id: numberID });
+  res.send({ answer: true });
 });
 
 
