@@ -60,6 +60,7 @@ const PatientSidebar = (props) => {
 
 const mapStateToProps = (state) => ({
   user: state.logIn.user,
+  // methodics: state.getInfo.methodics,
 });
 
 const mapDispatchToProps = (dispatch) => ({

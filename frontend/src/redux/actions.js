@@ -7,6 +7,7 @@ const {
   PATIENT_DATA,
   SWITCH_CURRENT_EMAIL,
   ANALYZES_DATA,
+  SWITCH_STATUS_TASK,
 } = require('./action-types');
 
 // Action creators
@@ -40,7 +41,7 @@ export const setAnalyzes = (analyzes) => ({
   type: ANALYZES_DATA,
   payload: analyzes,
 });
-export const switchStatusTask = (idTask) => ({
-  type: SWITCH_CURRENT_EMAIL,
-  idTask,
+export const switchStatusTask = (methodics) => ({
+  type: SWITCH_STATUS_TASK,
+  methodics,
 });

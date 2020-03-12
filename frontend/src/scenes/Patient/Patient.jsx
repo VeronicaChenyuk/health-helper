@@ -1,7 +1,7 @@
 import React from 'react';
 import PatientSidebar from '../../components/PatientSidebar/PatientSidebar';
 
-const Patient = () => (
+const Patient = (props) => (
   <>
     <PatientSidebar />
   </>

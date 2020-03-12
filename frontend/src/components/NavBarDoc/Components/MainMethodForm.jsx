@@ -14,6 +14,7 @@ import Theraphy from './Theraphies';
 import Analysis from './AddAnalysis';
 import AddReports from '../AddComponents/AddReports';
 import NextVisitFields from '../AddComponents/AddNextVisit';
+import saveMethodicFetch from '../../../utils/saveMethodicFetch';
 
 const getFinishTaskDate = (startTaskDate, delta) => {
   const finishTaskDate = moment(startTaskDate).add(delta, 'h').format();
@@ -179,7 +180,7 @@ function saveClick(props) {
       specialist,
       tasks,
     };
-    console.log(methodic);
+
     fetch('http://localhost:5000/savemethodic', {
       method: 'POST',
       headers:

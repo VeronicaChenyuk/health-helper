@@ -8,7 +8,6 @@ const router = express.Router();
 router.post('/', async (req, res, next) => {
   const { methodic } = req.body;
   const newMethodic = await new Methodic(methodic);
-  console.log(methodic, newMethodic);
   await newMethodic.save();
 
   // nodemailer
@@ -49,6 +48,15 @@ router.post('/', async (req, res, next) => {
   }
   main().catch(console.error);
   res.redirect('/');
+});
+
+router.post('/update', async (req, res, next) => {
+  const { methodic } = req.body;
+  const { _id } = methodic;
+  console.log(_id);
+
+  await Methodic.findOneAndUpdate({ _id }, methodic);
+  res.send({ answer: true });
 });
 
 
