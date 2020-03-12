@@ -8,17 +8,12 @@
 }
 
 a.navbar-brand h3 {
-  text-shadow: 0 0 #31708E,
-    0 0#687864,
-    0 0 skyblue;
-  color: transparent;
-  transition: all 3s;
-
+font-size: 45px;
+color: #31708E;
+margin-left: 15px;
 }
 
 a.navbar-brand h3:hover {
-  text-shadow: -400px 0 #31708E,
-    400px 0 #687864,
-    0 0 skyblue;
+
 }
 
