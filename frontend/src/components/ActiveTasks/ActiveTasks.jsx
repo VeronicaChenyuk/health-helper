@@ -65,14 +65,12 @@ const ActiveTasks = (props) => {
                       </div>
                       <div className="btn-area">
                         <Button
-                          outline
                           className="ready"
                           onClick={() => updateStatusTask(methodics, _id, idTask, switchStatus, 'success')}
                         >
                           Готово
                         </Button>
                         <Button
-                          outline
                           className="dontwant"
                           onClick={() => updateStatusTask(methodics, _id, idTask, switchStatus, 'deleted')}
                         >
