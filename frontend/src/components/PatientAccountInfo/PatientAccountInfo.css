@@ -26,3 +26,9 @@ img {
   width: 250px;
   height: 250px;
 }
+
+.separator {
+  color: 'red';
+  background-color: '#31708E';
+  height: '2px';
+}
