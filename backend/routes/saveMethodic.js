@@ -8,12 +8,38 @@ const router = express.Router();
 router.post('/', async (req, res, next) => {
   const { methodic } = req.body;
   const newMethodic = await new Methodic(methodic);
-  console.log(methodic, newMethodic);
+  // console.log(methodic)
+  const { patientEmail, doctorEmail, drugs, patientName,
+    theraphies, analisis, comment,
+    patientReports, nextVisit, doctorName, specialist } = methodic;
+
+  const stringDrugs = drugs.map(({ nameOfDrug, dosage, frequency, beforeAfterEat, duration }) => `\n${nameOfDrug} дозирока ${dosage} мг, принимать ${frequency} раз(а) в день ${beforeAfterEat}, длительность курса ${duration} суток;`).join('');
+  const stringTheraphies = theraphies.map(({ nameOfTheraphy, frequency, duration }) => `\n${nameOfTheraphy}, проводить ${frequency} раз(а) в неделю, количество сеансов ${duration};`).join('');
+  console.log(stringDrugs, stringTheraphies);
+  const syringAnalisis = analisis.join(`,\n`)
+
+  // const methodic = {
+  //   patientName: values.patientName,
+  //   patientEmail: values.email,
+  //   doctorEmail: email,
+  //   drugs,
+  //   theraphies,
+  //   analisis: nameOfAnalysis,
+  //   comment: values.comments,
+  //   patientReports,
+  //   nextVisit: values.nextVisit,
+  //   dateOfTheLastVisit: date,
+  //   sourceData: values,
+  //   doctorName,
+  //   specialist,
+  //   tasks,
+  // };
+
   await newMethodic.save();
 
   // nodemailer
   async function main() {
-    // Generate test SMTP service account from ethereal.email
+    // Generate test SMTP service account from ethereal.emailldlsof
     // Only needed if you don't have a real mail account for testing
     await nodemailer.createTestAccount();
     // create reusable transporter object using the default SMTP transport
@@ -22,21 +48,33 @@ router.post('/', async (req, res, next) => {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: 'nii.gena@bk.ru', // generated ethereal user
-        pass: 'Nii123456', // generated ethereal password
+        user: 'patientlisa@mail.ru', // generated ethereal user
+        pass: 'Lisa010203', // generated ethereal password
       },
     });
 
     // send mail with defined transport object
     const info = await transporter.sendMail({
-      from: '"Medical Assistant 🧬" <nii.gena@bk.ru>', // sender address
-      to: 'bbyugh@mail.ru', // list of receivers
+      from: '"Medical Assistant " <patientlisa@mail.ru>', // sender address
+      to: patientEmail, // list of receivers
       subject: 'Вы записаны! ', // Subject line
       text: 'Информация о записе', // plain text body
-      html: `<b>Здравствуйте! Вы были на приёме у врача <strong>ФИО врача</strong></b>
-                                <p>Методика лечения: с <strong>проверочный</strong> до <strong>текст</strong> на прибор <i>вставка тайтл.</i></p>
-                                <p>Более подробная информация <strong>ссылка на приложение</strong> </p>
-                                <p>Вы всегда можете связаться со своим лечащим врачом через приложение</p>`, // html body
+      html: `<b>Здравствуйте ${patientName}! Вы были на приёме у врача по специальности -  ${specialist} : <strong>${doctorName}</strong></b>
+                                <p><strong>Методика лечения:</strong></p>
+                                <hr>
+                                <p>Вам назначали лекарства:</p>
+                                <p>${stringDrugs}</p>
+                                <p>Вам назначали терапию:</p>
+                                <hr/>
+                                <p>${stringTheraphies}</p>
+                                <p>Вам назначали анализы:</p>
+                                <p>${syringAnalisis}</p>
+                                <p>${comment}</p>
+                                <p>${patientReports}</p>
+                                <p>Следующий визит <strong>${nextVisit}</strong></p>
+                                <p>Более подробная информация в приложении <strong>MEDICAL TODO</strong>. Перейдите по ссылке  ${'http://localhost:3000/'}</p>
+                                
+                                <p>Вы всегда можете связаться со своим лечащим врачом по адресу ${doctorEmail}</p>`, // html body
     });
 
     console.log('Message sent: %s', info.messageId);
