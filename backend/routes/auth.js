@@ -26,7 +26,7 @@ router.post('/registration', async (req, res) => {
   console.log(user);
   const findUser = await User.findOne({ email });
   console.log(findUser);
-  if (findUser !== null) {
+  if (findUser === null) {
     await User.create(user);
     return res.json({ user });
   }

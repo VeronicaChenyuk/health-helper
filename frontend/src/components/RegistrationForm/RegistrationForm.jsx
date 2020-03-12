@@ -28,19 +28,19 @@ const createUser = async (event, props) => {
   });
   const result = await response.json();
   const { user, answer } = result;
-  const { status } = user;
+  // const { status } = user;
   console.log(result);
 
-  // if (status) {
-  //   isLogin(user);
-  //   return props.history.push('/');
-  // }
+  if (user) {
+    isLogin(user);
+    return props.history.push('/');
+  }
   return alert('Что то пошло не так!');
 };
 
 const RegistrationForm = (props) => (
   <>
-    <div className='loginform'>
+    <div className="loginform">
       <Form className="registrationForm" onSubmit={(event) => createUser(event, props)}>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Label for="exampleLogin" className="mr-sm-2">Логин</Label>
