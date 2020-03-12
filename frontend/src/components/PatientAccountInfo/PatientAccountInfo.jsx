@@ -23,6 +23,7 @@ const PatientAccountInfo = (props) => {
         </h6>
         <p>{diseases}</p>
       </div>
+      <hr className="separator" />
     </div>
   );
 };
