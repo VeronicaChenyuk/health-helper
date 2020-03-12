@@ -15,17 +15,13 @@ router.post('/registration', async (req, res) => {
   const {
     login, email, password, statusUser,
   } = req.body;
-  const user = [
-    {
-      login,
-      email,
-      password,
-      status: statusUser,
-    },
-  ];
-  console.log(user);
+  const user = {
+    login,
+    email,
+    password,
+    status: statusUser,
+  };
   const findUser = await User.findOne({ email });
-  console.log(findUser);
   if (findUser === null) {
     await User.create(user);
     return res.json({ user });
