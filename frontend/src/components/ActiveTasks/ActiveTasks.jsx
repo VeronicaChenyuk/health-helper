@@ -3,58 +3,84 @@ import './ActiveTasks.css';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import { switchStatusTask } from '../../redux/actions';
+
+const updateStatusTask = (methodics, _id, idTask, switchStatus, newStatus) => {
+  const updatedMethodics = methodics.map((methodic) => {
+    if (_id === methodic._id) {
+      const { tasks } = methodic;
+      tasks.map((task) => {
+        if (idTask === task.idTask) {
+          task.status = newStatus;
+        }
+        return task;
+      });
+    }
+    return methodic;
+  });
+  return switchStatus(updatedMethodics);
+};
+
+const filterTasks = (tasks, nowDate) => {
+  const newTasks = tasks.filter((task) => {
+    const { dateActivation, finishTaskDate, status } = task;
+    return ((!dateActivation && status === 'missing') || (dateActivation
+          && new Date(finishTaskDate) > nowDate
+          && moment(dateActivation).format('D') === moment(nowDate).format('D')
+          && status === 'missing'));
+  });
+  return newTasks;
+};
 
 const ActiveTasks = (props) => {
-  const { methodics } = props;
-  const nowDate = moment().format();
-  const testDate = new Date(nowDate);
-  // const ex = methodics[2].tasks[0].dateActivation;
-  // console.log(ex, nowDate, testDate, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<< DATE');
+  const { methodics, switchStatus } = props;
+  const nowDate = new Date();
 
   return (
     <div className="ActiveTasks">
       {
       methodics.map((methodic) => {
         const {
-          drugs, theraphies, analisis, _id, tasks,
+          _id, tasks,
         } = methodic;
+        const filteredTasks = filterTasks(tasks, nowDate);
         return (
           <ListGroup key={_id}>
             {
-              tasks.map((task) => (
-                <ListGroupItem key={task.massage} className="task">
-                  <div className="text-area">
-                    <span className="taskName">{task.massage}</span>
-                    <span className="taskSpecialty"><strong>{task.dateActivation}</strong></span>
-                    {' '}
-                    {/* <span className="taskSpecialty"><strong>{task.beforeAfterEat}</strong></span>
-                    {' - '}
-                    <span className="taskSpecialty"><strong>{task.duration}</strong></span> */}
-                  </div>
-                  <div className="btn-area">
-                    <Button outline color="success">Готово</Button>
-                    <Button outline color="danger">Удалить</Button>
-                  </div>
-                </ListGroupItem>
-              ))
+              filteredTasks.map((task, index) => {
+                const {
+                  massage, dateActivation, idTask, status,
+                } = task;
+                return (
+                  <ListGroupItem key={massage + dateActivation} className="task">
+                    <div className="text-area">
+                      <span className="taskName">{task.massage}</span>
+                      {
+                        dateActivation
+                        && <span className="taskSpecialty"><strong>{moment(dateActivation).format('MMMM Do YYYY, HH:mm:ss')}</strong></span>
+                      }
+                      {' '}
+                    </div>
+                    <div className="btn-area">
+                      <Button
+                        outline
+                        color="success"
+                        onClick={() => updateStatusTask(methodics, _id, idTask, switchStatus, 'success')}
+                      >
+                        Готово
+                      </Button>
+                      <Button
+                        outline
+                        color="danger"
+                        onClick={() => updateStatusTask(methodics, _id, idTask, switchStatus, 'deleted')}
+                      >
+                        Удалить
+                      </Button>
+                    </div>
+                  </ListGroupItem>
+                );
+              })
             }
-            {/* {
-              theraphies.map((theraphy) => (
-                <ListGroupItem key={theraphy.nameOfTheraphy} className="task">
-                  <div className="text-area">
-                    <span className="taskName">{theraphy.nameOfTheraphy}</span>
-                    <span className="taskSpecialty"><strong>{theraphy.frequency}</strong></span>
-                    {' - '}
-                    <span className="taskSpecialty"><strong>{theraphy.duration}</strong></span>
-                  </div>
-                  <div className="btn-area">
-                    <Button outline color="success">Готово</Button>
-                    <Button outline color="danger">Удалить</Button>
-                    <Button outline color="info">Отложить</Button>
-                  </div>
-                </ListGroupItem>
-              ))
-            } */}
           </ListGroup>
         );
       })
@@ -67,6 +93,11 @@ const mapStateToProps = (state) => ({
   methodics: state.getInfo.methodics,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  switchStatus: (methodics) => dispatch(switchStatusTask(methodics)),
+});
+
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(ActiveTasks);

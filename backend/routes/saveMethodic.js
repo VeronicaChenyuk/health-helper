@@ -1,5 +1,6 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
+
 const Methodic = require('../models/methodic');
 
 const router = express.Router();
@@ -7,12 +8,14 @@ const router = express.Router();
 router.post('/', async (req, res, next) => {
   const { methodic } = req.body;
   const newMethodic = await new Methodic(methodic);
-  console.log(methodic, newMethodic)
+  console.log(methodic, newMethodic);
   await newMethodic.save();
+
+  // nodemailer
   async function main() {
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
-    const testAccount = await nodemailer.createTestAccount();
+    await nodemailer.createTestAccount();
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
       host: 'smtp.mail.ru',

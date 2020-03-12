@@ -38,5 +38,9 @@ export const switchCurrentEmail = (currentPatientEmail) => ({
 });
 export const setAnalyzes = (analyzes) => ({
   type: ANALYZES_DATA,
-  payload: analyzes
+  payload: analyzes,
+});
+export const switchStatusTask = (idTask) => ({
+  type: SWITCH_CURRENT_EMAIL,
+  idTask,
 });
