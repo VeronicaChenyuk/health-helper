@@ -36,8 +36,8 @@ function DoctorList(props) {
         {doctor.specialist}
       </p>
       <p>
-        <Button outline color="success" onClick={feedbackHandler}>Связаться</Button>
-        <Button outline color="danger" onClick={() => deleteHandler(doctor._id)}>Удалить</Button>
+        <Button outline className='ready' onClick={feedbackHandler}>Связаться</Button>
+        <Button outline className='dontwant' onClick={() => deleteHandler(doctor._id)}>Удалить</Button>
       </p>
     </p>
   ));

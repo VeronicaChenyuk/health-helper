@@ -66,14 +66,14 @@ const ActiveTasks = (props) => {
                       <div className="btn-area">
                         <Button
                           outline
-                          color="success"
+                          className="ready"
                           onClick={() => updateStatusTask(methodics, _id, idTask, switchStatus, 'success')}
                         >
                           Готово
                         </Button>
                         <Button
                           outline
-                          color="danger"
+                          className="dontwant"
                           onClick={() => updateStatusTask(methodics, _id, idTask, switchStatus, 'deleted')}
                         >
                           Удалить
