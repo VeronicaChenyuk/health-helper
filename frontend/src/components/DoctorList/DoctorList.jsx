@@ -30,7 +30,7 @@ function DoctorList(props) {
       </strong>
       {doctor.doctorName}
       <p />
-      <img src={doctor.photo} alt="doctor" />
+      { doctor.photo ? <img src={doctor.photo} alt="doctor" /> : 'Фото не загружено'}
       <p className="speciality">
         Cпециальность: {''}
         {doctor.specialist}
