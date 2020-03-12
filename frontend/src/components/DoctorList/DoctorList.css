@@ -1,0 +1,19 @@
+button.ready {
+  margin: 0 10px 0 5px;
+  background-color: #8FC1E3;
+  border-color: #8FC1E3;
+}
+
+button.dontwant {
+  color: #fff;
+  background-color: #687864;
+  border-color: #687864;
+}
+
+p {
+  margin-top: 0 10px 0 5px;
+}
+
+div.button {
+  position: absolute left;  
+}

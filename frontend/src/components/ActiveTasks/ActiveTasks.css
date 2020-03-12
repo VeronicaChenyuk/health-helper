@@ -9,10 +9,29 @@
   margin-right: 10px;
 }
 
-.btn-outline-danger {
-  margin: 0 10px 0 10px;
-  }
-  .btn-outline-success {
-  color:#00887A;
-  border-color: #00887A;
+button.ready {
+  margin: 0 10px 0 5px;
+  background-color: #8FC1E3;
+  border-color: #8FC1E3;
+}
+button.dontwant {
+  color:#fff;
+  background-color:#687864;
+  border-color: #687864;
+}
+li.task.list-group-item{
+  padding: 10px 10px;
+  margin-top: 1px;
+  margin-right: 20%;
+  margin-left: 5%;
+}
+li{
+margin-top: 0px;
+ }
+div.text-area{
+margin-top: 8px;
+}
+div.col-9{
+  margin-top: 50px;
+  width: 50%;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
+import './DoctorList.css'
 
 function DoctorList(props) {
   const myDoctors = props.methodics
@@ -21,8 +22,11 @@ function DoctorList(props) {
               Cпециальность:
               {doctor.specialist}
               <p>
-                <Button outline color="success">Связаться</Button>
-                <Button outline color="danger">Удалить</Button>
+                <p></p>
+                <div className='button'>                  
+                <Button className='ready'>Связаться</Button>
+                <Button className='dontwant'>Удалить</Button>
+                </div>
               </p>
             </p>
           ))

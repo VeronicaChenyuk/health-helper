@@ -32,8 +32,8 @@ const ActiveTasks = (props) => {
                     <span className="taskSpecialty"><strong>{task.duration}</strong></span> */}
                   </div>
                   <div className="btn-area">
-                    <Button outline color="success">Готово</Button>
-                    <Button outline color="danger">Удалить</Button>
+                    <Button className='ready'>Готово</Button>
+                    <Button className='dontwant'>Удалить</Button>
                   </div>
                 </ListGroupItem>
               ))

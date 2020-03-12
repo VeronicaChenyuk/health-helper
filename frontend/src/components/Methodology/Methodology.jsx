@@ -17,7 +17,7 @@ function Methodology(props) {
               <p>
                 <ul className="list-group">
                   <li className="list-group-item list-group-item-primary">
-                    <strong>{doctorName}</strong>
+                   {doctorName}
                     <p>
                       <strong>
                         Специальность:
