@@ -68,13 +68,13 @@ const ActiveTasks = (props) => {
                           className="ready"
                           onClick={() => updateStatusTask(methodics, _id, idTask, switchStatus, 'success')}
                         >
-                          Готово
+                          Выполнено
                         </Button>
                         <Button
                           className="dontwant"
                           onClick={() => updateStatusTask(methodics, _id, idTask, switchStatus, 'deleted')}
                         >
-                          Удалить
+                          Не выполнено
                         </Button>
                       </div>
                     </ListGroupItem>
