@@ -14,7 +14,9 @@ import PatientAccountInfo from '../PatientAccountInfo/PatientAccountInfo';
 
 
 const PatientAccount = (props) => {
+
   const [image, setImage] = useState(null);
+  const [data, setData] = useState(null)
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -40,7 +42,7 @@ const PatientAccount = (props) => {
         console.log(error);
       },
       async () => {
-        const url = await storage.ref('images').child(image.name).getDownloadURL();
+        const url = await storage.ref('images').child(image.name).getDownloadURL() || '';
 
         const response = await fetch(action, {
           method: 'POST',
@@ -56,17 +58,16 @@ const PatientAccount = (props) => {
         });
 
         const result = await response.json();
+        
+        setData(result);
 
-        if (result.user) {
-          props.isPatientData(result.user);
-        }
       });
   };
 
 
   return (
     <div className="patient-account">
-      {Object.entries(props.patientData).length ? <PatientAccountInfo /> : ''}
+      <PatientAccountInfo />
       <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
         <FormGroup>
           <Label for="exampleEmail">ФИО</Label>

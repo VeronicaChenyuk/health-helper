@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import './PatientAccountInfo.css';
 import { connect } from 'react-redux';
-import { isPatientData } from '../../redux/actions';
 
 
 
 const PatientAccountInfo = (props) => {
 
-  const { patientName, photo, diseases } = props.patientData;
+  const { patientName, photo, diseases } = props.user;
 
   return (
     <div className="patient-info">
@@ -23,14 +22,13 @@ const PatientAccountInfo = (props) => {
         </h6>
         <p>{diseases}</p>
       </div>
-      <hr className="separator" />
     </div>
   );
 };
 
 
 const mapStateToProps = (state) => ({
-  patientData: state.patientDataReducer.isPatientData,
+  user: state.logIn.user,
 });
 
 
