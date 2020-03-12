@@ -89,5 +89,14 @@ router.post('/', async (req, res, next) => {
   res.redirect('/');
 });
 
+router.post('/update', async (req, res, next) => {
+  const { methodic } = req.body;
+  const { _id } = methodic;
+  console.log(_id);
+
+  await Methodic.findOneAndUpdate({ _id }, methodic);
+  res.send({ answer: true });
+});
+
 
 module.exports = router;
