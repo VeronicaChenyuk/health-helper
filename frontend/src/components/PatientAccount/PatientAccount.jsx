@@ -8,15 +8,14 @@ import {
   Input,
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { isPatientData } from '../../redux/actions';
+import { changeInfoUser } from '../../redux/actions';
 import { storage } from '../../firebase';
 import PatientAccountInfo from '../PatientAccountInfo/PatientAccountInfo';
 
 
 const PatientAccount = (props) => {
-
   const [image, setImage] = useState(null);
-  const [data, setData] = useState(null)
+  const [data, setData] = useState(props.user);
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -32,6 +31,7 @@ const PatientAccount = (props) => {
     const disease = e.target.disease.value;
     const { login } = props.user;
     const { action } = e.target;
+    const { changeInfo } = props;
 
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on('state_changed',
@@ -58,16 +58,16 @@ const PatientAccount = (props) => {
         });
 
         const result = await response.json();
-        
-        setData(result);
 
+        setData(result.user);
+        changeInfo(result.user);
       });
   };
 
 
   return (
     <div className="patient-account">
-      <PatientAccountInfo />
+      <PatientAccountInfo data={data} />
       <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
         <FormGroup>
           <Label for="exampleEmail">ФИО</Label>
@@ -94,7 +94,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  isPatientData: (patient) => dispatch(isPatientData(patient)),
+  changeInfo: (user) => dispatch(changeInfoUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatientAccount);

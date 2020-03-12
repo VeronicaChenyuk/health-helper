@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 const PatientAccountInfo = (props) => {
 
-  const { patientName, photo, diseases } = props.user;
+  const { patientName, photo, diseases } = props.data;
 
   return (
     <div className="patient-info">

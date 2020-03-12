@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import './DoctorList.css';
+import { getMethodicsUser } from '../../redux/actions';
 
 function DoctorList(props) {
 
   const myDoctors = props.methodics
     .filter((methodic) => methodic.doctorEmail !== undefined);
 
-  const [doctors, setDoctorsData] = useState(myDoctors)
+  const { changeDoctorInfo } = props;
 
   const deleteHandler = (id) => {
-    const newDoctors = doctors.filter(doctor => {
+    const newDoctors = myDoctors.filter(doctor => {
       return doctor._id != id;
     });
-
-    setDoctorsData(newDoctors);
+    changeDoctorInfo(newDoctors);
   };
 
   const feedbackHandler = () => {
     alert('Отправка сообщения');
-  }
+  };
 
-  const doctorsList = doctors.map((doctor, index) => (
+
+  const doctorsList = myDoctors.map((doctor, index) => (
     <p key={doctor._id}>
       <strong>
         {index + 1}
@@ -50,9 +51,16 @@ function DoctorList(props) {
     </>
   );
 }
+
 const mapStateToProps = (state) => ({
   methodics: state.getInfo.methodics,
 });
+
+const mapDispatchToProps = (dispatch) => ({
+  changeDoctorInfo: (methodics) => dispatch(getMethodicsUser(methodics)),
+});
+
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(DoctorList);
