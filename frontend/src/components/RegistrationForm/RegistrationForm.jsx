@@ -27,12 +27,14 @@ const createUser = async (event, props) => {
     }),
   });
   const result = await response.json();
-  const { user } = result;
+  const { user, answer } = result;
   const { status } = user;
-  if (status) {
-    isLogin(user);
-    return props.history.push('/');
-  }
+  console.log(result);
+
+  // if (status) {
+  //   isLogin(user);
+  //   return props.history.push('/');
+  // }
   return alert('Что то пошло не так!');
 };
 

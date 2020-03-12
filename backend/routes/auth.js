@@ -6,14 +6,12 @@ const router = express.Router();
 
 /* GET home page. */
 router.post('/login', async (req, res) => {
-  console.log('>>>> LOGIN');
   const { email, password } = req.body;
   const user = await User.findOne({ email, password });
   return user ? res.json({ answer: true, user }) : res.json({ answer: false });
 });
 
 router.post('/registration', async (req, res) => {
-  console.log('>>>> REGISTRATION');
   const {
     login, email, password, statusUser,
   } = req.body;
@@ -25,10 +23,14 @@ router.post('/registration', async (req, res) => {
       status: statusUser,
     },
   ];
-
-  const newUser = await User.insertMany(user);
-
-  return newUser && res.json({ user });
+  console.log(user);
+  const findUser = await User.findOne({ email });
+  console.log(findUser);
+  if (findUser !== null) {
+    await User.create(user);
+    return res.json({ user });
+  }
+  return res.json({ answer: 'Такая почта уже зарегистрирована.' });
 });
 
 module.exports = router;
