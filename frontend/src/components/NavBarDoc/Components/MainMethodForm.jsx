@@ -46,7 +46,7 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
           massage: taskName,
           dateActivation: taskDate,
           finishTaskDate,
-          status: 'missing',
+          status: 'default',
           idTask: (taskName + taskDate),
         };
         drugsTasks.push(task);
@@ -75,7 +75,7 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
         massage: taskName,
         dateActivation: taskDate,
         finishTaskDate,
-        status: 'missing',
+        status: 'default',
         idTask: (taskName + taskDate),
       };
       drugsTasks.push(task);
@@ -87,7 +87,7 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
       taskName: nameOfAnalysis[analysisCount],
       type: 'Analis',
       massage: `Нужен ${nameOfAnalysis[analysisCount]}`,
-      status: 'missing',
+      status: 'default',
       idTask: (nameOfAnalysis[analysisCount]),
     };
     drugsTasks.push(task);

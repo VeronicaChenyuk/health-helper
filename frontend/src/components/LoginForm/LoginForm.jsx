@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button, Form, FormGroup, Label, Input,
 } from 'reactstrap';
@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { isLogined } from '../../redux/actions';
 import SignInButton from '../SignInButton/SignInButton';
 
-const createUser = async (event, props) => {
+const createUser = async (event, props, setErrorReg) => {
   event.preventDefault();
 
   const email = event.target.email.value;
@@ -29,25 +29,32 @@ const createUser = async (event, props) => {
     isLogin(user);
     return props.history.push('/');
   }
-  return alert('Что то пошло не так!');
+  return setErrorReg(true);
 };
 
-const LoginForm = (props) => (
-  <>
-    <Form className="loginForm" onSubmit={(event) => createUser(event, props)}>
-      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <Label for="exampleEmail" className="mr-sm-2">Email</Label>
-        <Input type="email" name="email" id="exampleEmail" placeholder="fox@fox.ru" required />
-      </FormGroup>
-      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <Label for="examplePassword" className="mr-sm-2">Password</Label>
-        <Input type="password" name="password" id="examplePassword" placeholder="don't tell!" required />
-      </FormGroup>
-      <Button type="submit" className="loginBtn">Login</Button>
-      <SignInButton />
-    </Form>
-  </>
-);
+const LoginForm = (props) => {
+  const [errorReg, setErrorReg] = useState(false);
+
+  return (
+    <>
+      <Form className="loginForm" onSubmit={(event) => createUser(event, props, setErrorReg)}>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <Label for="exampleEmail" className="mr-sm-2">Почта</Label>
+          <Input type="email" name="email" id="exampleEmail" placeholder="fox@fox.ru" required />
+        </FormGroup>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <Label for="examplePassword" className="mr-sm-2">Пароль</Label>
+          <Input type="password" name="password" id="examplePassword" placeholder="Не забудь пароль!" required />
+        </FormGroup>
+        <Button type="submit" className="loginBtn logB">Войти</Button>
+        <SignInButton />
+      </Form>
+      {
+        errorReg && <h3>Неправильно введены почта или пароль</h3>
+      }
+    </>
+  );
+};
 
 const mapStateToProps = (state) => ({
   auth: state.logIn.auth,
