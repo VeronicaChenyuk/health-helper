@@ -1,6 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
-const Methodic = require('../models/methodic')
+const Methodic = require('../models/methodic');
 
 const router = express.Router();
 

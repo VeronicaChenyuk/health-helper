@@ -16,7 +16,7 @@ function Methodology(props) {
             <td>
               <p>
                 <ul className="list-group">
-                  <li className="list-group-item list-group-item-primary">
+                  <li className="list-group-item list-group-item-primary list-header">
                    {doctorName}
                     <p>
                       <strong>
