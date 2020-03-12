@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { isLogout } from '../../redux/actions';
 import PatientModalCreateMethod from '../NavBarDoc/PatientModalCreateMethod';
 import './Header.css'
+// import Logo from '../../img/logomak_logo.png'
 
 
 const logout = () => { localStorage.clear(); };

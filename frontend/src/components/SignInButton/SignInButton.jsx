@@ -6,7 +6,7 @@ import { isLoginForm } from '../../redux/actions';
 
 const SignInButton = (props) => {
   const { isRegForm } = props;
-  const switchText = isRegForm ? 'Sign up' : 'Sign in';
+  const switchText = isRegForm ? 'Выйти' : 'Войти';
   const switchForm = props.isLoginForm;
   return (
     <button type="button"className="sign-in btn-link" onClick={() => switchForm()}>{switchText}</button>

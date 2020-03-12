@@ -10,4 +10,16 @@
 .sign-in {
   margin: 10px 0;
   border-radius: 5px;
+  text-align: center;
+  
+}
+.sign-in.btn-link{
+  text-align: center;
+}
+.loginform{
+position: absolute;
+top: 30%;
+left:50%;
+margin-right: -50%;
+transform: translate(-50%,-50%);
 }
