@@ -44,7 +44,8 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
           massage: taskName,
           dateActivation: taskDate,
           finishTaskDate,
-          status: false,
+          status: 'missing',
+          idTask: (taskName + taskDate),
         };
         drugsTasks.push(task);
       }
@@ -70,7 +71,8 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
         massage: taskName,
         dateActivation: taskDate,
         finishTaskDate,
-        status: false,
+        status: 'missing',
+        idTask: (taskName + taskDate),
       };
       drugsTasks.push(task);
     }
@@ -79,7 +81,8 @@ function createTasks(drugs, theraphies, nameOfAnalysis) {
     console.log(analysisCount, nameOfAnalysis.length, nameOfAnalysis);
     task = {
       massage: `Нужен ${nameOfAnalysis[analysisCount]}`,
-      status: false,
+      status: 'missing',
+      idTask: (nameOfAnalysis[analysisCount]),
     };
     drugsTasks.push(task);
   }
