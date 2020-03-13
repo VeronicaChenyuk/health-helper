@@ -23,13 +23,22 @@ const updateStatusTask = (methodics, _id, idTask, switchStatus, newStatus) => {
   return switchStatus(updatedMethodics);
 };
 
-const filterTasks = (tasks, nowDate) => {
+const filterTasks = (tasks, nowDate, _id, switchStatus, methodics) => {
   const newTasks = tasks.filter((task) => {
-    const { dateActivation, finishTaskDate, status } = task;
-    return ((!dateActivation && status === 'missing') || (dateActivation
+    const {
+      dateActivation, finishTaskDate, status, idTask,
+    } = task;
+    console.log('dsafs');
+    const isMissing = new Date(finishTaskDate) < nowDate;
+    console.log(isMissing);
+    if (status !== 'missing' && isMissing) {
+      console.log('change status on missing');
+      updateStatusTask(methodics, _id, idTask, switchStatus, 'missing');
+    }
+    return ((!dateActivation && status === 'default') || (dateActivation
       && new Date(finishTaskDate) > nowDate
       && moment(dateActivation).format('D') === moment(nowDate).format('D')
-      && status === 'missing'));
+      && status === 'default'));
   });
   return newTasks;
 };
@@ -45,7 +54,7 @@ const ActiveTasks = (props) => {
           const {
             _id, tasks,
           } = methodic;
-          const filteredTasks = filterTasks(tasks, nowDate);
+          const filteredTasks = filterTasks(tasks, nowDate, _id, switchStatus, methodics);
           return (
             <ListGroup key={_id}>
               {
@@ -89,13 +98,9 @@ const ActiveTasks = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state.getInfo.methodics, 'STAAAAAAAAATE');
-
-  return ({
-    methodics: state.getInfo.methodics,
-  });
-};
+const mapStateToProps = (state) => ({
+  methodics: state.getInfo.methodics,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   switchStatus: (methodics) => dispatch(switchStatusTask(methodics)),

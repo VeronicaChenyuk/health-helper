@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button, Form, FormGroup, Label, Input,
 } from 'reactstrap';
@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { isLogined } from '../../redux/actions';
 import SignInButton from '../SignInButton/SignInButton';
 
-const createUser = async (event, props) => {
+const createUser = async (event, props, setErrorReg) => {
   event.preventDefault();
 
   const login = event.target.login.value;
@@ -16,6 +16,7 @@ const createUser = async (event, props) => {
   const password = event.target.password.value;
   const statusUser = event.target.statusUser.value;
   const isLogin = props.isLogined;
+
 
   const response = await fetch('http://localhost:5000/auth/registration', {
     method: 'POST',
@@ -27,46 +28,51 @@ const createUser = async (event, props) => {
     }),
   });
   const result = await response.json();
-  const { user, answer } = result;
-  const { status } = user;
-  console.log(result);
+  const { user } = result;
 
-  // if (status) {
-  //   isLogin(user);
-  //   return props.history.push('/');
-  // }
-  return alert('Что то пошло не так!');
+  if (user) {
+    isLogin(user);
+    return props.history.push('/');
+  }
+  return setErrorReg(true);
 };
 
-const RegistrationForm = (props) => (
-  <>
-    <div className='loginform'>
-      <Form className="registrationForm" onSubmit={(event) => createUser(event, props)}>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Label for="exampleLogin" className="mr-sm-2">Логин</Label>
-          <Input type="text" name="login" id="exampleLogin" placeholder="Введите логин" required />
-        </FormGroup>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Label for="exampleEmail" className="mr-sm-2">Почта</Label>
-          <Input type="email" name="email" id="exampleEmail" placeholder="Введите почту" required />
-        </FormGroup>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Label for="examplePassword" className="mr-sm-2">Пароль</Label>
-          <Input type="password" name="password" id="examplePassword" placeholder="Введите пароль из 6 символов" required />
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleSelect">Выберите статус</Label>
-          <Input type="select" name="statusUser" id="exampleStatusUser">
-            <option>patient</option>
-            <option>doctor</option>
-          </Input>
-        </FormGroup>
-        <Button type="submit" className="registrationBtn">Зарегистрироваться</Button>
-        <SignInButton />
-      </Form>
+const RegistrationForm = (props) => {
+  const [errorReg, setErrorReg] = useState(false);
+
+  return (
+    <div className="formForRegistr">
+      <div className="loginform">
+        <Form className="registrationForm" onSubmit={(event) => createUser(event, props, setErrorReg)}>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Label for="exampleLogin" className="mr-sm-2">Логин</Label>
+            <Input type="text" name="login" id="exampleLogin" placeholder="Введите логин" required />
+          </FormGroup>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Label for="exampleEmail" className="mr-sm-2">Почта</Label>
+            <Input type="email" name="email" id="exampleEmail" placeholder="Введите почту" required />
+          </FormGroup>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Label for="examplePassword" className="mr-sm-2">Пароль</Label>
+            <Input type="password" name="password" id="examplePassword" placeholder="Введите пароль из 6 символов" required />
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleSelect">Выберите статус</Label>
+            <Input type="select" name="statusUser" id="exampleStatusUser">
+              <option>patient</option>
+              <option>doctor</option>
+            </Input>
+          </FormGroup>
+          <Button type="submit" className="registrationBtn">Зарегистрироваться</Button>
+          <SignInButton />
+        </Form>
+      </div>
+      {
+        errorReg && <h3>Такая почта уже зарегистрирована.</h3>
+      }
     </div>
-  </>
-);
+  );
+};
 
 const mapStateToProps = (state) => ({
   auth: state.auth,

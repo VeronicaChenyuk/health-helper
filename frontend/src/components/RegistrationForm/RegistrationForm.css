@@ -1,3 +1,9 @@
+h3 {
+  text-align: center;
+  margin-top: 10px;
+  color: #77a6f7;
+}
+
 .registrationForm {
   display: flex;
   flex-direction: column;
@@ -16,6 +22,7 @@
 .sign-in.btn-link{
   text-align: center;
 }
+
 .loginform{
 position: absolute;
 top: 30%;

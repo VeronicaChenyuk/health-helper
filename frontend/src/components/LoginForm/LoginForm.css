@@ -5,8 +5,14 @@
   width: 400px;
   height: 200px;
   margin: 30px auto;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 
-.loginBtn {
-  margin-top: 10px;
+button.loginBtn.btn.btn-secondary {
+  margin-top: 20px;
+  background-color:#77A6F7 ;
 }

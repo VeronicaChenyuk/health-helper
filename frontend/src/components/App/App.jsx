@@ -15,7 +15,9 @@ import DoctorPage from '../DoctorPage/DoctorPage';
 const App = (props) => {
   const { user } = props;
 
+
   const statusUser = user ? user.status : false;
+
   const url = `/personal/${statusUser}`;
   return (
     <>
