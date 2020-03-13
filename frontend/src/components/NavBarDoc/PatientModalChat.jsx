@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+ import React, { useState } from 'react';
 import {
   Button, Modal, ModalHeader, ModalBody, ModalFooter,
 } from 'reactstrap';
@@ -15,7 +15,7 @@ const PatientModalReport = (props) => {
 
   return (
     <div>
-      <Button onClick={toggle}>Cвязаться с пациентом</Button>
+      <Button style={{ margin: '20px' }} onClick={toggle}>Cвязаться с пациентом</Button>
       <Modal isOpen={modal} toggle={toggle} className={className} style={{ minWidth: '1200px', minHeight: '800px' }}>
         <ModalHeader toggle={toggle}>Письмо Иванову Ивану</ModalHeader>
         <ModalBody>

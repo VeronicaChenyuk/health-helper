@@ -32,21 +32,32 @@ body {
 }
 
 .circle-one {
-  border-left: 10px solid #4CBAC1;
-  border-top: 10px solid #4CBAC1;
-  border-right: 10px solid #4CBAC1;
-  transform: rotate(-30deg);
+  /* border-left: 10px solid #4CBAC1; */
+  /* border-top: 10px solid #4CBAC1; */
+  border: 13px solid #3EA4F9;
+  /* transform: rotate(-45deg); */
 }
 
 .circle-two {
-  border-left: 10px solid #3EA4F9;
-  border-top: 10px solid #3EA4F9;
-  transform: rotate(-60deg);
+  border-left: 13px solid #4CBAC1;
+  border-bottom: 13px solid #4CBAC1;
+  transform: rotate(-45deg);
 }
 
 .circle-three {
-  border-left: 10px solid #AD68AE;
-  transform: rotate(-60deg);
+  border-right: 13px solid #AD68AE;
+  border-top: 13px solid #AD68AE;
+  transform: rotate(-45deg);
+}
+
+.circle-four {
+  border-right: 13px solid #31708e;
+  transform: rotate(45deg);
+}
+
+.circle-five {
+  border-left: 13px solid #687864;
+  transform: rotate(45deg);
 }
 
 .circle-description {
@@ -64,7 +75,7 @@ body {
 .circle-concept {
   text-transform: uppercase;
   font-size: 12px;
-  color: #BBC4CD;
+  color: black;
 }
 
 .circle-numbers, .circle-concept {
