@@ -1,13 +1,9 @@
 import React from 'react';
-
-import { Nav } from 'reactstrap';
 import { connect } from 'react-redux';
 import PatientInfoDoc from './PatientInfoDoc';
-import PatientModalCreateMethod from './PatientModalCreateMethod';
 import { getMethodicsUser } from '../../redux/actions';
 import PationsList from './Components/PationsList';
 import './NavBarDoc.css';
-import Banner from '../../img/banner22.png'
 
 async function fetchEmail(props) {
   const { email } = props.user;
@@ -34,8 +30,8 @@ async function fetchEmail(props) {
 function NavBarDoc(props) {
   fetchEmail(props);
   return (
-    <div id='NavBarDoc'>
-    <div className='imgNB'></div>
+    <div id="NavBarDoc">
+      <div className="imgNB" />
       <div className="row">
         <div className="col-3">
           <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -46,11 +42,11 @@ function NavBarDoc(props) {
           <div className="tab-content" id="v-pills-tabContent">
             <div className="tab-pane fade" id="v-pills-methodology" role="tabpanel" aria-labelledby="v-pills-methodology-tab">
               <PatientInfoDoc />
+              {/* <p className="">gsajdkjakjkak</p> */}
             </div>
           </div>
         </div>
       </div>
-      
     </div>
   );
 }

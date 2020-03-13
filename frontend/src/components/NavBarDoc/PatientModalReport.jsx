@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import {
   Button, Modal, ModalHeader, ModalBody, ModalFooter,
 } from 'reactstrap';
-import './PatientModalReport.css'
+import './PatientModalReport.css';
 
 const PatientModalReport = (props) => {
-  const {
-    className,
-  } = props;
+  console.log(props, 'PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP');
 
   const [modal, setModal] = useState(false);
 
@@ -16,7 +14,7 @@ const PatientModalReport = (props) => {
   return (
     <div>
       <Button onClick={toggle}>Комментарии к лечению</Button>
-      <Modal isOpen={modal} toggle={toggle} className={className} style={{ minWidth: '1200px', minHeight: '800px' }}>
+      <Modal isOpen={modal} toggle={toggle} style={{ minWidth: '1200px', minHeight: '800px' }}>
         <ModalHeader toggle={toggle}>Отчет</ModalHeader>
         <ModalBody>
           Здесь будет красивый сочный отчет

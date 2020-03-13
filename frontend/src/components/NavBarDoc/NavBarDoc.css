@@ -9,7 +9,7 @@
 
 .imgNB {
   position: absolute;
-  background: url('../../img/logo.png') no-repeat center #b4bfce fixed;
+  /* background: url('../../img/logo.png') no-repeat center #b4bfce fixed; */
   
   opacity: 0.55;
   width: 100%;

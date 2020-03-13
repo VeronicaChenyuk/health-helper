@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-  NavLink, Card, CardImg, CardTitle, CardText, CardDeck, CardBody, Col,
-} from 'reactstrap';
 import { connect } from 'react-redux';
 import PatientModalReport from './PatientModalReport';
 import PatientModalChat from './PatientModalChat';
@@ -10,15 +7,15 @@ import './PatientInfoDoc.css';
 import fist from '../../img/fist.png';
 import second from '../../img/second.png';
 import third from '../../img/third.png';
+import Statistic from '../Statistic/Statistc';
 
 function PatientInfoDoc(props) {
-
   return (
     <>
       <div className="card-deck">
-        <div className="card">
+        {/* <div className="card">
           <div className="card-body ">
-          <img src={fist} className="card-img-top" />
+            <img src={fist} className="card-img-top" alt="logo report" />
           </div>
           <div className="card-footer">
             <small className="text-muted">
@@ -29,7 +26,7 @@ function PatientInfoDoc(props) {
         </div>
         <div className="card">
           <div className="card-body">
-          <img src={second} className="card-img-top" />
+            <img src={second} className="card-img-top" alt="logo method" />
           </div>
           <div className="card-footer">
             <small className="text-muted"><PatientModalCreateMethod /></small>
@@ -37,20 +34,17 @@ function PatientInfoDoc(props) {
         </div>
         <div className="card">
           <div className="card-body">
-          <img src={third} className="card-img-top" alt="..." />
+            <img src={third} className="card-img-top" alt="..." />
           </div>
           <div className="card-footer">
             <small className="text-muted"><PatientModalChat /></small>
           </div>
-        </div>
+        </div> */}
+        <Statistic />
       </div>
     </>
   );
 }
-
-
-// export default PatientInfoDoc;
-
 
 const mapStateToProps = (state) => ({
   methodics: state.getInfo.methodics,
