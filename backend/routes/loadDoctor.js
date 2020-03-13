@@ -8,7 +8,7 @@ router.post('/doctor', async (req, res) => {
 
   const { doctorName, specialist, email, url } = req.body;
   const newUser = await User.findOneAndUpdate({ email }, { doctorName, specialist, photo: url }, { new: true });
-  const addPhotoToMethodics = await Methodic.findOneAndUpdate({ doctorName }, { photo: url }, { new: true });
+  const addPhotoToMethodics = await Methodic.findOneAndUpdate({ email }, { photo: url }, { new: true });
   res.json({ newUser });
   // res.redirect('/')
 });
