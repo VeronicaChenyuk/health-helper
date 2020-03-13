@@ -30,10 +30,10 @@ const Statistic = (props) => {
     defaultTasks = currentTasks.filter((task) => task.status === 'default').length;
     missingTasks = currentTasks.filter((task) => task.status === 'missing').length;
     percentSuccess = (successTasks / (allTasks - defaultTasks)) * 100;
-    percentSuccess = Number.isNaN(percentSuccess) ? 0 : percentSuccess;
+    percentSuccess = Number.isNaN(percentSuccess) ? 0 : Math.floor(percentSuccess);
     notSuccess = deleteTasks + missingTasks;
     progress = ((allTasks - defaultTasks) / allTasks) * 100;
-    progress = Number.isNaN(progress) ? 0 : progress;
+    progress = Number.isNaN(progress) ? 0 : Math.floor(progress);
   }
 
   return (
