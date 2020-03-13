@@ -6,25 +6,35 @@ import { isLoginForm } from '../../redux/actions';
 const getCurrentTasks = (emailPation, methodics) => {
   const currentTasks = methodics.filter((methodic) => methodic.patientEmail === emailPation)
     .map((methodic) => methodic.tasks);
-  console.log(currentTasks[0]);
   return currentTasks[0];
 };
 
 const Statistic = (props) => {
-  const { emailPation, methodics } = props;
-  const currentTasks = getCurrentTasks(emailPation, methodics);
-  const allTasks = currentTasks.length;
-  const successTasks = currentTasks.filter((task) => task.status === 'success').length;
-  const deleteTasks = currentTasks.filter((task) => task.status === 'deleted').length;
-  const defaultTasks = currentTasks.filter((task) => task.status === 'default').length;
-  const missingTasks = currentTasks.filter((task) => task.status === 'missing').length;
-  let percentSuccess = (successTasks / (allTasks - defaultTasks)) * 100;
-  percentSuccess = Number.isNaN(percentSuccess) ? 0 : percentSuccess;
-  const notSuccess = deleteTasks + missingTasks;
-  let progress = ((allTasks - defaultTasks) / allTasks) * 100;
-  progress = Number.isNaN(progress) ? 0 : progress;
+  const { emailPatient, methodics } = props;
 
-  console.log(allTasks, defaultTasks, successTasks, deleteTasks, missingTasks);
+  const currentTasks = getCurrentTasks(emailPatient, methodics);
+
+  let allTasks;
+  let successTasks;
+  let deleteTasks;
+  let defaultTasks;
+  let missingTasks;
+  let percentSuccess;
+  let notSuccess;
+  let progress;
+
+  if (currentTasks) {
+    allTasks = currentTasks.length;
+    successTasks = currentTasks.filter((task) => task.status === 'success').length;
+    deleteTasks = currentTasks.filter((task) => task.status === 'deleted').length;
+    defaultTasks = currentTasks.filter((task) => task.status === 'default').length;
+    missingTasks = currentTasks.filter((task) => task.status === 'missing').length;
+    percentSuccess = (successTasks / (allTasks - defaultTasks)) * 100;
+    percentSuccess = Number.isNaN(percentSuccess) ? 0 : percentSuccess;
+    notSuccess = deleteTasks + missingTasks;
+    progress = ((allTasks - defaultTasks) / allTasks) * 100;
+    progress = Number.isNaN(progress) ? 0 : progress;
+  }
 
   return (
     <>
@@ -77,7 +87,7 @@ const Statistic = (props) => {
 
 const mapStateToProps = (state) => ({
   isRegForm: state.switchFormReducer.isRegForm,
-  emailPation: state.switchFormReducer.currentPatientEmail,
+  emailPatient: state.switchFormReducer.currentPatientEmail,
   methodics: state.getInfo.methodics,
 });
 
