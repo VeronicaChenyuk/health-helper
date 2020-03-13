@@ -6,6 +6,7 @@ import moment from 'moment';
 import { switchStatusTask } from '../../redux/actions';
 import saveMethodicFetch from '../../utils/saveMethodicFetch';
 
+moment.locale('ru');
 const updateStatusTask = (methodics, _id, idTask, switchStatus, newStatus) => {
   const updatedMethodics = methodics.map((methodic) => {
     if (_id === methodic._id) {
@@ -68,7 +69,7 @@ const ActiveTasks = (props) => {
                         <span className="taskName">{task.massage}</span>
                         {
                           dateActivation
-                          && <span className="taskSpecialty"><strong>{moment(dateActivation).format('MMMM Do YYYY, HH:mm:ss')}</strong></span>
+                          && <span className="taskSpecialty"><strong>{moment(dateActivation).format('HH:mm:ss, LL')}</strong></span>
                         }
                         {' '}
                       </div>
