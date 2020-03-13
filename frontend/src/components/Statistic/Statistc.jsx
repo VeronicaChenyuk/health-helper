@@ -3,10 +3,19 @@ import './Statistic.css';
 import { connect } from 'react-redux';
 import { isLoginForm } from '../../redux/actions';
 
+const getCurrentTasks = (emailPation, methodics) => {
+  const currentTasks = methodics.filter((methodic) => methodic.patientEmail === emailPation)
+    .map((methodic) => methodic.tasks);
+    console.log(currentTasks[0]);
+    return currentTasks[0];
+};
 
 const Statistic = (props) => {
-  console.log(props.methodics, 'UUUUUUUUUUUUUUUFFFFFFF');
-  
+  const { emailPation, methodics } = props;
+  const currentTasks = getCurrentTasks(emailPation, methodics);
+  const allTasks = currentTasks.length;
+  const successTasks = currentTasks.filter((task) => task.status === 'success');
+
   return (
     <>
       <div className="statistic-circles">
@@ -44,6 +53,7 @@ const Statistic = (props) => {
 
 const mapStateToProps = (state) => ({
   isRegForm: state.switchFormReducer.isRegForm,
+  emailPation: state.switchFormReducer.currentPatientEmail,
   methodics: state.getInfo.methodics,
 });
 

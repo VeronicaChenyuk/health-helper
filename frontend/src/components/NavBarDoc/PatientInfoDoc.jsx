@@ -13,7 +13,7 @@ function PatientInfoDoc(props) {
   return (
     <>
       <div className="card-deck">
-        {/* <div className="card">
+        <div className="card">
           <div className="card-body ">
             <img src={fist} className="card-img-top" alt="logo report" />
           </div>
@@ -39,9 +39,9 @@ function PatientInfoDoc(props) {
           <div className="card-footer">
             <small className="text-muted"><PatientModalChat /></small>
           </div>
-        </div> */}
-        <Statistic />
+        </div>
       </div>
+      <Statistic />
     </>
   );
 }

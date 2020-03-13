@@ -5,8 +5,6 @@ import {
 import './PatientModalReport.css';
 
 const PatientModalReport = (props) => {
-  console.log(props, 'PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP');
-
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);

@@ -42,7 +42,6 @@ function NavBarDoc(props) {
           <div className="tab-content" id="v-pills-tabContent">
             <div className="tab-pane fade" id="v-pills-methodology" role="tabpanel" aria-labelledby="v-pills-methodology-tab">
               <PatientInfoDoc />
-              {/* <p className="">gsajdkjakjkak</p> */}
             </div>
           </div>
         </div>
