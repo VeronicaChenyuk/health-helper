@@ -15,10 +15,10 @@ const PatientModalReport = (props) => {
 
   return (
     <div>
-      <Button onClick={toggle}>Cвязаться с пациентом</Button>
+      <Button style={{minWidth:'100%', minHeight: '100%'}} onClick={toggle}>Cвязаться с пациентом</Button>
       <Modal isOpen={modal} toggle={toggle} className={className} style={{ minWidth: '1200px', minHeight: '800px' }}>
         <ModalHeader toggle={toggle}>Письмо Иванову Ивану</ModalHeader>
-        <ModalBody>
+        <ModalBody >
           Здесь мы будем писать сообщение пациенту
         </ModalBody>
         <ModalFooter>

@@ -12,8 +12,7 @@ import { isLogout } from '../../redux/actions';
 import PatientModalCreateMethod from '../NavBarDoc/PatientModalCreateMethod';
 import './Header.css'
 // import Logo from '../../img/logomak_logo.png'
-
-
+import logo from '../../../public/icon/logo.png'
 const logout = () => { localStorage.clear(); };
 
 
@@ -22,8 +21,17 @@ const Header = (props) => {
   const url = `/personal/${statusUser}`;
   return (
     <div>
-      <Navbar className='navBar' light expand="md">
-        <NavbarBrand href="/"><h3>MedicalTODO</h3></NavbarBrand>
+      <Navbar style={{maxHeight:'900px', minWidth: '500px', fontColor: '#ffffff'}} className='navBar' light expand="md">
+        <NavbarBrand style={{fontColor: '#ffffff'}}  href="/">
+        <img src={logo} style={{maxWidth: '60px', maxHeight: '60px'}}
+        />
+       
+          </NavbarBrand>
+          <NavbarBrand className="health-helper" href="/">
+        
+          <h3>HealthHelper</h3>
+          </NavbarBrand>
+        
         
         
         <Nav className="mr-auto" navbar />

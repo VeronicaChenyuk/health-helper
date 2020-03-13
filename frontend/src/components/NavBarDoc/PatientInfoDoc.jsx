@@ -15,9 +15,9 @@ function PatientInfoDoc(props) {
 
   return (
     <>
-      <div className="card-deck">
-        <div className="card">
-          <div className="card-body ">
+      <div style={{minWidth:'90%', minHeight: '90%'}}className="card-deck">
+        <div  style={{minWidth:'30%', minHeight: '35%'}}  className="card">
+          <div style={{minWidth: '30%', backgroundColor: '#fbfbfb'}} className="card-body ">
           <img src={fist} className="card-img-top" />
           </div>
           <div className="card-footer">
@@ -27,16 +27,16 @@ function PatientInfoDoc(props) {
             </small>
           </div>
         </div>
-        <div className="card">
-          <div className="card-body">
+        <div style={{minWidth:'30%', minHeight: '35%'}} className="card">
+          <div style={{minWidth: '30%', backgroundColor: '#fbfbfb'}} className="card-body">
           <img src={second} className="card-img-top" />
           </div>
           <div className="card-footer">
             <small className="text-muted"><PatientModalCreateMethod /></small>
           </div>
         </div>
-        <div className="card">
-          <div className="card-body">
+        <div style={{minWidth:'30%', minHeight: '35%'}}  className="card">
+          <div style={{backgroundColor: '#fbfbfb'}} className="card-body">
           <img src={third} className="card-img-top" alt="..." />
           </div>
           <div className="card-footer">

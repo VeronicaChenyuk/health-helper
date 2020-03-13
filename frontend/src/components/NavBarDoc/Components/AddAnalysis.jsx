@@ -36,8 +36,8 @@ class Analysis extends React.Component {
     return (
       <>
         {addAnalysisFin}
-        <Button color="secondary" onClick={this.addAnalysisClick.bind(this)}>Add Analysis</Button>
-        <Button color="link" onClick={this.deleteAnalysisClick.bind(this)}>Delete Analysis</Button>
+        <Button color="secondary" onClick={this.addAnalysisClick.bind(this)}>Добавить строку</Button>
+        <Button color="link" onClick={this.deleteAnalysisClick.bind(this)}>Убрать строку</Button>
       </>
     );
   }

@@ -36,8 +36,8 @@ class Drugs extends React.Component {
     return (
       <>
         {addDrugsFin}
-        <Button color="secondary" onClick={this.addDrugClick.bind(this)}>Add Drug</Button>
-        <Button color="link" onClick={this.deleteDrugClick.bind(this)}>Delete Drug</Button>
+        <Button color="secondary" onClick={this.addDrugClick.bind(this)}>Добавить строку</Button>
+        <Button color="link" onClick={this.deleteDrugClick.bind(this)}>Убрать строку</Button>
       </>
     );
   }

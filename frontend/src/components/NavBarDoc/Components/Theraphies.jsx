@@ -36,8 +36,8 @@ class Theraphy extends React.Component {
     return (
       <>
         {addTheraphyFin}
-        <Button color="secondary" onClick={this.addTheraphyClick.bind(this)}>Add Theraphy</Button>
-        <Button color="link" onClick={this.deleteTheraphyClick.bind(this)}>Delete Theraphy</Button>
+        <Button color="secondary" onClick={this.addTheraphyClick.bind(this)}>Добавить строку</Button>
+        <Button color="link" onClick={this.deleteTheraphyClick.bind(this)}>Убрать строку</Button>
       </>
     );
   }

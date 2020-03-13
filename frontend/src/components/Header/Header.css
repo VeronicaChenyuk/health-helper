@@ -1,5 +1,5 @@
 .navBar {
-  background: #F7F9FB;
+  background: #ffffff;
 }
 
 .btn-secondary {
@@ -13,6 +13,11 @@ color: #31708E;
 margin-left: 15px;
 }
 
+.health-helper {
+  position: absolute;
+  margin-left: 50px;
+  color: black;
+}
 a.navbar-brand h3:hover {
 
 }
