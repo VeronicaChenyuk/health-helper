@@ -1,13 +1,9 @@
 import React from 'react';
-
-import { Nav } from 'reactstrap';
 import { connect } from 'react-redux';
 import PatientInfoDoc from './PatientInfoDoc';
-import PatientModalCreateMethod from './PatientModalCreateMethod';
 import { getMethodicsUser } from '../../redux/actions';
 import PationsList from './Components/PationsList';
 import './NavBarDoc.css';
-import Banner from '../../img/banner22.png'
 
 async function fetchEmail(props) {
   const { email } = props.user;
@@ -50,7 +46,6 @@ function NavBarDoc(props) {
           </div>
         </div>
       </div>
-      
     </div>
   );
 }

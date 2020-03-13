@@ -1,0 +1,99 @@
+/* * {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 10px;
+} */
+
+.statistic-circles {
+  text-align: center;
+}
+
+.group-circles {
+  display: flex;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+.group-circle-item {
+  margin-right: 30px;
+  position: relative;
+}
+.group-circle-item:last-child {
+  margin-right: 0;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 10px solid #D7E2EB;
+}
+
+.circle-one {
+  /* border-left: 10px solid #4CBAC1; */
+  /* border-top: 10px solid #4CBAC1; */
+  border: 13px solid #3EA4F9;
+  /* transform: rotate(-45deg); */
+}
+
+.circle-two {
+  border-left: 13px solid #4CBAC1;
+  border-bottom: 13px solid #4CBAC1;
+  transform: rotate(-45deg);
+}
+
+.circle-three {
+  border-right: 13px solid #AD68AE;
+  border-top: 13px solid #AD68AE;
+  transform: rotate(-45deg);
+}
+
+.circle-four {
+  border-right: 13px solid #31708e;
+  transform: rotate(45deg);
+}
+
+.circle-five {
+  border-left: 13px solid #687864;
+  transform: rotate(45deg);
+}
+
+.circle-description {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle-numbers {
+  color: #4F5C70;
+  font-size: 30px;
+}
+
+.circle-concept {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: black;
+}
+
+.circle-numbers, .circle-concept {
+  display: block;
+  text-align: center;
+}
+
+.rounded {
+  padding: 10px;
+  border: 1px solid #BBC4CD;
+  display: inline-block;
+  border-radius: 30px;
+  color: #4F5C70;
+  font-size: 10px;
+}
+
+.totals-concept {
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=Statistic.css.map */
