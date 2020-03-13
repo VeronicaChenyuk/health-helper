@@ -1,3 +1,14 @@
 Button {
   text-align: center;
 }
+textarea.text{
+}
+p.littleinput{
+  margin-right: 250px;
+}
+div.modal-body{
+  margin: 5%  5%;
+}
+h5.modal-title{
+  margin-left: 5% 
+}
