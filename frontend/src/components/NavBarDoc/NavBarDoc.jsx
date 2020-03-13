@@ -37,12 +37,12 @@ function NavBarDoc(props) {
     <div style={{minHeight:'600px'}} id='NavBarDoc'>
     <div style={{minHeight:'600px'}} className='imgNB'></div>
       <div className="row">
-        <div className="col-2">
+        <div className="col-3">
           <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <PationsList />
           </div>
         </div>
-        <div className="col-10">
+        <div className="col-9">
           <div className="tab-content" id="v-pills-tabContent">
             <div className="tab-pane fade" id="v-pills-methodology" role="tabpanel" aria-labelledby="v-pills-methodology-tab">
               <PatientInfoDoc />

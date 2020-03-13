@@ -28,7 +28,9 @@ function PationsList(props) {
         aria-selected="false"
         onClick={() => currentPatientClick(name.patientEmail, props)}
       >
+        <h5>
         {name.patientName}
+        </h5>
       </a>
     </>
   ));
