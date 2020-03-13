@@ -15,6 +15,7 @@ const saveMethodicRouter = require('./routes/saveMethodic');
 const loadMethodicRouter = require('./routes/loadMethodic');
 const uploadRouter = require('./routes/upload');
 const changeMethodRouter = require('./routes/changeMethod');
+const saveMessageRouter = require('./routes/saveMessage');
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/upload', uploadRouter);
 app.use('/changemethod', changeMethodRouter);
+app.use('/savemessage', saveMessageRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
