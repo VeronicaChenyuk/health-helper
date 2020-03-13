@@ -13,24 +13,23 @@ function Methodology(props) {
         } = meth;
         return (
           <div className="block" key={_id}>
-            <td>
-              <p>
-                <ul className="list-group">
-                  <li className="list-group-item list-group-item-primary list-header">
-                   {doctorName}
-                    <p>
-                      <strong>
-                        Специальность:
-                        {' '}
-                        {specialist}
-                      </strong>
-                    </p>
-                  </li>
-                  <li className="list-group-item">
-                    <strong>Лекарства:</strong>
-                    {
+            <p>
+              <ul className="list-group card-meth">
+                <li className="list-group-item list-group-item-primary list-header">
+                  {doctorName}
+                  <p>
+                    <strong>
+                      Специальность:
+                      {' '}
+                      {specialist}
+                    </strong>
+                  </p>
+                </li>
+                <li className="not-header">
+                  <strong>Лекарства:</strong>
+                  {
                       (drugs).map((drug, index) => (
-                        <li className="list-group-item" key={drug.nameOfDrug}>
+                        <li key={drug.nameOfDrug}>
                           {index + 1}
                           {'. '}
                           {drug.nameOfDrug}
@@ -63,12 +62,12 @@ function Methodology(props) {
                         </li>
                       ))
                     }
-                  </li>
-                  <li className="list-group-item">
-                    <strong>Процедуры:</strong>
-                    {
+                </li>
+                <li className="not-header">
+                  <strong>Процедуры:</strong>
+                  {
                       (theraphies).map((therap, index) => (
-                        <li className="list-group-item" key={therap}>
+                        <li key={therap}>
                           {index + 1}
                           {'. '}
                           {therap.nameOfTheraphy}
@@ -94,12 +93,12 @@ function Methodology(props) {
                         </li>
                       ))
                     }
-                  </li>
-                  <li className="list-group-item">
-                    <strong>Анализы:</strong>
-                    {
+                </li>
+                <li className="not-header">
+                  <strong>Анализы:</strong>
+                  {
                       (analisis).map((analis, index) => (
-                        <li className="list-group-item" key={analis}>
+                        <li key={analis}>
                           {' '}
                           {index + 1}
                           :
@@ -108,15 +107,15 @@ function Methodology(props) {
                         </li>
                       ))
                     }
-                  </li>
-                  <li className="list-group-item">
-                    Следующий прием врача:
-                    {' '}
-                    {nextVisit}
-                  </li>
-                  <li className="list-group-item">
-                    Форма отчетности:
-                    {
+                </li>
+                <li className="not-header">
+                  Следующий прием врача:
+                  {' '}
+                  {nextVisit}
+                </li>
+                <li className="not-header">
+                  Форма отчетности:
+                  {
                   (patientReports).map((report, index) => (
                     <span key={report}>
                       <br />
@@ -126,15 +125,14 @@ function Methodology(props) {
                     </span>
                   ))
                 }
-                  </li>
-                  <li className="list-group-item">
-                    <strong>Комментарий от врача:</strong>
-                    {' '}
-                    {comment}
-                  </li>
-                </ul>
-              </p>
-            </td>
+                </li>
+                <li className="not-header">
+                  <strong>Комментарий от врача:</strong>
+                  {' '}
+                  {comment}
+                </li>
+              </ul>
+            </p>
           </div>
         );
       })
