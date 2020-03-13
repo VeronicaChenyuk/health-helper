@@ -9,7 +9,6 @@ import './DoctorPage.css';
 import { storage } from '../../firebase';
 
 
-
 const DoctorPage = (props) => {
 
   const [image, setImage] = useState(null);
@@ -30,6 +29,7 @@ const DoctorPage = (props) => {
     const { email } = props.user;
     const { changeInfo } = props;
     const { action } = e.target;
+
 
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on('state_changed',
@@ -89,6 +89,7 @@ const DoctorPage = (props) => {
 
 const mapStateToProps = (state) => ({
   user: state.logIn.user,
+  methodics: state.getInfo.methodics,
 });
 
 const mapDispathToProps = (dispatch) => ({

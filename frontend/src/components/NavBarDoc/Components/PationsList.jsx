@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { switchCurrentEmail } from '../../../redux/actions';
+import './PationsList.css';
 
 function currentPatientClick(patientEmail, props) {
   const currentPatientEmail = patientEmail;
@@ -28,7 +29,9 @@ function PationsList(props) {
         aria-selected="false"
         onClick={() => currentPatientClick(name.patientEmail, props)}
       >
-        {name.patientName}
+        <p className="patient-name">
+          {name.patientName}
+        </p>
       </a>
     </>
   ));
