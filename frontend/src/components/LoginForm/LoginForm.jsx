@@ -40,11 +40,14 @@ const LoginForm = (props) => {
       <Form className="loginForm" onSubmit={(event) => createUser(event, props, setErrorReg)}>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Label for="exampleEmail" className="mr-sm-2">Почта</Label>
-          <Input type="email" name="email" id="exampleEmail" placeholder="fox@fox.ru" required />
+          <Input type="email" name="email" id="exampleEmail" placeholder="fox@fox.ru"  required />
         </FormGroup>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Label for="examplePassword" className="mr-sm-2">Пароль</Label>
-          <Input type="password" name="password" id="examplePassword" placeholder="Не забудь пароль!" required />
+          <Input type="password" name="password" id="examplePassword" placeholder="Не забудь пароль!" 
+                  pattern="[\w]{5,30}"
+                  title="Пароль должен содержать минимум 6 символов."
+                  required />
         </FormGroup>
         <Button type="submit" className="loginBtn logB">Войти</Button>
         <SignInButton />

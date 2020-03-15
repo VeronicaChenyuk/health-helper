@@ -29,11 +29,8 @@ const filterTasks = (tasks, nowDate, _id, switchStatus, methodics) => {
     const {
       dateActivation, finishTaskDate, status, idTask,
     } = task;
-    console.log('dsafs');
     const isMissing = new Date(finishTaskDate) < nowDate;
-    console.log(isMissing);
     if (status !== 'missing' && isMissing) {
-      console.log('change status on missing');
       updateStatusTask(methodics, _id, idTask, switchStatus, 'missing');
     }
     return ((!dateActivation && status === 'default') || (dateActivation
@@ -61,7 +58,7 @@ const ActiveTasks = (props) => {
               {
                 filteredTasks.map((task, index) => {
                   const {
-                    massage, dateActivation, idTask, status,
+                    massage, dateActivation, idTask,
                   } = task;
                   return (
                     <ListGroupItem key={massage + dateActivation} className="task">

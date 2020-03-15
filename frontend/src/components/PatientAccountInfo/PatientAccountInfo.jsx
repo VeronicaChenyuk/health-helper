@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PatientAccountInfo.css';
 import { connect } from 'react-redux';
 
-
-
 const PatientAccountInfo = (props) => {
-
-  const { patientName, photo, diseases } = props.data;
+  const { data } = props;
+  const { patientName, photo, diseases } = data;
 
   return (
     <div className="patient-info">
@@ -26,10 +24,8 @@ const PatientAccountInfo = (props) => {
   );
 };
 
-
 const mapStateToProps = (state) => ({
   user: state.logIn.user,
 });
-
 
 export default connect(mapStateToProps)(PatientAccountInfo);

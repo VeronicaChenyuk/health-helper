@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 import './PatientAnalyzes.css';
 import PatientAnalyzesForm from '../PatientAnalyzesForm/PatientAnalyzesForm';
 import PatientAnalyzesView from '../PatientAnalyzesView/PatientAnalyzesView';
-import { storage } from '../../firebase';
 
 
 const PatientAnalyzes = (props) => {
-
   const analysisList = props.analyzes.map((analysis, index) => (
     <li key={index}><PatientAnalyzesView analysis={analysis} /></li>
   ));

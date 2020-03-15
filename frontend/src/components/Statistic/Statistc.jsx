@@ -40,46 +40,52 @@ const Statistic = (props) => {
     <>
       <div className="statistic-circles">
         <div className="group-circles">
-          <div className="group-circle-item">
-            <div className="circle circle-one" />
-            <div className="circle-description">
-              <span className="circle-numbers">{allTasks}</span>
-              <span className="circle-concept">Все задачи</span>
+          <div className="one-row">
+            <div className="group-circle-item one-item">
+              <div className="circle circle-one" />
+              <div className="circle-description">
+                <span className="circle-numbers">{allTasks}</span>
+                <span className="circle-concept">Все задачи</span>
+              </div>
+            </div>
+            <div className="group-circle-item two-item">
+              <div className="circle circle-two" />
+              <div className="circle-description">
+                <span className="circle-numbers">{successTasks}</span>
+                <span className="circle-concept">Выполненные задачи</span>
+              </div>
+            </div>
+            <div className="group-circle-item three-item">
+              <div className="circle circle-three" />
+              <div className="circle-description">
+                <span className="circle-numbers">{notSuccess}</span>
+                <span className="circle-concept">Невыполненные задачи</span>
+              </div>
             </div>
           </div>
-          <div className="group-circle-item">
-            <div className="circle circle-two" />
-            <div className="circle-description">
-              <span className="circle-numbers">{successTasks}</span>
-              <span className="circle-concept">Выполненные задачи</span>
+          <div className="two-row">
+            <div className="group-circle-item four-item">
+              <div className="circle circle-four" />
+              <div className="circle-description">
+                <span className="circle-numbers">
+                  {percentSuccess}
+                  %
+                </span>
+                <span className="circle-concept">Успешность выполнения курса</span>
+              </div>
             </div>
-          </div>
-          <div className="group-circle-item">
-            <div className="circle circle-three" />
-            <div className="circle-description">
-              <span className="circle-numbers">{notSuccess}</span>
-              <span className="circle-concept">Невыполненные задачи</span>
-            </div>
-          </div>
-          <div className="group-circle-item">
-            <div className="circle circle-four" />
-            <div className="circle-description">
-              <span className="circle-numbers">{percentSuccess}%</span>
-              <span className="circle-concept">Успешность выполнения курса</span>
-            </div>
-          </div>
-          <div className="group-circle-item">
-            <div className="circle circle-five" />
-            <div className="circle-description">
-              <span className="circle-numbers">{progress}%</span>
-              <span className="circle-concept">Прогресс курса</span>
+            <div className="group-circle-item five-item">
+              <div className="circle circle-five" />
+              <div className="circle-description">
+                <span className="circle-numbers">
+                  {progress}
+                  %
+                </span>
+                <span className="circle-concept">Прогресс курса</span>
+              </div>
             </div>
           </div>
         </div>
-        {/* <h3 className="rounded">
-          <span className="totals-concept">totals</span>
-          <span className="totals-results">Out of 5,231 views</span>
-        </h3> */}
       </div>
     </>
   );

@@ -5,16 +5,12 @@ import './DoctorList.css';
 import { getMethodicsUser } from '../../redux/actions';
 
 function DoctorList(props) {
-
   const myDoctors = props.methodics
     .filter((methodic) => methodic.doctorEmail !== undefined);
-
   const { changeDoctorInfo } = props;
 
   const deleteHandler = (id) => {
-    const newDoctors = myDoctors.filter(doctor => {
-      return doctor._id != id;
-    });
+    const newDoctors = myDoctors.filter((doctor) => doctor._id != id);
     changeDoctorInfo(newDoctors);
   };
 
@@ -33,12 +29,14 @@ function DoctorList(props) {
       <p />
       { doctor.photo ? <img src={doctor.photo} alt="doctor" /> : 'Фото не загружено'}
       <p className="speciality">
-        Cпециальность: {''}
+        Cпециальность:
+        {' '}
+
         {doctor.specialist}
       </p>
       <p>
-        <Button outline className='ready' onClick={feedbackHandler}>Связаться</Button>
-        <Button outline className='dontwant' onClick={() => deleteHandler(doctor._id)}>Удалить</Button>
+        <Button outline className="ready" onClick={feedbackHandler}>Связаться</Button>
+        <Button outline className="dontwant" onClick={() => deleteHandler(doctor._id)}>Удалить</Button>
       </p>
     </p>
   ));

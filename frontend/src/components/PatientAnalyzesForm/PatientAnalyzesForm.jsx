@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './PatientAnalyzesForm.css';
-import { storage } from '../../firebase';
 import {
   Button,
   Form,
@@ -9,11 +8,11 @@ import {
   Input,
 } from 'reactstrap';
 import { connect } from 'react-redux';
+import { storage } from '../../firebase';
 import { setAnalyzes } from '../../redux/actions';
 
 
 const PatientAnalyzesForm = (props) => {
-
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState('');
 
@@ -28,18 +27,18 @@ const PatientAnalyzesForm = (props) => {
     e.preventDefault();
     const name = e.target.name.value;
     const today = new Date();
-    const date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+    const date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
     const uploadTask = storage.ref(`analyzes/${image.name}`).put(image);
     uploadTask.on('state_changed',
       (snapshot) => {
-        console.log(snapshot)
+        console.log(snapshot);
       },
       (error) => {
         console.log(error);
       },
       () => {
-        storage.ref('analyzes').child(image.name).getDownloadURL().then(url => {
-          setUrl({ url })
+        storage.ref('analyzes').child(image.name).getDownloadURL().then((url) => {
+          setUrl({ url });
           props.setAnalyzes({ url, name, date });
           console.log(url);
         });

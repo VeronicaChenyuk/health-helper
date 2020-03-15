@@ -23,7 +23,7 @@ class Analysis extends React.Component {
 
   render() {
     const addAnalysis = [];
-    for (let i = 0; i < this.state.analysisCount; i++) {
+    for (let i = 0; i < this.state.analysisCount; i += 1) {
       addAnalysis.push(<AnalysisFields idx={i} />);
     }
 

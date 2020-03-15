@@ -1,11 +1,9 @@
 import React from 'react';
 import './PatientAnalyzesView.css';
-import { storage } from '../../firebase';
-
 
 const PatientAnalyzesView = (props) => {
-
-  const { name, date, url } = props.analysis;
+  const { analysis } = props;
+  const { name, date, url } = analysis;
 
   return (
     <div className="patient-analyzes-view">
@@ -14,12 +12,11 @@ const PatientAnalyzesView = (props) => {
         <p>{date}</p>
       </div>
       <div className="image-block">
-        <img src={url} alt="loading..."></img>
+        <img src={url} alt="loading..." />
       </div>
     </div>
-  )
-
-}
+  );
+};
 
 
 export default PatientAnalyzesView;

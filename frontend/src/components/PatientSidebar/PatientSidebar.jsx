@@ -7,7 +7,6 @@ import { getMethodicsUser } from '../../redux/actions';
 import PatientAccount from '../PatientAccount/PatientAccount';
 import './PatientSidebar.css';
 import PatientAnalyzes from '../PatientAnalyzes/PatientAnalyzes';
-import './PatientSidebar.css';
 
 const getInfo = async (props) => {
   const { email } = props.user;
@@ -60,7 +59,6 @@ const PatientSidebar = (props) => {
 
 const mapStateToProps = (state) => ({
   user: state.logIn.user,
-  // methodics: state.getInfo.methodics,
 });
 
 const mapDispatchToProps = (dispatch) => ({

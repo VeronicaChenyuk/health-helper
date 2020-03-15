@@ -1,30 +1,39 @@
-/* * {
-  box-sizing: border-box;
-}
-
-body {
-  padding: 10px;
-} */
-
 .statistic-circles {
   text-align: center;
 }
 
 .group-circles {
-  display: flex;
-  margin-bottom: 40px;
-  justify-content: center;
+  max-width: 1335px;
 }
 
+.one-row {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px
+}
+
+.two-row {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px
+}
+
+
 .group-circle-item {
-  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+  margin: 0px 25px;
   position: relative;
 }
+
 .group-circle-item:last-child {
   margin-right: 0;
 }
 
 .circle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -32,10 +41,7 @@ body {
 }
 
 .circle-one {
-  /* border-left: 10px solid #4CBAC1; */
-  /* border-top: 10px solid #4CBAC1; */
   border: 13px solid #3EA4F9;
-  /* transform: rotate(-45deg); */
 }
 
 .circle-two {
@@ -73,12 +79,14 @@ body {
 }
 
 .circle-concept {
+  max-width: 165px;
   text-transform: uppercase;
   font-size: 12px;
   color: black;
 }
 
-.circle-numbers, .circle-concept {
+.circle-numbers,
+.circle-concept {
   display: block;
   text-align: center;
 }
@@ -95,5 +103,3 @@ body {
 .totals-concept {
   text-transform: uppercase;
 }
-
-/*# sourceMappingURL=Statistic.css.map */

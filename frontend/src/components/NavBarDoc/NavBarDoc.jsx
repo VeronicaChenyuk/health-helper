@@ -30,8 +30,8 @@ async function fetchEmail(props) {
 function NavBarDoc(props) {
   fetchEmail(props);
   return (
-    <div style={{minHeight:'600px'}} id='NavBarDoc'>
-    <div style={{minHeight:'600px'}} className='imgNB'></div>
+    <div style={{ minHeight: '600px' }} id="NavBarDoc">
+      <div style={{ minHeight: '600px' }} className="imgNB" />
       <div className="row">
         <div className="col-3">
           <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">

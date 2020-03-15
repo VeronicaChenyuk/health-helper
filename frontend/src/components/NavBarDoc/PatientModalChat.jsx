@@ -6,7 +6,6 @@ import './PatientModalChat.css';
 
 const PatientModalReport = (props) => {
   const {
-    buttonLabel,
     className,
   } = props;
 

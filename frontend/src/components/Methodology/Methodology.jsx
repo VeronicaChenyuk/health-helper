@@ -9,7 +9,8 @@ function Methodology(props) {
       {
       methodics.map((meth) => {
         const {
-          drugs, theraphies, analisis, patientReports, comment, nextVisit, _id, doctorName, specialist,
+          drugs, theraphies, analisis, patientReports,
+          comment, nextVisit, _id, doctorName, specialist,
         } = meth;
         return (
           <div className="block" key={_id}>

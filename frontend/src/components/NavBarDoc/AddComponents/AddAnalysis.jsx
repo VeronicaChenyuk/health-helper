@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Col, Row, FormGroup, Input,
+  Col, Row, FormGroup,
 } from 'reactstrap';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 
 
 const AnalysisFields = ({ idx }) => (

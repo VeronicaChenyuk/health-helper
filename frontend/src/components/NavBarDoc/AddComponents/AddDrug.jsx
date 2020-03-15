@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Col, Row, FormGroup, Label,
 } from 'reactstrap';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 
 const DrugsFields = ({ idx }) => (
   <>

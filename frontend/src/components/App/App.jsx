@@ -21,28 +21,29 @@ const App = (props) => {
   const url = `/personal/${statusUser}`;
   return (
     <>
-      <div className="App">
+      <header>
         <Header />
+      </header>
+      <div className="main">
+        <Switch>
+          <Route exact path="/">
+            {
+              statusUser === 'patient'
+                ? <Patient /> : statusUser === 'doctor'
+                  ? <Doctor />
+                  : <Main />
+            }
+          </Route>
+          <Route path={url}>
+            {
+              statusUser === 'patient'
+                ? <Patient /> : statusUser === 'doctor'
+                  ? <DoctorPage />
+                  : <Main />
+            }
+          </Route>
+        </Switch>
       </div>
-
-      <Switch>
-        <Route exact path="/">
-          {
-            statusUser === 'patient'
-              ? <Patient /> : statusUser === 'doctor'
-                ? <Doctor />
-                : <Main />
-          }
-        </Route>
-        <Route path={url}>
-          {
-            statusUser === 'patient'
-              ? <Patient /> : statusUser === 'doctor'
-                ? <DoctorPage />
-                : <Main />
-          }
-        </Route>
-      </Switch>
     </>
   );
 };

@@ -8,10 +8,7 @@ import { changeInfoUser } from '../../redux/actions';
 import './DoctorPage.css';
 import { storage } from '../../firebase';
 
-
-
 const DoctorPage = (props) => {
-
   const [image, setImage] = useState(null);
   const { doctorName, specialist } = props.user;
 
@@ -63,7 +60,6 @@ const DoctorPage = (props) => {
         return props.history.push('/');
       });
   };
-
 
   return (
     <div className="doctorPage">
