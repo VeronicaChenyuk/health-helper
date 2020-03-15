@@ -11,7 +11,7 @@ import PatientAnalyzes from '../PatientAnalyzes/PatientAnalyzes';
 const getInfo = async (props) => {
   const { email } = props.user;
   const { getMethodics } = props;
-  const response = await fetch('http://localhost:5000/users/info', {
+  const response = await fetch('https://health-medical-helper.herokuapp.com/users/info', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ const getInfo = async (props) => {
   const result = await response.json();
   const { methodics } = result;
   if (methodics) {
-    getMethodics(methodics);
+    return getMethodics(methodics);
   }
   return console.error('Что то пошло не так!');
 };

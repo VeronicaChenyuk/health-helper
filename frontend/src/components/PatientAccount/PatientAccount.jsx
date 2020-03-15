@@ -68,7 +68,7 @@ const PatientAccount = (props) => {
   return (
     <div className="patient-account">
       <PatientAccountInfo data={data} />
-      <Form action="http://localhost:5000/upload" onSubmit={formHandler}>
+      <Form action="https://health-medical-helper.herokuapp.com/upload" onSubmit={formHandler}>
         <FormGroup>
           <Label for="exampleEmail">ФИО</Label>
           <Input type="text" name="name" placeholder="ФИО" />

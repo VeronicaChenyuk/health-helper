@@ -1,5 +1,5 @@
 export default (methodic) => {
-  fetch('http://localhost:5000/savemethodic/update', {
+  fetch('https://health-medical-helper.herokuapp.com/savemethodic/update', {
     method: 'POST',
     headers:
     {

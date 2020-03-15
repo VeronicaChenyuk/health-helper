@@ -9,7 +9,7 @@ async function fetchEmail(props) {
   const { email } = props.user;
   const { getMethodics } = props;
 
-  const res = await fetch('http://localhost:5000/loadmethodic', {
+  const res = await fetch('https://health-medical-helper.herokuapp.com/loadmethodic', {
     method: 'POST',
     headers:
   {

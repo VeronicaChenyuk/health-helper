@@ -111,7 +111,7 @@ async function saveClick(props) {
     dateOfTheLastChanges: date,
   };
   const numberID = props.methodics[indMethod]._id;
-  await fetch('http://localhost:5000/changemethod', {
+  await fetch('https://health-medical-helper.herokuapp.com/changemethod', {
     method: 'POST',
     headers:
     {
@@ -129,7 +129,7 @@ async function saveClick(props) {
 async function deleteClick(props) {
   const indMethod = indexMethod(props.currentPatientEmail, props.methodics);
   const numberID = props.methodics[indMethod]._id;
-  await fetch('http://localhost:5000/changemethod', {
+  await fetch('https://health-medical-helper.herokuapp.com/changemethod', {
     method: 'POST',
     headers:
     {

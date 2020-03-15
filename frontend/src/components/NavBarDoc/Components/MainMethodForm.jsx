@@ -186,7 +186,7 @@ function saveClick(props) {
       tasks,
     };
 
-    fetch('http://localhost:5000/savemethodic', {
+    fetch('https://health-medical-helper.herokuapp.com/savemethodic', {
       method: 'POST',
       headers:
       {

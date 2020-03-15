@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: ['babel-polyfill', './src/index.jsx'],
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.resolve(__dirname, '../backend/dist'),
     filename: 'index-bundle.js',
   },
   devServer: {
@@ -48,10 +48,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new CopyWebpackPlugin([{
-      from: './src/fonts',
-      to: './fonts'
-    },
+    new CopyWebpackPlugin([
     {
       from: './src/favicon',
       to: './favicon'
@@ -59,10 +56,6 @@ module.exports = {
     {
       from: './src/img',
       to: './img'
-    },
-    {
-      from: './src/uploads',
-      to: './uploads'
     }
   ]),
   ],
